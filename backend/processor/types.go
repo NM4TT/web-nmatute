@@ -1,9 +1,8 @@
 package processor
 
-type MyStruct struct {
-	Name string `yaml:"name"`
+type Data struct {
+	Name  string                   `yaml:"section"`
+	Items []map[string]interface{} `yaml:"items"`
 }
 
-//others
-
-var MyStuff MyStruct
+var MyData []Data

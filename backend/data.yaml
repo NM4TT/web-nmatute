@@ -1,0 +1,73 @@
+---
+#dates are given in unix time
+- section: professional-exp
+  items:
+    - name: 'PanamaSTEM Education Inc'
+      role: 'Coding Instructor / Content Creator / Technical Support'
+      start: 1577876400 #Jan 01 2020
+      end: 1609498800 #Jan 01 2021
+      tasks:
+        - "Create content for the company's internet platforms on robotics and programming."
+        - "Lead generation and appointment management for sales of company services."
+        - "Provide technical support."
+    - name: 'Colegio Real de Panama'
+      role: 'Computer Science Teacher / Technical Support'
+      start: 1643713200 #Febr 01 2022
+      end: 1667300400 #Nov 01 2022
+      tasks:
+        - "Administration and maintenance of various computer equipment."
+        - "Development of didactic strategies to facilitate students' understanding of computer science."
+        - "Provide technical support."
+    - name: 'STT Group / Indra'
+      role: 'Software Developer'
+      start: 1667300400 #Nov 01 2022
+      end: 1709290800 #March 01 2024
+      tasks:
+        - "Maintain Web Services made in JAVA (SOAP and REST)."
+        - "Participate in the migration of onpremise environments and their apps to Oracle Cloud Infrastructure."
+        - "Maintain Blue Prism's automated processes (RPAs)."
+    - name: 'Daugherty Business Solutions'
+      role: 'Software Development Consultant'
+      start: 1709290800 #March 01 2024
+      tasks:
+        - "Perform software improvements, bug fixes, testing and devops tasks."
+        - "Guarantee the succesful integration & delivery of software solutions."
+        - "Document important aspects of assigned software solutions."
+
+- section: education
+  items:
+    - name: 'Universidad Tecnologica de Panama (UTP)'
+      title: "Bachelor's Degree in Software Development"
+      start: 1577876400 # 2020
+    - name: 'Courses'
+      url: "www.example.com"
+
+- section: tools-skills
+  items:
+    - keywords:
+        - Java
+        - Maven
+        - XML
+        - JSON
+        - Argo Workflows / Argo CD
+        - Javascript
+        - Typescript
+        - SQL / OracleDB / MongoDB
+        - React.js
+        - Redux
+        - Golang
+        - Linux / Unix
+        - Git / Tortoise SVN
+        - Github / Bitbucket
+        - Fast Learning
+        - Web Sevices (SOAP, REST, GRAPHQL, gRPC)
+        - Springboot
+        - Postman
+        - Docker
+        - Kubernetes
+
+- section: languages
+  items:
+    - keywords:
+      - Spanish
+      - English

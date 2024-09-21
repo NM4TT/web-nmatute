@@ -12,10 +12,11 @@ import (
 )
 
 func init() {
+	var err error
 	http.
 		DefaultTransport.(*http.Transport).
 		TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
-	err := processor.LoadData("/data/data.yaml")
+	processor.MyData, err = processor.LoadData("/data/data.yaml")
 	if err != nil {
 		log.Fatal(err)
 	}
