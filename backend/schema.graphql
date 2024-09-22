@@ -1,0 +1,13 @@
+type Query {
+  getData(name: String!): DataSection
+}
+
+type DataSection {
+  name: String!
+  items: [Item!]!
+}
+
+type Item {
+  key: String!
+  value: String!
+}
