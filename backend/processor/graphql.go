@@ -16,14 +16,17 @@ const (
 )
 
 var (
-	name     string
-	role     string
-	start    string
-	end      string
-	tasks    []*string
-	title    string
-	url      string
-	keywords []string
+	name           string
+	role           string
+	start          string
+	end            string
+	tasks          []*string
+	title          string
+	url            string
+	keywords       []string
+	startDate      int
+	endDate        int
+	dateDifference string
 
 	//boilerplate for assertions
 	stringValue string
@@ -36,6 +39,8 @@ func ParseDataToSchema() error {
 	for i, data := range MyData {
 		switch i {
 		case 0:
+			startDate = 0
+			endDate = 0
 			log.Println("Parsing jobs...")
 			itemList := make([]model.Item, 0)
 			for _, item := range data.Items {
@@ -49,13 +54,18 @@ func ParseDataToSchema() error {
 				}
 				_, number, _, ok = assertType(item["start"])
 				if ok {
+					startDate = number
 					start = UnixToShortDate(number)
 				}
 				if endAux, ok := item["end"]; ok {
 					_, number, _, ok = assertType(endAux)
 					if ok {
+						endDate = number
 						end = UnixToShortDate(number)
 					}
+				}
+				if endDate != 0 {
+					dateDifference = CalculateDateDifference(startDate, endDate)
 				}
 				_, _, list, ok = assertType(item["tasks"])
 				if ok {
@@ -67,11 +77,12 @@ func ParseDataToSchema() error {
 				}
 				itemList = append(itemList, model.Item{
 					Content: &model.Content{
-						Name:  &name,
-						Role:  &role,
-						Start: &start,
-						End:   &end,
-						Tasks: tasks,
+						Name:           &name,
+						Role:           &role,
+						Start:          &start,
+						End:            &end,
+						Tasks:          tasks,
+						DateDifference: &dateDifference,
 					},
 				})
 			}
@@ -84,6 +95,8 @@ func ParseDataToSchema() error {
 				Items: pointerList,
 			})
 		case 1:
+			startDate = 0
+			endDate = 0
 			log.Println("Parsing education...")
 			itemList := make([]model.Item, 0)
 			for _, item := range data.Items {
@@ -106,22 +119,28 @@ func ParseDataToSchema() error {
 				if startAux, ok := item["start"]; ok {
 					_, number, _, ok = assertType(startAux)
 					if ok {
+						startDate = number
 						start = UnixToShortDate(number)
 					}
 				}
 				if endAux, ok := item["end"]; ok {
 					_, number, _, ok = assertType(endAux)
 					if ok {
+						endDate = number
 						end = UnixToShortDate(number)
 					}
 				}
+				if endDate != 0 {
+					dateDifference = CalculateDateDifference(startDate, endDate)
+				}
 				itemList = append(itemList, model.Item{
 					Content: &model.Content{
-						Name:  &name,
-						Title: &title,
-						Start: &start,
-						End:   &end,
-						URL:   &url,
+						Name:           &name,
+						Title:          &title,
+						Start:          &start,
+						End:            &end,
+						URL:            &url,
+						DateDifference: &dateDifference,
 					},
 				})
 			}

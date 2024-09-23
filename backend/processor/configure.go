@@ -10,7 +10,8 @@ import (
 )
 
 func ConfigureRoutes(router *mux.Router) {
-	router.HandleFunc("/healthz", healthCheck).Methods("GET")
+	router.HandleFunc("/liveness", livenessCheck).Methods("GET")
+	router.HandleFunc("/readiness", readinessCheck).Methods("GET")
 
 	//graphql
 	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
@@ -18,7 +19,16 @@ func ConfigureRoutes(router *mux.Router) {
 	router.Handle("/query", srv).Methods("GET")
 }
 
-func healthCheck(w http.ResponseWriter, r *http.Request) {
+func livenessCheck(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("OK"))
+}
+
+func readinessCheck(w http.ResponseWriter, r *http.Request) {
+	if len(graph.DataSections) == 0 {
+		w.WriteHeader(http.StatusServiceUnavailable)
+		w.Write([]byte("Data issue"))
+	}
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("OK"))
 }

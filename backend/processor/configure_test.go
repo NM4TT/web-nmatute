@@ -16,7 +16,7 @@ func TestHealthCheck(t *testing.T) {
 	processor.ConfigureRoutes(router)
 
 	// Create a new request to the health check endpoint
-	req, err := http.NewRequest("GET", "/healthz", nil)
+	req, err := http.NewRequest("GET", "/liveness", nil)
 	assert.NoError(t, err)
 
 	// Create a response recorder to capture the response
