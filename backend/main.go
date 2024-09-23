@@ -20,16 +20,21 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	err = processor.ParseDataToSchema()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func main() {
 	router := mux.NewRouter()
 
 	processor.ConfigureRoutes(router)
+
 	svc := &http.Server{
 		Addr:    "8080",
 		Handler: handlers.CompressHandler(router),
 	}
-	log.Println("server up...")
+
 	log.Fatal(svc.ListenAndServe())
 }

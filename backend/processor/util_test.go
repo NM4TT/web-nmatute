@@ -9,11 +9,11 @@ import (
 	"nmatute.com/web-nmatute-backend/processor"
 )
 
-const testPackage = "./testing/util"
+const util_testPackage = "./testing/util"
 
 func TestLoadData(t *testing.T) {
-	filePath := filepath.Join(testPackage, "valid-data.yaml")
-	invalidFilePath := filepath.Join(testPackage, "invalid-data.yaml")
+	filePath := filepath.Join(util_testPackage, "valid-data.yaml")
+	invalidFilePath := filepath.Join(util_testPackage, "invalid-data.yaml")
 	var data []processor.Data
 	_, emptyErr := processor.LoadData("")
 	assert.Error(t, emptyErr)
@@ -35,7 +35,7 @@ func TestLoadData(t *testing.T) {
 func TestUnixToMonthYear(t *testing.T) {
 	// Test cases with known outputs
 	testCases := []struct {
-		input    int64
+		input    int
 		expected string
 	}{
 		{1577876400, "January 2020"},  // Unix timestamp for Jan 1, 2020
@@ -55,8 +55,8 @@ func TestUnixToMonthYear(t *testing.T) {
 
 func TestCalculateDateDifference(t *testing.T) {
 	testCases := []struct {
-		start    int64
-		end      int64
+		start    int
+		end      int
 		expected string
 	}{
 		{1609498800, 1612177200, "1 month"},  // Jan 1, 2021 to Feb 1, 2021

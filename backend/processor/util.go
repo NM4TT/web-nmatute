@@ -27,14 +27,14 @@ func LoadData(filePath string) ([]Data, error) {
 	return output, nil
 }
 
-func UnixToShortDate(unixTime int64) string {
-	t := time.Unix(unixTime, 0)
+func UnixToShortDate(unixTime int) string {
+	t := time.Unix(int64(unixTime), 0)
 	return fmt.Sprintf("%s %d", t.Month().String(), t.Year())
 }
 
-func CalculateDateDifference(unixTimeA, unixTimeB int64) string {
-	start := time.Unix(unixTimeA, 0)
-	end := time.Unix(unixTimeB, 0)
+func CalculateDateDifference(unixTimeA, unixTimeB int) string {
+	start := time.Unix(int64(unixTimeA), 0)
+	end := time.Unix(int64(unixTimeB), 0)
 
 	if start.After(end) {
 		start, end = end, start // Ensure start is before end
