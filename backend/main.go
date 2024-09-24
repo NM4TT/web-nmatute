@@ -36,12 +36,12 @@ func init() {
 
 func main() {
 	router := mux.NewRouter()
-
 	processor.ConfigureRoutes(router)
+	protectedRouter := processor.ConfigureCors(router)
 
 	svc := &http.Server{
 		Addr:    ":8080",
-		Handler: handlers.CompressHandler(router),
+		Handler: handlers.CompressHandler(protectedRouter),
 	}
 	log.Println("*** UP ***")
 	log.Fatal(svc.ListenAndServe())
