@@ -2,8 +2,8 @@ package processor
 
 import (
 	"fmt"
+	"log"
 	"os"
-	"time"
 
 	"github.com/joho/godotenv"
 	"gopkg.in/yaml.v3"
@@ -28,55 +28,30 @@ func LoadData(filePath string) ([]Data, error) {
 	return output, nil
 }
 
-func UnixToShortDate(unixTime int) string {
-	t := time.Unix(int64(unixTime), 0)
-	return fmt.Sprintf("%s %d", t.Month().String(), t.Year())
-}
-
-func CalculateDateDifference(unixTimeA, unixTimeB int) string {
-	start := time.Unix(int64(unixTimeA), 0)
-	end := time.Unix(int64(unixTimeB), 0)
-
-	if start.After(end) {
-		start, end = end, start // Ensure start is before end
-	}
-
-	years := end.Year() - start.Year()
-	months := int(end.Month()) - int(start.Month())
-
-	// Adjust the month difference based on year difference
-	if months < 0 {
-		years--
-		months += 12
-	}
-
-	// If the difference is less than a month, return an empty string
-	if years == 0 && months == 0 {
-		return ""
-	}
-
-	result := ""
-	if years > 0 {
-		result += fmt.Sprintf("%d year%s", years, pluralize(years))
-	}
-	if months > 0 {
-		if result != "" {
-			result += ", "
-		}
-		result += fmt.Sprintf("%d month%s", months, pluralize(months))
-	}
-
-	return result
-}
-
-func pluralize(count int) string {
-	if count == 1 {
-		return ""
-	}
-	return "s"
-}
-
 func CheckDebugVariable(name string) string {
 	godotenv.Load()
 	return os.Getenv(name)
+}
+
+func AssertType(value interface{}) (string, int, []string, bool) {
+	switch v := value.(type) {
+	case string:
+		return v, 0, nil, true
+	case int:
+		return "", v, nil, true
+	case []interface{}:
+		list := make([]string, 0)
+		for _, val := range v {
+			switch x := val.(type) {
+			case string:
+				list = append(list, x)
+			default:
+				log.Fatalf("unable to parse item %v", val)
+			}
+		}
+		return "", 0, list, true
+	default:
+		log.Fatalf("unable to parse %v", value)
+	}
+	return "", 0, nil, false
 }

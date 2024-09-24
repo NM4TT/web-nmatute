@@ -32,45 +32,43 @@ func TestLoadData(t *testing.T) {
 
 }
 
-func TestUnixToMonthYear(t *testing.T) {
-	// Test cases with known outputs
-	testCases := []struct {
-		input    int
-		expected string
+func TestAssertType(t *testing.T) {
+	tests := []struct {
+		input          interface{}
+		expectedResult string
+		expectedNumber int
+		expectedList   []string
+		expectedBool   bool
 	}{
-		{1577876400, "January 2020"},  // Unix timestamp for Jan 1, 2020
-		{1609498800, "January 2021"},  // Unix timestamp for Jan 1, 2021
-		{1643713200, "February 2022"}, // Unix timestamp for Feb 1, 2022
-		{1667300400, "November 2022"}, // Unix timestamp for Nov 1, 2022
-		{1709290800, "March 2024"},    // Unix timestamp for Mar 1, 2024
+		{
+			input:          "hello",
+			expectedResult: "hello",
+			expectedNumber: 0,
+			expectedList:   nil,
+			expectedBool:   true,
+		},
+		{
+			input:          42,
+			expectedResult: "",
+			expectedNumber: 42,
+			expectedList:   nil,
+			expectedBool:   true,
+		},
+		{
+			input:          []interface{}{"item1", "item2", "item3"},
+			expectedResult: "",
+			expectedNumber: 0,
+			expectedList:   []string{"item1", "item2", "item3"},
+			expectedBool:   true,
+		},
 	}
 
-	for _, tc := range testCases {
-		t.Run(tc.expected, func(t *testing.T) {
-			result := processor.UnixToShortDate(tc.input)
-			assert.Equal(t, tc.expected, result)
-		})
-	}
-}
-
-func TestCalculateDateDifference(t *testing.T) {
-	testCases := []struct {
-		start    int
-		end      int
-		expected string
-	}{
-		{1609498800, 1612177200, "1 month"},  // Jan 1, 2021 to Feb 1, 2021
-		{1609498800, 1614596400, "2 months"}, // Jan 1, 2021 to Mar 1, 2021
-		{1609498800, 1625137200, "6 months"}, // Jan 1, 2021 to Jul 1, 2021
-		{1609498800, 1641034800, "1 year"},   // Jan 1, 2021 to Jan 1, 2022
-		{1609498800, 1767265200, "5 years"},  // Jan 1, 2021 to Jan 1, 2026
-		{1609498800, 1609498800, ""},         // Same date
-	}
-
-	for _, tc := range testCases {
-		t.Run(tc.expected, func(t *testing.T) {
-			result := processor.CalculateDateDifference(tc.start, tc.end)
-			assert.Equal(t, tc.expected, result)
+	for _, tt := range tests {
+		t.Run("", func(t *testing.T) {
+			result, number, list, _ := processor.AssertType(tt.input)
+			assert.Equal(t, tt.expectedResult, result)
+			assert.Equal(t, tt.expectedNumber, number)
+			assert.Equal(t, tt.expectedList, list)
 		})
 	}
 }

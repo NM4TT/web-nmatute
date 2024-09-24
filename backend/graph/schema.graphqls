@@ -18,7 +18,6 @@ type Content {
   role: String
   start: String
   end: String
-  DateDifference: String
   tasks: [String]
   #education
   title: String

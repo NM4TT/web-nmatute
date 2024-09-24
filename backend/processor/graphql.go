@@ -22,38 +22,34 @@ func ParseDataToSchema() error {
 			log.Println("Parsing jobs...")
 			itemList := make([]model.Item, 0)
 			for _, item := range data.Items {
-				var name, role, start, end, dateDifference, stringValue string
+				var name, role, start, end, stringValue string
 				var tasks []*string
 				var list []string
-				var startDate, endDate, number int
+				var number int
 				var ok bool
 
-				stringValue, _, _, ok = assertType(item["name"])
+				stringValue, _, _, ok = AssertType(item["name"])
 				if ok {
 					name = stringValue
 				}
-				stringValue, _, _, ok = assertType(item["role"])
+				stringValue, _, _, ok = AssertType(item["role"])
 				if ok {
 					role = stringValue
 				}
-				_, number, _, ok = assertType(item["start"])
+				_, number, _, ok = AssertType(item["start"])
 				if ok {
-					startDate = number
-					start = UnixToShortDate(number)
+					start = fmt.Sprintf("%d", number)
 				}
 				if endAux, ok := item["end"]; ok {
-					_, number, _, ok = assertType(endAux)
+					_, number, _, ok = AssertType(endAux)
 					if ok {
-						endDate = number
-						end = UnixToShortDate(number)
+						end = fmt.Sprintf("%d", number)
 					}
 				}
-				if endDate != 0 {
-					dateDifference = CalculateDateDifference(startDate, endDate)
-				} else {
+				if end == "" {
 					end = CURRENTLY_STATUS
 				}
-				_, _, list, ok = assertType(item["tasks"])
+				_, _, list, ok = AssertType(item["tasks"])
 				if ok {
 					tasks = make([]*string, len(list))
 					for i, v := range list {
@@ -62,12 +58,11 @@ func ParseDataToSchema() error {
 				}
 				itemList = append(itemList, model.Item{
 					Content: &model.Content{
-						Name:           &name,
-						Role:           &role,
-						Start:          &start,
-						End:            &end,
-						Tasks:          tasks,
-						DateDifference: &dateDifference,
+						Name:  &name,
+						Role:  &role,
+						Start: &start,
+						End:   &end,
+						Tasks: tasks,
 					},
 				})
 			}
@@ -84,54 +79,49 @@ func ParseDataToSchema() error {
 			log.Println("Parsing education...")
 			itemList := make([]model.Item, 0)
 			for _, item := range data.Items {
-				var name, title, url, start, end, dateDifference, stringValue string
-				var startDate, endDate, number int
+				var name, title, url, start, end, stringValue string
+				var number int
 				var titleAux, startAux, urlAux, endAux interface{}
 				var ok bool
 
-				stringValue, _, _, ok = assertType(item["name"])
+				stringValue, _, _, ok = AssertType(item["name"])
 				if ok {
 					name = stringValue
 				}
 				if titleAux, ok = item["title"]; ok {
-					stringValue, _, _, ok = assertType(titleAux)
+					stringValue, _, _, ok = AssertType(titleAux)
 					if ok {
 						title = stringValue
 					}
 				}
 				if urlAux, ok = item["url"]; ok {
-					stringValue, _, _, ok = assertType(urlAux)
+					stringValue, _, _, ok = AssertType(urlAux)
 					if ok {
 						url = stringValue
 					}
 				}
 				if startAux, ok = item["start"]; ok {
-					_, number, _, ok = assertType(startAux)
+					_, number, _, ok = AssertType(startAux)
 					if ok {
-						startDate = number
-						start = UnixToShortDate(number)
+						start = fmt.Sprintf("%d", number)
 					}
 				}
 				if endAux, ok = item["end"]; ok {
-					_, number, _, ok = assertType(endAux)
+					_, number, _, ok = AssertType(endAux)
 					if ok {
-						endDate = number
-						end = UnixToShortDate(number)
+						end = fmt.Sprintf("%d", number)
 					}
 				}
-				if endDate != 0 {
-					dateDifference = CalculateDateDifference(startDate, endDate)
-				} else {
+				if end == "" {
 					end = CURRENTLY_STATUS
 				}
 				itemList = append(itemList, model.Item{
 					Content: &model.Content{
-						Name:           &name,
-						Title:          &title,
-						Start:          &start,
-						End:            &end,
-						URL:            &url,
-						DateDifference: &dateDifference,
+						Name:  &name,
+						Title: &title,
+						Start: &start,
+						End:   &end,
+						URL:   &url,
 					},
 				})
 			}
@@ -148,7 +138,7 @@ func ParseDataToSchema() error {
 			log.Println("Parsing keywords...")
 			for _, item := range data.Items {
 				var keywords []string
-				_, _, list, ok := assertType(item["keywords"])
+				_, _, list, ok := AssertType(item["keywords"])
 				if ok {
 					keywords = list
 				}
@@ -166,28 +156,6 @@ func ParseDataToSchema() error {
 			return fmt.Errorf("error: ParseDataToSchema\tUnknown index %d", i)
 		}
 	}
-	return nil
-}
 
-func assertType(value interface{}) (string, int, []string, bool) {
-	switch v := value.(type) {
-	case string:
-		return v, 0, nil, true
-	case int:
-		return "", v, nil, true
-	case []interface{}:
-		list := make([]string, 0)
-		for _, val := range v {
-			switch x := val.(type) {
-			case string:
-				list = append(list, x)
-			default:
-				log.Fatalf("unable to parse item %v", val)
-			}
-		}
-		return "", 0, list, true
-	default:
-		log.Fatalf("unable to parse %v", value)
-	}
-	return "", 0, nil, false
+	return nil
 }

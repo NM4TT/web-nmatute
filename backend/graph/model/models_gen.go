@@ -3,14 +3,13 @@
 package model
 
 type Content struct {
-	Name           *string   `json:"name,omitempty"`
-	Role           *string   `json:"role,omitempty"`
-	Start          *string   `json:"start,omitempty"`
-	End            *string   `json:"end,omitempty"`
-	DateDifference *string   `json:"DateDifference,omitempty"`
-	Tasks          []*string `json:"tasks,omitempty"`
-	Title          *string   `json:"title,omitempty"`
-	URL            *string   `json:"url,omitempty"`
+	Name  *string   `json:"name,omitempty"`
+	Role  *string   `json:"role,omitempty"`
+	Start *string   `json:"start,omitempty"`
+	End   *string   `json:"end,omitempty"`
+	Tasks []*string `json:"tasks,omitempty"`
+	Title *string   `json:"title,omitempty"`
+	URL   *string   `json:"url,omitempty"`
 }
 
 type DataSection struct {
