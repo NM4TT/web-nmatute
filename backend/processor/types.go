@@ -6,3 +6,8 @@ type Data struct {
 }
 
 var MyData []Data
+
+// string consts
+const (
+	CURRENTLY_STATUS = "Currently"
+)

@@ -15,35 +15,19 @@ const (
 	INDEX_LANG             = 3
 )
 
-var (
-	name           string
-	role           string
-	start          string
-	end            string
-	tasks          []*string
-	title          string
-	url            string
-	keywords       []string
-	startDate      int
-	endDate        int
-	dateDifference string
-
-	//boilerplate for assertions
-	stringValue string
-	ok          bool
-	list        []string
-	number      int
-)
-
 func ParseDataToSchema() error {
 	for i, data := range MyData {
-		switch i {
-		case 0:
-			startDate = 0
-			endDate = 0
+		switch data.Name {
+		case "professional-exp":
 			log.Println("Parsing jobs...")
 			itemList := make([]model.Item, 0)
 			for _, item := range data.Items {
+				var name, role, start, end, dateDifference, stringValue string
+				var tasks []*string
+				var list []string
+				var startDate, endDate, number int
+				var ok bool
+
 				stringValue, _, _, ok = assertType(item["name"])
 				if ok {
 					name = stringValue
@@ -66,14 +50,15 @@ func ParseDataToSchema() error {
 				}
 				if endDate != 0 {
 					dateDifference = CalculateDateDifference(startDate, endDate)
+				} else {
+					end = CURRENTLY_STATUS
 				}
 				_, _, list, ok = assertType(item["tasks"])
 				if ok {
-					ptrSlice := make([]*string, len(list))
+					tasks = make([]*string, len(list))
 					for i, v := range list {
-						ptrSlice[i] = &v
+						tasks[i] = &v
 					}
-					tasks = ptrSlice
 				}
 				itemList = append(itemList, model.Item{
 					Content: &model.Content{
@@ -94,36 +79,40 @@ func ParseDataToSchema() error {
 				Name:  data.Name,
 				Items: pointerList,
 			})
-		case 1:
-			startDate = 0
-			endDate = 0
+
+		case "education":
 			log.Println("Parsing education...")
 			itemList := make([]model.Item, 0)
 			for _, item := range data.Items {
+				var name, title, url, start, end, dateDifference, stringValue string
+				var startDate, endDate, number int
+				var titleAux, startAux, urlAux, endAux interface{}
+				var ok bool
+
 				stringValue, _, _, ok = assertType(item["name"])
 				if ok {
 					name = stringValue
 				}
-				if titleAux, ok := item["title"]; ok {
+				if titleAux, ok = item["title"]; ok {
 					stringValue, _, _, ok = assertType(titleAux)
 					if ok {
 						title = stringValue
 					}
 				}
-				if urlAux, ok := item["url"]; ok {
+				if urlAux, ok = item["url"]; ok {
 					stringValue, _, _, ok = assertType(urlAux)
 					if ok {
 						url = stringValue
 					}
 				}
-				if startAux, ok := item["start"]; ok {
+				if startAux, ok = item["start"]; ok {
 					_, number, _, ok = assertType(startAux)
 					if ok {
 						startDate = number
 						start = UnixToShortDate(number)
 					}
 				}
-				if endAux, ok := item["end"]; ok {
+				if endAux, ok = item["end"]; ok {
 					_, number, _, ok = assertType(endAux)
 					if ok {
 						endDate = number
@@ -132,6 +121,8 @@ func ParseDataToSchema() error {
 				}
 				if endDate != 0 {
 					dateDifference = CalculateDateDifference(startDate, endDate)
+				} else {
+					end = CURRENTLY_STATUS
 				}
 				itemList = append(itemList, model.Item{
 					Content: &model.Content{
@@ -152,22 +143,24 @@ func ParseDataToSchema() error {
 				Name:  data.Name,
 				Items: pointerList,
 			})
-		case 2, 3:
+
+		case "tools-skills", "languages":
 			log.Println("Parsing keywords...")
 			for _, item := range data.Items {
-				_, _, list, ok = assertType(item["keywords"])
+				var keywords []string
+				_, _, list, ok := assertType(item["keywords"])
 				if ok {
 					keywords = list
 				}
+				pointerList := make([]*string, len(keywords))
+				for i, v := range keywords {
+					pointerList[i] = &v
+				}
+				graph.DataSections = append(graph.DataSections, model.DataSection{
+					Name:  data.Name,
+					Items: []*model.Item{{Keywords: pointerList}},
+				})
 			}
-			pointerList := make([]*string, len(keywords))
-			for i, v := range keywords {
-				pointerList[i] = &v
-			}
-			graph.DataSections = append(graph.DataSections, model.DataSection{
-				Name:  data.Name,
-				Items: []*model.Item{{Keywords: pointerList}},
-			})
 
 		default:
 			return fmt.Errorf("error: ParseDataToSchema\tUnknown index %d", i)
