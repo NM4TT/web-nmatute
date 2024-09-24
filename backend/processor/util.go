@@ -5,11 +5,11 @@ import (
 	"log"
 	"os"
 
-	"github.com/joho/godotenv"
 	"gopkg.in/yaml.v3"
 )
 
 func LoadData(filePath string) ([]Data, error) {
+	log.Println("Loading data...")
 	if filePath == "" {
 		return []Data{}, fmt.Errorf("error: LoadData,\tfilePath empty")
 	}
@@ -26,11 +26,6 @@ func LoadData(filePath string) ([]Data, error) {
 	}
 
 	return output, nil
-}
-
-func CheckDebugVariable(name string) string {
-	godotenv.Load()
-	return os.Getenv(name)
 }
 
 func AssertType(value interface{}) (string, int, []string, bool) {

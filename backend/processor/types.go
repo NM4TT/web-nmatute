@@ -5,6 +5,12 @@ type Data struct {
 	Items []map[string]interface{} `yaml:"items"`
 }
 
+type MailRequest struct {
+	Sender  string `json:"sender"`
+	Subject string `json:"subject"`
+	Message string `json:"message"`
+}
+
 var MyData []Data
 
 // string consts

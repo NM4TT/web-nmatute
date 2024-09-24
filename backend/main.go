@@ -4,9 +4,11 @@ import (
 	"crypto/tls"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
 
 	"nmatute.com/web-nmatute-backend/processor"
 )
@@ -15,11 +17,12 @@ var dataPath string = "/data/data.yaml"
 
 func init() {
 	var err error
+	godotenv.Load()
 	http.
 		DefaultTransport.(*http.Transport).
 		TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
-	debugPath := processor.CheckDebugVariable("DEBUG_DATAPATH")
+	debugPath := os.Getenv("DATA_PATH")
 	if debugPath != "" {
 		dataPath = debugPath
 	}
