@@ -5,6 +5,7 @@ import (
 	"os"
 	"time"
 
+	"github.com/joho/godotenv"
 	"gopkg.in/yaml.v3"
 )
 
@@ -73,4 +74,9 @@ func pluralize(count int) string {
 		return ""
 	}
 	return "s"
+}
+
+func CheckDebugVariable(name string) string {
+	godotenv.Load()
+	return os.Getenv(name)
 }

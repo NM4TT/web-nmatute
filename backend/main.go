@@ -11,12 +11,20 @@ import (
 	"nmatute.com/web-nmatute-backend/processor"
 )
 
+var dataPath string = "/data/data.yaml"
+
 func init() {
 	var err error
 	http.
 		DefaultTransport.(*http.Transport).
 		TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
-	processor.MyData, err = processor.LoadData("/data/data.yaml")
+
+	debugPath := processor.CheckDebugVariable("DEBUG_DATAPATH")
+	if debugPath != "" {
+		dataPath = debugPath
+	}
+
+	processor.MyData, err = processor.LoadData(dataPath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -32,9 +40,9 @@ func main() {
 	processor.ConfigureRoutes(router)
 
 	svc := &http.Server{
-		Addr:    "8080",
+		Addr:    ":8080",
 		Handler: handlers.CompressHandler(router),
 	}
-
+	log.Println("*** UP ***")
 	log.Fatal(svc.ListenAndServe())
 }
