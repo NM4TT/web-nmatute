@@ -1,1 +1,3 @@
-// place files you want to import through the `$lib` alias in this folder.
+//common components
+export { default as DynamicMenu } from './components/common/DynamicMenu.svelte';
+export { default as Footer } from './components/common/Footer.svelte';
