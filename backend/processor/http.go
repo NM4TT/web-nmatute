@@ -16,7 +16,7 @@ import (
 func ConfigureRoutes(router *mux.Router) {
 	router.HandleFunc("/liveness", livenessCheck).Methods("GET")
 	router.HandleFunc("/readiness", readinessCheck).Methods("GET")
-	router.HandleFunc("/sendMail", handleMail).Methods("POST")
+	router.HandleFunc("/contact", handleContact).Methods("POST")
 
 	//graphql
 	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
@@ -55,7 +55,7 @@ func ConfigureCors(router *mux.Router) http.Handler {
 	return corsHandler.Handler(router)
 }
 
-func handleMail(w http.ResponseWriter, r *http.Request) {
+func handleContact(w http.ResponseWriter, r *http.Request) {
 	var mailReq MailRequest
 	err := json.NewDecoder(r.Body).Decode(&mailReq)
 	if err != nil {
@@ -63,7 +63,7 @@ func handleMail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = SendMail(mailReq.Sender, mailReq.Subject, mailReq.Message)
+	err = SendMail(mailReq.Sender)
 	if err != nil {
 		log.Println(err.Error())
 		http.Error(w, "Failed to send email", http.StatusInternalServerError)

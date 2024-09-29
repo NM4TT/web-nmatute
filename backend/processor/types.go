@@ -6,9 +6,7 @@ type Data struct {
 }
 
 type MailRequest struct {
-	Sender  string `json:"sender"`
-	Subject string `json:"subject"`
-	Message string `json:"message"`
+	Sender string `json:"sender"`
 }
 
 var MyData []Data

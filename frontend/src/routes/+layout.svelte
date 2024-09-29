@@ -2,22 +2,26 @@
     import { page } from '$app/stores';
     import { goto } from '$app/navigation';
     import { menuItems } from '../store';
+    import { onMount } from 'svelte';
 
     let currentPage: string;
 
     const menus: { [key: string]: string[] } = {
-        '/': ['Portfolio', 'Biography', 'Contact'],
-        '/biography': ['Portfolio', 'CV', 'Contact'],
-        '/portfolio': ['Biography', 'Contact', 'CV'],
-        '/contact': ['Portfolio', 'Biography', 'CV'],
+        '/': ['Portfolio', 'Biography'],
+        '/biography': ['Portfolio', 'CV'],
+        '/portfolio': ['Biography', 'CV'],
+        '/404': ['Biography', 'Portfolio', 'CV'],
     };
 
     $: if ($page) {
         currentPage = $page.url.pathname;
+
         if (menus[currentPage]) {
             $menuItems = menus[currentPage];
         } else {
-            goto('/404');
+            onMount(() => {
+                goto('/404');
+            });
         }
     }
 </script>
