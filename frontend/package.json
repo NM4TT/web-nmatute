@@ -35,7 +35,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-routing": "^2.13.0",
 		"web-nmatute": "file:"
 	}
 }
