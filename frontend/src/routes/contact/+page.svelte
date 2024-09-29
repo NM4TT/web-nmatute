@@ -26,4 +26,3 @@
       </address>
     </section>
 </main>
-<footer></footer>

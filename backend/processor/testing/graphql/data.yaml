@@ -42,6 +42,11 @@
     - name: 'Courses'
       url: "www.example.com"
 
+- section: projects
+  items:
+    - name: 'Some Cool Project'
+      url: "www.myawesomeproject.com"
+
 - section: tools-skills
   items:
     - keywords:

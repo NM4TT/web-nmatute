@@ -1,28 +1,22 @@
 <main>
     <section>
       <h1>Portfolio</h1>
-      <section>
-        <h2>Featured Projects</h2>
+      
+      <div>
         <article>
           <header>
-            <h3>Project Title</h3>
+            <h3>Project Title1</h3>
           </header>
-          <figure>
-            <img src="" alt="">
-            <figcaption></figcaption>
-          </figure>
-          <p></p>
+          <p>bla</p>
         </article>
-      </section>
-  
-      <section>
-        <h2>Other Projects</h2>
-        <ul>
-          <li>
-            <a href="www.example.com">Project 1</a>
-          </li>
-        </ul>
-      </section>
+
+        <article>
+          <header>
+            <h3>Project Title2</h3>
+          </header>
+          <p>bla</p>
+        </article>
+      </div>
+
     </section>
 </main>
-<footer></footer>

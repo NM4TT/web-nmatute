@@ -75,7 +75,7 @@ func ParseDataToSchema() error {
 				Items: pointerList,
 			})
 
-		case "education":
+		case "education", "projects":
 			log.Println("Parsing education...")
 			itemList := make([]model.Item, 0)
 			for _, item := range data.Items {

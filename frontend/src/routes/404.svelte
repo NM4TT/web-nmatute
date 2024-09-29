@@ -5,4 +5,3 @@
       <a href="/">Go back to Home</a>
     </section>
 </main>
-<footer></footer>
