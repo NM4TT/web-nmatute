@@ -1,9 +1,9 @@
 <script lang="ts">
-    import { DynamicMenu, Footer } from "$lib";
+	import { DynamicMenu, Footer } from '$lib';
 </script>
 
 <header id="top">
-    <DynamicMenu />
+	<DynamicMenu />
 </header>
 
 <slot />
