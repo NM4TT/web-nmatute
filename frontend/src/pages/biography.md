@@ -3,6 +3,8 @@ layout: '../layouts/Layout.astro'
 title: "Who is Nicolas Matute?"
 ---
 
+<main>
+
 # Who is Nicolas Matute?
 
 ## Early Life
@@ -24,3 +26,5 @@ viverra porta ut, aliquet id libero. Vivamus ac felis eu nunc vestibulum ultrici
 ## Today
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lorem odio, bibendum
 viverra porta ut, aliquet id libero. Vivamus ac felis eu nunc vestibulum ultricies eu ut...
+
+</main>
