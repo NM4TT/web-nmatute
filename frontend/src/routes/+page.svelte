@@ -5,7 +5,8 @@
 		EducationItem,
 		KeywordList,
 		Languages,
-		Certifications
+		Certifications,
+		ContactButton
 	} from '$lib';
 	const src = 'path/to/your/image.jpg';
 </script>
@@ -17,7 +18,7 @@
 			<div>
 				<h1>Nicolas Matute</h1>
 				<SocialMediaList />
-				<button>Contact Me</button>
+				<ContactButton />
 			</div>
 		</div>
 	</section>

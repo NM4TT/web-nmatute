@@ -37,6 +37,21 @@ You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 
+
+## Testing
+
 npm install --save-dev @playwright/test
 npx playwright install
 npx playwright test
+
+## CSS (tailwind)
+
+npm install -D tailwindcss
+npx tailwindcss init
+npx tailwindcss -i ./static/styles/main.css -o ./static/styles/generated.css --watch
+
+## Icons
+
+npm i -D unplugin-icons
+npm i -D @iconify/json
+npm i -D @iconify-json/[collection]

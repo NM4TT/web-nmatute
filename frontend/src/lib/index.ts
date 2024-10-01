@@ -1,6 +1,8 @@
 //common components
-export { default as DynamicMenu } from './components/common/DynamicMenu.svelte';
+export { default as DesktopMenu } from './components/common/DesktopMenu.svelte';
 export { default as Footer } from './components/common/Footer.svelte';
+export { default as ContactButton } from './components/common/ContactButton.svelte';
+export { default as ContactModal } from './components/common/ContactModal.svelte'
 
 //cv components
 export { default as SocialMediaList } from './components/cv/SocialMediaList.svelte'
