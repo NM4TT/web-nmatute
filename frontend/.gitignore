@@ -5,6 +5,7 @@ package-lock.json
 .vercel
 /.svelte-kit
 /build
+/static/styles/generated.css
 
 # OS
 .DS_Store
