@@ -68,7 +68,7 @@ npm install -D tailwindcss
 
 npx tailwindcss init
 
-npx tailwindcss -i ./public/styles/main.css -o ./public/styles/generated.css --watch
+npx tailwindcss -i ./src/styles/main.css -o ./src/styles/generated.css --watch
 
 ## Icons
 

@@ -3,7 +3,7 @@ dist/
 
 # generated types
 .astro/
-/public/styles/generated.css
+/src/styles/generated.css
 
 # dependencies
 node_modules/
