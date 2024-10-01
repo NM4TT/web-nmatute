@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {
+		SocialMediaList,
+		WorkExperienceItem,
+		EducationItem,
+		KeywordList,
+		Languages,
+		Certifications,
+		ContactButton
+	} from '../components';
+const src = 'path/to/your/image.jpg';
+---
+
+<Layout>
+	<main>
+		<section>
+			<div>
+				<img {src} alt="Nicolas Matute" />
+				<div>
+					<h1>Nicolas Matute</h1>
+					<SocialMediaList />
+					<ContactButton />
+				</div>
+			</div>
+		</section>
+	
+		<section>
+			<h2>Work Experience</h2>
+			<WorkExperienceItem />
+		</section>
+	
+		<section>
+			<h2>Education</h2>
+			<EducationItem />
+		</section>
+	
+		<section>
+			<h2>Tools - Skills</h2>
+			<KeywordList />
+		</section>
+	
+		<section>
+			<h2>Languages</h2>
+			<Languages />
+		</section>
+	
+		<section>
+			<h2>Certifications</h2>
+			<Certifications />
+		</section>
+	</main>
+</Layout>

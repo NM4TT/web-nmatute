@@ -1,7 +1,0 @@
-<main>
-    <section>
-      <h1>Error 404: Page Not Found</h1>
-      <p>The page you are looking for doesn't exist or has been moved.</p>
-      <a href="/">Go back to Home</a>
-    </section>
-</main>

@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
-    './src/**/*.{svelte,ts}',
-    './src/routes/**/*.{svelte,ts}',
-    './src/lib/**/*.{svelte,ts}'
+    './src/**/*.{astro,svelte,ts}',
   ],
   theme: {
     extend: {
@@ -31,4 +29,5 @@ module.exports = {
     'text-center',
     'hover:bg-green-500'
   ],
-};
+}
+
