@@ -1,12 +1,29 @@
 ---
 import '../styles/generated.css';
 import { DesktopMenu, Footer } from '../components';
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 ---
-
-<header id="top">
-  <DesktopMenu />
-</header>
-
-<slot />
-
-<Footer />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header id="top">
+      <DesktopMenu />
+    </header>
+    
+      <slot />
+    
+    <Footer />
+  </body>
+</html>
