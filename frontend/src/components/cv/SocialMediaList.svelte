@@ -1,3 +1,7 @@
+<script lang="ts">
+    import { imagePlaceholder } from '$lib/constants'
+</script>
+
 <div>
     <ul>
         <li>
@@ -7,7 +11,7 @@
                 rel="noopener noreferrer"
                 aria-label="Twitter"
             >
-                <svg> <!-- Twitter icon SVG --> </svg>
+                <img src={ imagePlaceholder(56) } alt="Placeholder" />
                 Twitter
             </a>
         </li>
@@ -18,7 +22,7 @@
                 rel="noopener noreferrer"
                 aria-label="GitHub"
             >
-                <svg> <!-- GitHub icon SVG --> </svg>
+                <img src={ imagePlaceholder(56) } alt="Placeholder" />
                 GitHub
             </a>
         </li>
@@ -29,7 +33,7 @@
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
             >
-                <svg> <!-- LinkedIn icon SVG --> </svg>
+                <img src={ imagePlaceholder(56) } alt="Placeholder" />
                 LinkedIn
             </a>
         </li>

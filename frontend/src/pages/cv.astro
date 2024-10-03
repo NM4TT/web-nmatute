@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { Layout } from '$layouts';
 import {
 		SocialMediaList,
 		WorkExperienceItem,
@@ -8,8 +8,9 @@ import {
 		Languages,
 		Certifications,
 		ContactButton
-	} from '../components';
-const src = 'path/to/your/image.jpg';
+	} from '$components';
+import { imagePlaceholder } from '$lib/constants'
+const src = imagePlaceholder(400,600);
 ---
 
 <Layout title="Curriculum">
