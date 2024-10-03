@@ -18,6 +18,10 @@
     "web-nmatute-frontend": "file:"
   },
   "devDependencies": {
+<<<<<<< Updated upstream
+=======
+    "@iconify/json": "^2.2.255",
+>>>>>>> Stashed changes
     "@playwright/test": "^1.47.2",
     "@types/node": "^22.7.4",
     "tailwindcss": "^3.4.13"
