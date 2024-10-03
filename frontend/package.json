@@ -18,11 +18,8 @@
     "web-nmatute-frontend": "file:"
   },
   "devDependencies": {
-    "@iconify-json/logos": "^1.2.1",
-    "@iconify-json/mdi": "^1.2.0",
     "@playwright/test": "^1.47.2",
     "@types/node": "^22.7.4",
-    "tailwindcss": "^3.4.13",
-    "unplugin-icons": "^0.19.3"
+    "tailwindcss": "^3.4.13"
   }
 }
