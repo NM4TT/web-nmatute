@@ -1,6 +1,6 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
 		"allowJs": false,
 		"checkJs": false,
 		"esModuleInterop": true,

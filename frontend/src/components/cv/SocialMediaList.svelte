@@ -1,9 +1,5 @@
 <script lang="ts">
-<<<<<<< Updated upstream
     import { imagePlaceholder } from '$lib/constants'
-=======
-    import LogosLinkedinIcon from '~icons/logos/linkedin-icon';
->>>>>>> Stashed changes
 </script>
 
 <div>
@@ -15,11 +11,7 @@
                 rel="noopener noreferrer"
                 aria-label="Twitter"
             >
-<<<<<<< Updated upstream
                 <img src={ imagePlaceholder(56) } alt="Placeholder" />
-=======
-                <LogosLinkedinIcon />
->>>>>>> Stashed changes
                 Twitter
             </a>
         </li>
