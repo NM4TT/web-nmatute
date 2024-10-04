@@ -1,12 +1,14 @@
 ---
 import '../styles/generated.css';
 import { DesktopMenu, Footer } from '$components';
+import { imagePlaceholder } from '$lib/constants';
 
 export interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+const src = imagePlaceholder(256,70)
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +21,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <header id="top">
+      <img {src} alt="Nicolas Matute Logo" />
       <DesktopMenu />
     </header>
     

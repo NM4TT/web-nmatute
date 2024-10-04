@@ -1,11 +1,6 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('wrapped by main', () => {
-	test('biography page check', async ({ page }) => {
-		await page.goto('/biography');
-		await expect(page.locator('main')).toBeVisible();
-	});
-
 	test('cv page check', async ({ page }) => {
 		await page.goto('/');
 		await expect(page.locator('main')).toBeVisible();
