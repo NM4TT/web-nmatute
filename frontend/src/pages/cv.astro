@@ -1,7 +1,6 @@
 ---
 import { Layout } from '$layouts';
 import {
-		SocialMediaList,
 		WorkExperienceItem,
 		EducationItem,
 		KeywordList,
@@ -9,12 +8,12 @@ import {
 		Certifications,
 		ContactButton
 	} from '$components';
-import { imagePlaceholder } from '$lib/constants'
+import { imagePlaceholder } from '$lib/utils'
 const src = imagePlaceholder(400,600);
 ---
 
 <Layout title="Curriculum">
-	<main id="curriculum">
+	<main id="curriculum" class="mt-10">
 		<section>
 			<div>
 				<img {src} alt="Nicolas Matute" />

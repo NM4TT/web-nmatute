@@ -1,7 +1,7 @@
-<nav>
-    <ul>
-        <li><a href="/">Curriculum</a></li>
-        <li><a href="/portfolio">Portfolio</a></li>
-        <li><a href="/biography">Biography</a></li>
+<nav id="desktop">
+    <ul class="flex justify-between">
+        <li class="mx-3"><a href="/">Curriculum</a></li>
+        <li class="mx-3"><a href="/portfolio">Portfolio</a></li>
+        <li class="mx-3"><a href="/biography">Biography</a></li>
     </ul>
 </nav>

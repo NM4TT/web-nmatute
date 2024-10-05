@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { imagePlaceholder } from '$lib/constants'
+    import { imagePlaceholder } from '$lib/utils'
 </script>
 
 <div>

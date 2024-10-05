@@ -3,7 +3,7 @@ import { Layout } from '$layouts';
 const { frontmatter } = Astro.props;
 ---
 <Layout title={frontmatter.title}>
-    <main id="biography">
+    <main id="biography" class="mt-10">
         <slot />
     </main>
 </Layout>

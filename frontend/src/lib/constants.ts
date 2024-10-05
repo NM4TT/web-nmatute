@@ -1,2 +1,1 @@
-export const imagePlaceholder = 
-    (width: number, height: number = width): string => `https://placehold.co/${width}x${height}`;
+export const MAX_WIDTH_MOBILE: number = 767;
