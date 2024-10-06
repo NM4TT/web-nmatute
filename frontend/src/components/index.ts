@@ -5,6 +5,7 @@ export { default as ContactButton } from './common/ContactButton.svelte';
 export { default as ContactModal } from './common/ContactModal.svelte'
 export { default as SocialMediaList } from './common/SocialMediaList.svelte'
 export { default as MobileSection } from './common/MobileSection.svelte'
+export { default as Logo } from './common/Logo.svelte'
 
 //cv components
 export { default as WorkExperienceItem } from './cv/WorkExperienceItem.svelte'
