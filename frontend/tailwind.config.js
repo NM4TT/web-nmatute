@@ -14,9 +14,6 @@ export default {
         128: '32rem',
         144: '36rem'
       },
-      borderRadius: {
-        '4xl': '2rem'
-      },
       screens: {
         xs: '480px', // Extra small screens
         sm: '640px', // Small screens
@@ -24,6 +21,14 @@ export default {
         lg: '1024px', // Large screens
         xl: '1280px', // Extra large screens
         '2xl': '1536px', // 2XL screens
+      },
+      colors: {
+        primary: {
+          DEFAULT: '#FFFFFF',
+        },
+        secondary: {
+          DEFAULT: '#a19f87',
+        },
       },
     }
   },

@@ -5,7 +5,7 @@
 </script>
 
 <header>
-    <div id="desktop-header-content" class="hidden md:flex justify-between pt-5">
+    <div id="desktop-header-content" class="hidden md:flex justify-between">
         <div id="logo">
             <img {src} alt="Nicolas Matute Logo" />
         </div>
