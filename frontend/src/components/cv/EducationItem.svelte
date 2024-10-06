@@ -1,11 +1,18 @@
-<article>
-    <header>
-        <h3>Bachelor of Science in Computer Science</h3>
-        <p><strong>Institute:</strong> University of Technology</p>
-        <div>
-        <p><strong>Start:</strong> January 2020</p>
-        <p><strong>End:</strong> Present</p>
-        </div>
-    </header>
-    <p>Some mentions</p>
+<script lang="ts">
+    export let data: Object = {
+        title: "Master Degree",
+        place: "Technological University Of Panama (UTP)",
+        start: "January 20**",
+        end: "Present",
+    };
+</script>
+
+<article class="mb-6">
+    <h3 class="font-bold text-lg md:text-2xl">{data.title}</h3>
+    <p class="font-medium">{data.place}</p>
+    <div class="flex justify-normal my-1">
+        <p>{data.start}</p>
+        <p class="ml-3">-</p>
+        <p class="ml-3">{data.end}</p>
+    </div>
 </article>
