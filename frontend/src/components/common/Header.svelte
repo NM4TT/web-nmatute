@@ -16,4 +16,7 @@
             </div>
         </div>
     </div>
+    <div id="mobile-header-content" class="md:hidden max-md:flex justify-start">
+        <img src={imagePlaceholder(60)} alt="Nicolas Matute" class="m-0 pt-10" />
+    </div>
 </header>

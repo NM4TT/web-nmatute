@@ -6,53 +6,84 @@ import {
 		KeywordList,
 		Languages,
 		Certifications,
-		ContactButton
+		ContactButton,
+		MobileSection
 	} from '$components';
 import { imagePlaceholder } from '$lib/utils'
-const src = imagePlaceholder(350,450);
 ---
 
 <Layout title="Curriculum">
 	<main id="curriculum" class="pt-10">
-		<section class="py-3">
-			<div id="desktop-first-look" class="hidden md:flex justify-between">
-				<img {src} alt="Nicolas Matute" />
-				<div>
-					<h1>Nicolas Matute</h1>
-					<ul>
-						<li>bla</li>
-						<li>bla</li>
-						<li>bla</li>
+		<section class="my-5">
+			<div
+				id="desktop-first-look"
+				class="hidden md:flex justify-center space-x-24"
+			>
+				<div class="w-1/2 flex justify-end">
+					<img src={ imagePlaceholder(400,450) } alt="Nicolas Matute" class="h-auto w-3/4" />
+				</div>
+				<div class="w-1/2 flex flex-col justify-center items-center">
+					<div class="flex flex-col justify-center items-center">
+						<h1 class="font-bold mb-4 md:text-4xl lg:text-5xl xl:text-6xl">
+							Nicolas Matute
+						</h1>
+						<h2 class="font-bold mb-4 md:text-2xl lg:text-3xl xl:text-4xl">
+							Curriculum Vitae
+						</h2>
+					</div>
+					<ul class="list-none flex flex-col items-center py-5 w-full">
+					<li class="flex items-center py-2">
+						<img
+						src={imagePlaceholder(16)}
+						alt="Professional Experience"
+						class="w-4 h-4 mr-2"
+						/>
+						<span>Professional Experience</span>
+					</li>
+					<li class="flex items-center py-2">
+						<img
+						src={imagePlaceholder(16)}
+						alt="Education"
+						class="w-4 h-4 mr-2"
+						/>
+						<span>Education Summary</span>
+					</li>
+					<li class="flex items-center py-2">
+						<img
+						src={imagePlaceholder(16)}
+						alt="Tools, Skills and Languages"
+						class="w-4 h-4 mr-2"
+						/>
+						<span>Tools, Skills and Languages</span>
+					</li>
 					</ul>
 					<ContactButton />
 				</div>
 			</div>
-			<div id="mobile-first-look" class="md:hidden max-md:flex justify-between">
-				<p>mobile stuff</p>
-			</div>
+			<MobileSection title="Curriculum Vitae" />
 		<section>
 	
-		<section class="py-3">
+		<section class="my-5">
 			<h2>Work Experience</h2>
 			<WorkExperienceItem />
 		<section>
 	
-		<section class="py-3">
+		<section class="my-5">
 			<h2>Education</h2>
 			<EducationItem />
 		<section>
 	
-		<section class="py-3">
+		<section class="my-5">
 			<h2>Tools - Skills</h2>
 			<KeywordList />
 		<section>
 	
-		<section class="py-3">
+		<section class="my-5">
 			<h2>Languages</h2>
 			<Languages />
 		<section>
 	
-		<section class="py-3">
+		<section class="my-5">
 			<h2>Certifications</h2>
 			<Certifications />
 		<section>

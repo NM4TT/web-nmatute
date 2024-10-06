@@ -1,1 +1,1 @@
-<button>Contact Me</button>
+<button class="bg-slate-400 py-2 px-4 rounded">Contact Me</button>
