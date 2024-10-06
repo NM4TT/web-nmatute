@@ -9,13 +9,13 @@ import {
 		ContactButton
 	} from '$components';
 import { imagePlaceholder } from '$lib/utils'
-const src = imagePlaceholder(400,600);
+const src = imagePlaceholder(350,450);
 ---
 
 <Layout title="Curriculum">
-	<main id="curriculum" class="mt-10">
-		<section>
-			<div>
+	<main id="curriculum" class="pt-10">
+		<section class="py-3">
+			<div id="desktop-first-look" class="hidden md:flex justify-between">
 				<img {src} alt="Nicolas Matute" />
 				<div>
 					<h1>Nicolas Matute</h1>
@@ -27,31 +27,34 @@ const src = imagePlaceholder(400,600);
 					<ContactButton />
 				</div>
 			</div>
-		</section>
-	
+			<div id="mobile-first-look" class="md:hidden max-md:flex justify-between">
+				<p>mobile stuff</p>
+			</div>
 		<section>
+	
+		<section class="py-3">
 			<h2>Work Experience</h2>
 			<WorkExperienceItem />
-		</section>
-	
 		<section>
+	
+		<section class="py-3">
 			<h2>Education</h2>
 			<EducationItem />
-		</section>
-	
 		<section>
+	
+		<section class="py-3">
 			<h2>Tools - Skills</h2>
 			<KeywordList />
-		</section>
-	
 		<section>
+	
+		<section class="py-3">
 			<h2>Languages</h2>
 			<Languages />
-		</section>
-	
 		<section>
+	
+		<section class="py-3">
 			<h2>Certifications</h2>
 			<Certifications />
-		</section>
+		<section>
 	</main>
 </Layout>
