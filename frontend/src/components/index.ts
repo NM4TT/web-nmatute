@@ -10,8 +10,6 @@ export { default as Logo } from './common/Logo.svelte'
 //cv components
 export { default as WorkExperienceItem } from './cv/WorkExperienceItem.svelte'
 export { default as EducationItem } from './cv/EducationItem.svelte'
-export { default as KeywordList } from './cv/KeywordList.svelte'
-export { default as Languages } from './cv/Languages.svelte'
 export { default as Certifications } from './cv/Certifications.svelte'
 
 //portfolio components
