@@ -1,19 +1,48 @@
 ---
 import { Layout } from '$layouts';
 import {
-		ProjectItem
+		ProjectItem,
+    MobileSection
 	} from '../components';
 ---
 
 <Layout title="Portfolio">
   <main id="portfolio" class="pt-10">
-      <section>
-        <h1>Portfolio</h1>
-        
-        <div>
+      <section id="first" class="mt-5">
+        <div 
+          id="desktop-first-look"
+          class="hidden md:flex justify-center space-x-24"
+        >
+          <h1 
+            class="font-bold text-center self-center
+            mb-4 md:text-4xl lg:text-5xl xl:text-6xl
+            ">
+            Portfolio
+          </h1>
+        </div>
+        <MobileSection title="Portfolio" />
+        <div class="content my-4 mx-4 md:mx-16 lg:mx-24 xl:mx-32">
+          <p>
+            Sint voluptate duis mollit amet do labore est dolore qui Lorem cupidatat. 
+            In laboris magna magna quis ut tempor sit id. 
+            Eu pariatur magna aute ipsum do qui aute aliquip proident. 
+            Magna consectetur et est adipisicing deserunt voluptate consequat 
+            in velit nisi elit. 
+            Minim sit elit excepteur quis sit labore ea.
+          </p>
+        </div>
+      </section>
+
+      <section class="portfolio-section mt-15 pt-10 flex flex-col">
+        <div 
+          class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32
+          grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
+          gap-y-16 text-center">
+          <ProjectItem />
+          <ProjectItem />
+          <ProjectItem />
           <ProjectItem />
         </div>
-
       </section>
   </main>
 </Layout>

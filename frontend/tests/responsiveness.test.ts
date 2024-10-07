@@ -111,6 +111,18 @@ test.describe('first-section', () => {
         await page.setViewportSize(MOBILE_VIEWPORT);
         await checkMobileLayout(page);
     });
+
+    test('portfolio page check - desktop', async ({ page }) => {
+        await page.goto("/portfolio");
+        await page.setViewportSize(DESKTOP_VIEWPORT);
+        await checkDesktopLayout(page);
+    });
+
+    test('portfolio page check - mobile', async ({ page }) => {
+        await page.goto("/portfolio");
+        await page.setViewportSize(MOBILE_VIEWPORT);
+        await checkMobileLayout(page);
+    });
 });
 
 test.describe('CV heading', () => {
@@ -182,8 +194,34 @@ test.describe('CV heading', () => {
 });
 
 test.describe('content margin', () => {
-    test('responsive margin content', async ({ page }) => {
+    test('responsive margin cv content', async ({ page }) => {
         await page.goto("/");
+        const contentDivs = page.locator("div.content");
+    
+        // Define the expected classes
+        const expectedCvH2Classes = [
+            "mx-4",
+            "md:mx-16",
+            "lg:mx-24",
+            "xl:mx-32"
+        ];
+    
+        const contentCount = await contentDivs.count();
+    
+        for (let i = 0; i < contentCount; i++) {
+            const div = contentDivs.nth(i);
+            // Get the actual classes of the h2 element
+            const actualClasses = await div.getAttribute('class');
+    
+            // Check if each expected class is present in the actual class list
+            for (const expectedClass of expectedCvH2Classes) {
+                expect(actualClasses).toContain(expectedClass);
+            }
+        }
+    });
+
+    test('responsive margin portfolio content', async ({ page }) => {
+        await page.goto("/portfolio");
         const contentDivs = page.locator("div.content");
     
         // Define the expected classes
