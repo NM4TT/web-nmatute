@@ -180,3 +180,31 @@ test.describe('CV heading', () => {
         }
     });
 });
+
+test.describe('content margin', () => {
+    test('responsive margin content', async ({ page }) => {
+        await page.goto("/");
+        const contentDivs = page.locator("div.content");
+    
+        // Define the expected classes
+        const expectedCvH2Classes = [
+            "mx-4",
+            "md:mx-16",
+            "lg:mx-24",
+            "xl:mx-32"
+        ];
+    
+        const contentCount = await contentDivs.count();
+    
+        for (let i = 0; i < contentCount; i++) {
+            const div = contentDivs.nth(i);
+            // Get the actual classes of the h2 element
+            const actualClasses = await div.getAttribute('class');
+    
+            // Check if each expected class is present in the actual class list
+            for (const expectedClass of expectedCvH2Classes) {
+                expect(actualClasses).toContain(expectedClass);
+            }
+        }
+    });
+});
