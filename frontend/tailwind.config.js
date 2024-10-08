@@ -31,9 +31,55 @@ export default {
           DEFAULT: '#a19f88',
         },
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            h2: {
+              fontWeight: theme('fontWeight.bold'),
+              marginBottom: theme('spacing.10'),
+              textAlign: 'center',
+              fontSize: theme('fontSize.1xl'),
+              '@screen md': {
+                fontSize: theme('fontSize.2xl'),
+              },
+              '@screen lg': {
+                fontSize: theme('fontSize.3xl'),
+              },
+              '@screen xl': {
+                fontSize: theme('fontSize.4xl'),
+              },
+            },
+            img: {
+              display: 'block',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              borderRadius: theme('borderRadius.md')
+            },
+            p: {
+              fontSize: theme('fontSize.sm'),
+              marginLeft: theme('spacing.4'),
+              marginRight: theme('spacing.4'),
+              '@screen md': {
+                marginLeft: theme('spacing.16'),
+                marginRight: theme('spacing.16'),
+              },
+              '@screen lg': {
+                marginLeft: theme('spacing.24'),
+                marginRight: theme('spacing.24'),
+              },
+              '@screen xl': {
+                marginLeft: theme('spacing.32'),
+                marginRight: theme('spacing.32'),
+              },
+            },
+          },
+        },
+      }),
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
   safelist: [
     // Useful for dynamic classes
     'bg-red-500',

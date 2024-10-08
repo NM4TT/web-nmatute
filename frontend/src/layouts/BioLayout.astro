@@ -1,9 +1,47 @@
 ---
 import { Layout } from '$layouts';
+import {
+		ContactButton,
+		MobileSection
+	} from '$components';
+import { imagePlaceholder } from '$lib/utils'
 const { frontmatter } = Astro.props;
 ---
 <Layout title={frontmatter.title}>
-    <main id="biography" class="pt-10">
-        <slot />
+    <main 
+        id="biography" 
+        class="pt-10 prose lg:prose-xl mx-auto max-w-6xl"
+    >
+        <section id="first" class="mt-5">
+            <div
+                id="desktop-first-look"
+                class="hidden md:flex justify-center space-x-24 rounded"
+            >
+                <div class="w-1/2 flex flex-col justify-center items-center">
+                    <div class="flex flex-col justify-center items-center">
+                        <h1 class="font-bold md:text-3xl lg:text-4xl xl:text-5xl">
+                            Personal Biography
+                        </h1>
+                    </div>
+                    <p class="w-3/4 mx-4 md:mx-16 lg:mx-24 xl:mx-32">
+                        Sint voluptate duis mollit amet do labore est dolore qui Lorem cupidatat. 
+                        In laboris magna magna quis ut tempor sit id. 
+                        Eu pariatur magna aute ipsum do qui aute aliquip proident. 
+                        Magna consectetur et est adipisicing deserunt voluptate consequat 
+                        in velit nisi elit. 
+                        Minim sit elit excepteur quis sit labore ea.
+                    </p>
+                </div>
+                <div class="w-1/2 flex justify-end">
+                    <img src={ imagePlaceholder(400,450) } 
+                        alt="Nicolas Matute" class="h-auto w-3/4" />
+                </div>
+            </div>
+            <MobileSection title="Personal Biography" />
+        </section>
+
+        <section class="bio-section">
+            <slot />
+        </section>
     </main>
 </Layout>
