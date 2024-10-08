@@ -13,6 +13,11 @@
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const emailPattern = /^[a-zA-Z0-9._%+-]{4,16}@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
         closeModal();
     };
 </script>
