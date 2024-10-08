@@ -1,6 +1,6 @@
 ---
 layout: '../layouts/BioLayout.astro'
-title: "Who is Nicolas Matute?"
+title: "Biography"
 ---
 
 ## Early Life
