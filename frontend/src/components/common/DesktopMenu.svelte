@@ -1,5 +1,3 @@
-
-
 <nav id="desktop">
     <ul class="flex justify-between font-medium">
         <li 
