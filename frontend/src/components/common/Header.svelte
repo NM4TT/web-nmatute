@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DesktopMenu, ContactButton, Logo } from '$components';
+import { DesktopMenu, MobileMenu, ContactButton, Logo } from '$components';
 </script>
 
 <header>
@@ -14,7 +14,13 @@ import { DesktopMenu, ContactButton, Logo } from '$components';
             </div>
         </div>
     </div>
-    <div id="mobile-header-content" class="md:hidden max-md:flex justify-start">
+    <div id="mobile-header-content" class="md:hidden max-md:flex justify-between">
         <Logo />
+        <div class="flex self-center">
+            <div class="flex mr-4 rounded border-secondary border-2 h-3/4.4">
+                <ContactButton bgColor="bg-primary" textColor="text-secondary" />
+            </div>
+            <MobileMenu />
+        </div>
     </div>
 </header>

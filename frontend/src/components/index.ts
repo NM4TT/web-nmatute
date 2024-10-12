@@ -1,5 +1,6 @@
 export { default as Header } from './common/Header.svelte'
 export { default as DesktopMenu } from './common/DesktopMenu.svelte';
+export { default as MobileMenu } from './common/MobileMenu.svelte'
 export { default as Footer } from './common/Footer.svelte';
 export { default as ContactButton } from './common/ContactButton.svelte';
 export { default as SocialMediaList } from './common/SocialMediaList.svelte'
