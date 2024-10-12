@@ -1,6 +1,4 @@
 <script lang="ts">
-import { ICON_COLOR } from '$lib/constants';
-
 let isOpen = false;
 
 const toggleMenu = () => {
@@ -18,6 +16,9 @@ const toggleMenu = () => {
 </button>
   
 {#if isOpen}
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
+    <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
     <div 
       class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50"
       on:click={toggleMenu}
@@ -25,6 +26,7 @@ const toggleMenu = () => {
       aria-modal="true"
       tabindex="0">
   
+      <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <div 
         class="flex flex-col fixed top-0 right-0 w-1/4 h-full bg-white shadow-lg transition-transform duration-300 transform translate-x-0"
         role="navigation"
@@ -32,7 +34,7 @@ const toggleMenu = () => {
         tabindex="0">
         
         <button 
-          class="rounded bg-red-500 w-1/2 mt-3 self-center py-2 mt-6 text-white font-medium"
+          class="rounded bg-red-500 w-1/2 self-center py-2 mt-6 text-white font-medium"
           on:click={toggleMenu}
           aria-label="Close menu">
           Close
