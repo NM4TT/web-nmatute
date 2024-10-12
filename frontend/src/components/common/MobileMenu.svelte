@@ -28,7 +28,7 @@ const toggleMenu = () => {
   
       <!-- svelte-ignore a11y-no-noninteractive-tabindex -->
       <div 
-        class="flex flex-col fixed top-0 right-0 w-1/4 h-full bg-white shadow-lg transition-transform duration-300 transform translate-x-0"
+        class="flex flex-col fixed top-0 right-0 w-1/3 h-full bg-white shadow-lg transition-transform duration-300 transform translate-x-0"
         role="navigation"
         aria-label="mobile menu"
         tabindex="0">
