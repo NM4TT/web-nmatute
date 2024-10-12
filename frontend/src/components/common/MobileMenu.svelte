@@ -32,7 +32,7 @@ const toggleMenu = () => {
         tabindex="0">
         
         <button 
-          class="rounded bg-red-500 w-1/2 mt-3 self-center py-2 text-white font-medium"
+          class="rounded bg-red-500 w-1/2 mt-3 self-center py-2 mt-6 text-white font-medium"
           on:click={toggleMenu}
           aria-label="Close menu">
           Close
