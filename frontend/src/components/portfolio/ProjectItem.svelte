@@ -1,9 +1,9 @@
 <script lang="ts">
-  export let data: Object = {
-      name: "Super Cool Project",
-      tags: "Amazing STACK",
-      url: "https://www.example.com"
-  };
+export let data: Object = {
+    name: "Super Cool Project",
+    tags: "Amazing STACK",
+    url: "https://www.example.com"
+};
 </script>
 
 <article 

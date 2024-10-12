@@ -1,11 +1,11 @@
 <script lang="ts">
-    export let data: Object = {
-        keywords: [
-            "Java",
-            "Golang",
-            "Kubernetes",
-        ],
-    };
+export let data: Object = {
+    keywords: [
+        "Java",
+        "Golang",
+        "Kubernetes",
+    ],
+};
 </script>
 
 <ul 

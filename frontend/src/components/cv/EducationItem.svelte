@@ -1,10 +1,10 @@
 <script lang="ts">
-    export let data: Object = {
-        title: "Master Degree",
-        place: "Technological University Of Panama (UTP)",
-        start: "January 20**",
-        end: "Present",
-    };
+export let data: Object = {
+    title: "Master Degree",
+    place: "Technological University Of Panama (UTP)",
+    start: "January 20**",
+    end: "Present",
+};
 </script>
 
 <article class="mb-6">

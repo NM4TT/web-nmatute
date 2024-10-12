@@ -1,1 +1,1 @@
-export const MAX_WIDTH_MOBILE: number = 767;
+export const ICON_COLOR: string = "#a19f88";

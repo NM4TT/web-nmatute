@@ -1,16 +1,16 @@
 <script lang="ts">
-    import { imagePlaceholder } from '$lib/utils'
-    export let data: Object = {
-        corp: "Tech Corp",
-        role: "Software Developer",
-        start: "January 20**",
-        end: "Present",
-        tasks: [
-            "Task 1",
-            "Task 2",
-            "Task 3"
-        ],
-    };
+import { ICON_COLOR } from '$lib/constants'
+export let data: Object = {
+    corp: "Tech Corp",
+    role: "Software Developer",
+    start: "January 20**",
+    end: "Present",
+    tasks: [
+        "Task 1",
+        "Task 2",
+        "Task 3"
+    ],
+};
 </script>
 
 <article class="mb-6">
@@ -29,12 +29,10 @@
         <ul>
             {#each data.tasks as task}
                 <li class="flex items-center">
-                    <img
-                    src={imagePlaceholder(16)}
-                    alt="Tools, Skills and Languages"
-                    class="w-4 h-4 mr-2"
-                    />
-                    <span>{task}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                        <path fill={ICON_COLOR} d="m9 20.42l-6.21-6.21l2.83-2.83L9 14.77l9.88-9.89l2.83 2.83z" />
+                    </svg>
+                    <span class="ml-2">{task}</span>
                 </li>
             {/each}
         </ul>

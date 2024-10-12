@@ -1,10 +1,10 @@
 <script lang="ts">
-    import Modal from './ContactModal.svelte';
-    import { openContactModal } from '$lib/store'
-  
-    const openModal = () => {
-        openContactModal.set(true);
-    };
+import Modal from './ContactModal.svelte';
+import { openContactModal } from '$lib/store'
+
+const openModal = () => {
+    openContactModal.set(true);
+};
 </script>
 
 <!-- Button to open the modal -->

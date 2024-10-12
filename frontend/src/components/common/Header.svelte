@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { DesktopMenu, ContactButton, Logo } from '$components';
+import { DesktopMenu, ContactButton, Logo } from '$components';
 </script>
 
 <header>

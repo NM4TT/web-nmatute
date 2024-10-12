@@ -1,25 +1,25 @@
 <script lang="ts">
-    import { openContactModal } from '$lib/store'
-    import { derived } from 'svelte/store';
+import { openContactModal } from '$lib/store'
+import { derived } from 'svelte/store';
 
-    const isVisible = derived(openContactModal, $openContactModal => $openContactModal);
+const isVisible = derived(openContactModal, $openContactModal => $openContactModal);
 
-    let email: string = "";
+let email: string = "";
 
-    const closeModal = () => {
-        openContactModal.set(false);
-        email = "";
-    };
+const closeModal = () => {
+    openContactModal.set(false);
+    email = "";
+};
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const emailPattern = /^[a-zA-Z0-9._%+-]{4,16}@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-        closeModal();
-    };
+const handleSubmit = (event: SubmitEvent) => {
+    event.preventDefault();
+    const emailPattern = /^[a-zA-Z0-9._%+-]{4,16}@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+    closeModal();
+};
 </script>
   
 {#if $isVisible}
