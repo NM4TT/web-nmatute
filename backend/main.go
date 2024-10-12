@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/tls"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -14,6 +15,7 @@ import (
 )
 
 var dataPath string = "/data/data.yaml"
+var port string = "8081"
 
 func init() {
 	var err error
@@ -25,6 +27,11 @@ func init() {
 	debugPath := os.Getenv("DATA_PATH")
 	if debugPath != "" {
 		dataPath = debugPath
+	}
+
+	customPort := os.Getenv("PORT")
+	if customPort != "" {
+		port = customPort
 	}
 
 	processor.MyData, err = processor.LoadData(dataPath)
@@ -43,9 +50,9 @@ func main() {
 	protectedRouter := processor.ConfigureCors(router)
 
 	svc := &http.Server{
-		Addr:    ":8080",
+		Addr:    fmt.Sprintf(":%s", port),
 		Handler: handlers.CompressHandler(protectedRouter),
 	}
-	log.Println("*** UP ***")
+	log.Println(fmt.Sprintf("*** UP at %s ***", port))
 	log.Fatal(svc.ListenAndServe())
 }

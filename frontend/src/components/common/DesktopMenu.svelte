@@ -7,7 +7,7 @@
             after:w-0 after:h-[2px] after:bg-secondary 
             after:transition-all after:duration-300 
             hover:after:left-0 hover:after:w-full">
-            <a href="/">Curriculum</a>
+            <a href="/">Resume</a>
         </li>
         <li 
             class="relative px-3 hover:text-secondary 

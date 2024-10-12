@@ -42,7 +42,7 @@ const toggleMenu = () => {
         
 
         <nav class="flex flex-col mx-2 mt-4 space-y-4 text-center">
-          <a href="/" class="text-lg font-medium text-secondary mt-4">Curriculum</a>
+          <a href="/" class="text-lg font-medium text-secondary mt-4">Resume</a>
           <a href="/portfolio" class="text-lg font-medium text-secondary mt-4">Portfolio</a>
           <a href="/biography" class="text-lg font-medium text-secondary mt-4">Biography</a>
         </nav>
