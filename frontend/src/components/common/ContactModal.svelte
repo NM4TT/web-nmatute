@@ -1,34 +1,32 @@
 <script lang="ts">
-    import { openContactModal } from '$lib/store'
-    import { derived } from 'svelte/store';
+import { createEventDispatcher } from 'svelte';
 
-    const isVisible = derived(openContactModal, $openContactModal => $openContactModal);
+export let showModal: boolean = false;
+let email: string = "";
 
-    let email: string = "";
+const dispatch = createEventDispatcher();
 
-    const closeModal = () => {
-        openContactModal.set(false);
-        email = "";
-    };
+const closeModal = () => {
+    showModal = false
+    email = "";
+    dispatch('close');
+};
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const emailPattern = /^[a-zA-Z0-9._%+-]{4,16}@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
-        }
-        closeModal();
-    };
+const handleSubmit = (event: SubmitEvent) => {
+    event.preventDefault();
+    const emailPattern = /^[a-zA-Z0-9._%+-]{4,25}@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+    closeModal();
+};
 </script>
   
-{#if $isVisible}
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<!-- svelte-ignore a11y-no-static-element-interactions -->
+{#if showModal}
 <div id="contact-modal"
     class="fixed inset-0 flex items-center justify-center 
-    bg-black bg-opacity-50 backdrop-blur-sm z-50"
-    on:click={closeModal}>
+    bg-black bg-opacity-50 backdrop-blur-sm z-50">
     <div class="bg-white rounded shadow-lg p-6 w-80">
         <h2 class="text-lg font-bold mb-4 text-center">Contact Me</h2>
         <p>Please write down your email address so I can reach out back to you!</p>
