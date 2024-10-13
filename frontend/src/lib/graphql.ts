@@ -1,6 +1,6 @@
 const endpoint = 'http://localhost:3000/query';
 
-type Content = {
+export type Content = {
     name: string;
     role: string;
     start: string;
@@ -8,6 +8,7 @@ type Content = {
     tasks: string[];
     title: string;
     url: string;
+    difference?: string;
 };
   
 type Item = {
@@ -49,7 +50,7 @@ export async function getKeywords(name: string): Promise<string[]> {
     return keywords;
 }
 
-export async function getContent(name: string, contentFields: string[]): Promise<Item[]> {
+export async function getContent(name: string, contentFields: string[]): Promise<Content[]> {
     const fieldsString = contentFields.join('\n');
 
     const response = await fetch(endpoint, {
@@ -80,9 +81,7 @@ export async function getContent(name: string, contentFields: string[]): Promise
     }
 
     const json = await response.json();
-    const items: Item[] = json.data.getData.items.map((item: { content: any; }) => ({
-        content: item.content,
-    }));
+    const items: Content[] = json.data.getData.items.map((item: { content: any; }) => (item.content));
 
     return items;
 }

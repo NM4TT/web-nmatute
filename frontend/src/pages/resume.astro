@@ -9,9 +9,30 @@ import {
 		ContactButton,
 		MobileSection
 	} from '$components';
-import { imagePlaceholder } from '$lib/utils'
+import { imagePlaceholder, formatItemDates } from '$lib/utils'
 import { ICON_COLOR } from '$lib/constants'
 import { getContent, getKeywords } from '$lib/graphql';
+
+const skills = await getKeywords("tools-skills");
+const languages = await getKeywords("languages");
+const projects = await getContent("projects", ["name", "url"])
+const experience = formatItemDates(
+	(await getContent("professional-exp", 
+		["name", 
+		"role", 
+		"start", 
+		"end", 
+		"tasks",
+	])
+));
+const education = formatItemDates(
+	(await getContent("education", 
+		["name", 
+		"title", 
+		"start", 
+		"end",
+	])
+));
 ---
 
 <Layout title="Curriculum">
@@ -81,7 +102,9 @@ import { getContent, getKeywords } from '$lib/graphql';
 				md:text-3xl lg:text-4xl xl:text-5xl"
 			>Work Experience</h2>
 			<div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
-				<WorkExperienceItem />
+				{
+					experience.map(item => <WorkExperienceItem data={item} />)
+				}
 			</div>
 		</section>
 	
@@ -93,8 +116,9 @@ import { getContent, getKeywords } from '$lib/graphql';
 				md:text-3xl lg:text-4xl xl:text-5xl"
 			>Education</h2>
 			<div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
-				<EducationItem />
-				<EducationItem />
+				{
+					education.map(item => <EducationItem data={item} />)
+				}
 			</div>
 		</section>
 
@@ -118,7 +142,7 @@ import { getContent, getKeywords } from '$lib/graphql';
 				md:text-3xl lg:text-4xl xl:text-5xl"
 			>Tools & Skills</h2>
 			<div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
-				<Keywords />
+				<Keywords data={skills} />
 			</div>
 		</section>
 	
@@ -131,8 +155,9 @@ import { getContent, getKeywords } from '$lib/graphql';
 			>Languages</h2>
 			<div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
 				<ul class="font-medium">
-					<li class="pb-3">Bla</li>
-					<li>Bla</li>
+					{
+						languages.map(item => <li class="my-3">{item}</li>)
+					}
 				</ul>
 			</div>
 		</section>

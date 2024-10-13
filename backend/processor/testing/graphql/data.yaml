@@ -39,6 +39,9 @@
     - name: 'Universidad Tecnologica de Panama (UTP)'
       title: "Bachelor's Degree in Software Development"
       start: 1577876400 # 2020
+
+- section: certifications
+  items:
     - name: 'Courses'
       url: "www.example.com"
 
@@ -54,18 +57,27 @@
         - Maven
         - XML
         - JSON
-        - Argo Workflows / Argo CD
+        - Argo Workflows
+        - Argo CD
         - Javascript
         - Typescript
-        - SQL / OracleDB / MongoDB
+        - SQL 
+        - OracleDB 
+        - MongoDB
         - React.js
         - Redux
         - Golang
-        - Linux / Unix
-        - Git / Tortoise SVN
-        - Github / Bitbucket
+        - Linux 
+        - Unix
+        - Git 
+        - Tortoise SVN
+        - Github 
+        - Bitbucket
         - Fast Learning
-        - Web Sevices (SOAP, REST, GRAPHQL, gRPC)
+        - SOAP
+        - REST
+        - GraphQL
+        - gRPC
         - Springboot
         - Postman
         - Docker

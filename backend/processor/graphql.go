@@ -19,7 +19,7 @@ func ParseDataToSchema() error {
 	for i, data := range MyData {
 		switch data.Name {
 		case "professional-exp":
-			log.Println("Parsing jobs...")
+			log.Println(fmt.Sprintf("Parsing %s...", data.Name))
 			itemList := make([]model.Item, 0)
 			for _, item := range data.Items {
 				var name, role, start, end, stringValue string
@@ -75,8 +75,8 @@ func ParseDataToSchema() error {
 				Items: pointerList,
 			})
 
-		case "education", "projects":
-			log.Println("Parsing education...")
+		case "education", "projects", "certifications":
+			log.Println(fmt.Sprintf("Parsing %s...", data.Name))
 			itemList := make([]model.Item, 0)
 			for _, item := range data.Items {
 				var name, title, url, start, end, stringValue string
@@ -135,7 +135,7 @@ func ParseDataToSchema() error {
 			})
 
 		case "tools-skills", "languages":
-			log.Println("Parsing keywords...")
+			log.Println(fmt.Sprintf("Parsing %s...", data.Name))
 			for _, item := range data.Items {
 				var keywords []string
 				_, _, list, ok := AssertType(item["keywords"])

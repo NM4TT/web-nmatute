@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ICON_COLOR } from '$lib/constants'
 export let data: Object = {
-    corp: "Tech Corp",
+    name: "Tech Corp",
     role: "Software Developer",
     start: "January 20**",
     end: "Present",
@@ -10,11 +10,12 @@ export let data: Object = {
         "Task 2",
         "Task 3"
     ],
+    difference: "",
 };
 </script>
 
 <article class="mb-6">
-    <h3 class="font-bold text-lg md:text-2xl">{data.corp}</h3>
+    <h3 class="font-bold text-lg md:text-2xl">{data.name}</h3>
     <div class="flex justify-start my-1">
         <p class="font-medium">Role:</p>
         <p class="ml-3">{data.role}</p>
@@ -23,6 +24,8 @@ export let data: Object = {
         <p>{data.start}</p>
         <p class="ml-3">-</p>
         <p class="ml-3">{data.end}</p>
+        <p class="ml-3 font-bold">|</p>
+        <p class="ml-3">{data.difference}</p>
     </div>
     <div class="my-2">
         <h4 class="font-medium">Responsibilities:</h4>
