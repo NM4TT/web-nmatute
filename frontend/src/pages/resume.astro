@@ -11,7 +11,7 @@ import {
 	} from '$components';
 import { imagePlaceholder, formatItemDates } from '$lib/utils'
 import { ICON_COLOR } from '$lib/constants'
-import { getContent, getKeywords } from '$lib/graphql';
+import { getContent, getKeywords } from '$lib/server';
 
 const skills = await getKeywords("tools-skills");
 const languages = await getKeywords("languages");

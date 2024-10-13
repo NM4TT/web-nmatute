@@ -1,5 +1,6 @@
 <script lang="ts">
 import { createEventDispatcher } from 'svelte';
+import { notify } from '$lib/server'
 
 export let showModal: boolean = false;
 let email: string = "";
@@ -18,6 +19,12 @@ const handleSubmit = (event: SubmitEvent) => {
     if (!emailPattern.test(email)) {
         alert('Please enter a valid email address.');
         return;
+    }
+    const result: boolean = notify(email);
+    if (result) {
+        alert("I'll contact you soon!.");
+    } else {
+        alert("There was an error, please retry later.");
     }
     closeModal();
 };

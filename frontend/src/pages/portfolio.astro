@@ -4,7 +4,7 @@ import {
 		ProjectItem,
     MobileSection
 	} from '$components';
-import { getContent } from '$lib/graphql';
+import { getContent } from '$lib/server';
 import { formatProjects } from '$lib/utils';
 const projects = formatProjects((await getContent("projects", ["name", "url"])))
 ---

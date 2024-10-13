@@ -1,4 +1,4 @@
-import type { Content } from "./graphql";
+import type { Content } from "./server";
 
 export const imagePlaceholder = 
     (width: number, height: number = width): string => `https://placehold.co/${width}x${height}`;
