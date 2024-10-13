@@ -47,7 +47,7 @@
 
 - section: projects
   items:
-    - name: 'Some Cool Project'
+    - name: 'Some Cool Project (Golang, GraphQL, Kubernetes)'
       url: "www.myawesomeproject.com"
 
 - section: tools-skills

@@ -15,7 +15,7 @@ import { getContent, getKeywords } from '$lib/graphql';
 
 const skills = await getKeywords("tools-skills");
 const languages = await getKeywords("languages");
-const projects = await getContent("projects", ["name", "url"])
+
 const experience = formatItemDates(
 	(await getContent("professional-exp", 
 		["name", 

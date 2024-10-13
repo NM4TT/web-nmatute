@@ -75,3 +75,21 @@ export const formatItemDates  = (collection: Content[]): Content[] => {
     })
     return formattedData;
 }
+
+export const formatProjects = (collection: Content[]): Content[] => {
+    return collection.map(input => {
+        const regex = /^(.*?)(?:\s*\((.*?)\))?$/;
+        const match = input.name.match(regex);
+
+        // Destructure the result
+        const mainName = match ? match[1].trim() : '';
+        const tags = match && match[2] ? match[2].trim() : '';
+
+        return {
+            ...input,
+            name: mainName,
+            tags: tags,
+            url: input.url,
+        };
+    });
+}
