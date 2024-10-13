@@ -15,7 +15,7 @@ export let data: Object = {
 </script>
 
 <article class="mb-6">
-    <h3 class="font-bold text-lg md:text-2xl">{data.name}</h3>
+    <h3 class="font-bold text-lg md:text-1xl">{data.name}</h3>
     <div class="flex justify-start my-1">
         <p class="font-medium">Role:</p>
         <p class="ml-3">{data.role}</p>

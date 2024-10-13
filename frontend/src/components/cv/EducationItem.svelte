@@ -8,7 +8,7 @@ export let data: Object = {
 </script>
 
 <article class="mb-6">
-    <h3 class="font-bold text-lg md:text-2xl">{data.title}</h3>
+    <h3 class="font-bold text-lg md:text-1xl">{data.title}</h3>
     <p class="font-medium">{data.name}</p>
     <div class="flex justify-normal my-1">
         <p>{data.start}</p>

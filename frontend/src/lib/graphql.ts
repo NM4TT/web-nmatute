@@ -1,4 +1,4 @@
-const endpoint = 'http://localhost:3000/query';
+const endpoint = import.meta.env.GRAPHQL_URL;
 
 export type Content = {
     name: string;

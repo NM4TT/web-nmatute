@@ -173,7 +173,7 @@ test.describe('CV heading', () => {
         await expect(mobileFirstLook).toBeVisible()
         const h1Elements = mobileFirstLook.locator("h1")
     
-        const expectedH1Classes = "font-bold pb-4 max-xs:text-3xl max-sm:text-4xl max-md:text-5xl";
+        const expectedH1Classes = "font-bold text-center pb-4 max-xs:text-2.5xl max-sm:text-4xl max-md:text-5xl";
         const h1Count = await h1Elements.count();
     
         for (let i = 0; i < h1Count; i++) {
@@ -241,7 +241,7 @@ test.describe('Biography heading', () => {
         await expect(mobileFirstLook).toBeVisible()
         const h1Elements = mobileFirstLook.locator("h1")
     
-        const expectedH1Classes = "font-bold pb-4 max-xs:text-3xl max-sm:text-4xl max-md:text-5xl";
+        const expectedH1Classes = "font-bold text-center pb-4 max-xs:text-2.5xl max-sm:text-4xl max-md:text-5xl";
         const h1Count = await h1Elements.count();
     
         for (let i = 0; i < h1Count; i++) {
