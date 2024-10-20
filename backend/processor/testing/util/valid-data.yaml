@@ -1,0 +1,8 @@
+---
+- section: education
+  items:
+    - name: 'Universidad Tecnologica de Panama (UTP)'
+      title: "Bachelor's Degree in Software Development"
+      start: 1577876400 # 2020
+    - name: 'Courses'
+      url: "www.example.com"

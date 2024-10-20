@@ -1,0 +1,25 @@
+type Query {
+  getData(name: String!): DataSection
+}
+
+type DataSection {
+  name: String!
+  items: [Item!]!
+}
+
+type Item {
+  keywords: [String]
+  content: Content
+}
+
+type Content {
+  #profesional-exp
+  name: String
+  role: String
+  start: String
+  end: String
+  tasks: [String]
+  #education
+  title: String
+  url: String
+}
