@@ -1,0 +1,49 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: ./frontend
+    environment:
+      - PUBLIC_SERVER_URL=${PUBLIC_SERVER_URL}
+    env_file:
+      - ./frontend/.env
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend
+    volumes:
+      - type: volume
+        source: frontend-data
+        target: /app/frontend
+        read_only: true
+    networks:
+      - web
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - PORT=${PORT}
+      - DATA_PATH=${DATA_PATH}
+      - ORIGIN=${ORIGIN}
+      - MAIL_ACCOUNT=${MAIL_ACCOUNT}
+      - MAIL_PASS=${MAIL_PASS}
+      - MAIL_SIGNATURE=${MAIL_SIGNATURE}
+    env_file:
+      - ./backend/.env
+    volumes:
+      - type: volume
+        source: backend-data
+        target: /app/backend
+        read_only: true
+    networks:
+      - web
+        
+
+networks:
+  web:
+
+volumes:
+  frontend-data:
+  backend-data:
