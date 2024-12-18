@@ -14,8 +14,8 @@ import (
 	"nmatute.com/web-nmatute-backend/processor"
 )
 
-var port string = "4000"
-var dataPath string
+var port string = "80"
+var dataPath string = "/app/data/data.yaml"
 
 func init() {
 	var err error
@@ -25,8 +25,8 @@ func init() {
 		TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
 	dataPath = os.Getenv("DATA_PATH")
-	if dataPath == "" {
-		log.Fatal("No datapath defined")
+	if os.Getenv("DATA_PATH") != "" {
+		dataPath = os.Getenv("DATA_PATH")
 	}
 
 	customPort := os.Getenv("PORT")
