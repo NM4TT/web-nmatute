@@ -25,14 +25,14 @@ RUN rm -rf node_modules src public tests
 FROM nginx:stable-alpine
 RUN addgroup -S nginxgroup && adduser -S nginxuser -G nginxgroup
 WORKDIR /usr/share/nginx/html
-
 COPY --from=builder /app/dist .
-#/etc/nginx
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
 RUN chown -R nginxuser:nginxgroup /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html
+    chmod -R 755 /usr/share/nginx/html && \
+    chown nginxuser:nginxgroup /etc/nginx/nginx.conf && \
+    chmod 644 /etc/nginx/nginx.conf
 
 USER nginxuser
-
 EXPOSE 80
 ENTRYPOINT ["nginx", "-g", "daemon off;"]

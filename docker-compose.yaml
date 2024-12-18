@@ -4,11 +4,8 @@ services:
     build:
       context: ./frontend
     environment:
-      - PUBLIC_SERVER_URL=${PUBLIC_SERVER_URL}
-    env_file:
-      - ./frontend/.env
+      PUBLIC_SERVER_URL: "/api"
     ports:
-      - "80:80"
       - "443:443"
     depends_on:
       - backend
@@ -24,18 +21,18 @@ services:
     build:
       context: ./backend
     environment:
-      - PORT=${PORT}
-      - DATA_PATH=${DATA_PATH}
       - ORIGIN=${ORIGIN}
       - MAIL_ACCOUNT=${MAIL_ACCOUNT}
       - MAIL_PASS=${MAIL_PASS}
       - MAIL_SIGNATURE=${MAIL_SIGNATURE}
-    env_file:
-      - ./backend/.env
     volumes:
       - type: volume
         source: backend-data
         target: /app/backend
+        read_only: true
+      - type: bind
+        source: /docker-data/web-nmatute
+        target: /app/data
         read_only: true
     networks:
       - web
