@@ -25,7 +25,7 @@ jobs:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
         run: |
-            lftp -u "$FTP_USER,$FTP_PASS" -e "
+            lftp -d -u "$FTP_USER,$FTP_PASS" -e "
                 set ftp:ssl-allow true;
                 mirror --reverse --verbose ./ /home/silly/web-nmatute/;
                 quit
