@@ -24,9 +24,9 @@ func init() {
 		DefaultTransport.(*http.Transport).
 		TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
-	dataPath = os.Getenv("DATA_PATH")
-	if os.Getenv("DATA_PATH") != "" {
-		dataPath = os.Getenv("DATA_PATH")
+	customDataPath := os.Getenv("DATA_PATH")
+	if customDataPath != "" {
+		dataPath = customDataPath
 	}
 
 	customPort := os.Getenv("PORT")
