@@ -1,5 +1,7 @@
-const DATA_URL = `${import.meta.env.PUBLIC_SERVER_URL}/query`;
-const NOTIFY_URL = `${import.meta.env.PUBLIC_SERVER_URL}/contact`;
+const DATA_URL = (import.meta.env.PUBLIC_SERVER_URL) ? 
+    `${import.meta.env.PUBLIC_SERVER_URL}/query` : 'http://backend/query';
+const NOTIFY_URL = (import.meta.env.PUBLIC_SERVER_URL) ? 
+    `${import.meta.env.PUBLIC_SERVER_URL}/contact` : 'http://backend/contact';
 
 export type Content = {
     name: string;
