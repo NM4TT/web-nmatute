@@ -29,8 +29,8 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          port: 21
-          protocol: ftp
+          port: 990
+          protocol: ftps
           server-dir: /home/silly/web-nmatute/
           dangerous-clean-slate: true
 
