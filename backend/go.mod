@@ -6,6 +6,7 @@ toolchain go1.22.7
 
 require (
 	github.com/99designs/gqlgen v0.17.54
+	github.com/go-mail/mail v2.3.1+incompatible
 	github.com/gorilla/handlers v1.5.2
 	github.com/joho/godotenv v1.5.1
 	github.com/rs/cors v1.11.1
@@ -17,7 +18,6 @@ require (
 	github.com/agnivade/levenshtein v1.1.1 // indirect
 	github.com/cpuguy83/go-md2man/v2 v2.0.4 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	github.com/go-mail/mail v2.3.1+incompatible // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect

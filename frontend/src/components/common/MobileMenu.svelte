@@ -1,5 +1,5 @@
 <script lang="ts">
-let isOpen = false;
+let isOpen: boolean = false;
 
 const toggleMenu = () => {
     isOpen = !isOpen;
@@ -7,6 +7,7 @@ const toggleMenu = () => {
 
 </script>
   
+<!-- svelte-ignore a11y_consider_explicit_label -->
 <button 
     class="rounded border-4 bg-secondary border-secondary h-3/4 self-center"
     on:click={toggleMenu}>

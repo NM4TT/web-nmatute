@@ -1,2 +1,3 @@
 .env
 processor/assets/
+/data.yaml

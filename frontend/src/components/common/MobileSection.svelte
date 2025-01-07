@@ -1,5 +1,5 @@
-<script>
-export let title = "Dummy Title";
+<script lang="ts">
+export let title: string = "Dummy Title";
 </script>
 
 <div id="mobile-first-look" class="md:hidden max-md:flex flex-col justify-center">

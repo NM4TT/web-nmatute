@@ -20,6 +20,6 @@ const { title } = Astro.props;
   <body class="py-5 lg:max-w-16xl px-6 sm:px-6 lg:px-8 max-w-full mx-auto bg-primary">
     <Header client:load />
       <slot />
-    <Footer />
+    <Footer client:load/>
   </body>
 </html>
