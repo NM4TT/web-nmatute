@@ -1,0 +1,27 @@
+{
+    "cv": {
+      "workExperience": [
+        {
+          "title": "Software Developer",
+          "company": "Tech Corp",
+          "duration": "Jan 2020 - Present"
+        }
+      ],
+      "education": [
+        {
+          "degree": "BSc Computer Science",
+          "institution": "University XYZ",
+          "year": "2018"
+        }
+      ],
+      "skills": ["JavaScript", "TypeScript", "Svelte"]
+    },
+    "portfolio": {
+      "projects": [
+        {
+          "title": "Portfolio Website",
+          "description": "A personal portfolio site built with Svelte."
+        }
+      ]
+    }
+}

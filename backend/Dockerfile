@@ -1,6 +1,6 @@
 FROM golang:alpine AS builder
 RUN apk add --no-cache git build-base
-RUN adduser -S dummy -G root -s /bin/bash
+RUN adduser --system dummy -G root --system /bin/bash
 WORKDIR /app
 
 COPY ./processor ./processor
@@ -20,4 +20,5 @@ COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /app/sillyapp /bin/sillyapp
 
 USER dummy
+EXPOSE 80
 ENTRYPOINT ["/bin/sillyapp"]

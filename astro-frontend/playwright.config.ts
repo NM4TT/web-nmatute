@@ -12,7 +12,7 @@ const config: PlaywrightTestConfig = {
   },
 
   // Directory for your tests
-  testDir: './e2e',
+  testDir: './tests',
 
   // Test file patterns (match both .test.ts and .spec.ts files)
   testMatch: /(.+\.)?(test|spec)\.[t]s/,

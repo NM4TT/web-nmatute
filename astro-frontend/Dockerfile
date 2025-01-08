@@ -1,6 +1,11 @@
 FROM node:latest AS builder
-RUN addgroup -S appgroup && adduser -S builduser -G appgroup
 WORKDIR /app
+
+ARG BACKEND_URL=backend
+ARG MAILTO=silly
+
+ENV PUBLIC_SERVER_URL=${BACKEND_URL}
+ENV PUBLIC_MAILTO=${MAILTO}
 
 COPY package.json .
 RUN npm install
@@ -19,11 +24,10 @@ RUN npx tailwindcss -i ./src/styles/main.css -o ./src/styles/generated.css
 #RUN npx playwright install --with-deps && npx playwright test
 
 RUN npm run build
-
 RUN rm -rf node_modules src public tests
 
 FROM nginx:stable-alpine
-RUN addgroup -S nginxgroup && adduser -S nginxuser -G nginxgroup
+RUN addgroup --system nginxgroup && adduser --system --ingroup nginxgroup nginxuser
 WORKDIR /usr/share/nginx/html
 COPY --from=builder /app/dist .
 COPY ./nginx.conf /etc/nginx/nginx.conf

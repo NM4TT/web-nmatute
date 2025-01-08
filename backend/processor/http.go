@@ -1,7 +1,6 @@
 package processor
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
 	"os"
@@ -16,7 +15,7 @@ import (
 func ConfigureRoutes(router *mux.Router) {
 	router.HandleFunc("/liveness", livenessCheck).Methods("GET")
 	router.HandleFunc("/readiness", readinessCheck).Methods("GET")
-	router.HandleFunc("/contact", handleContact).Methods("POST")
+	//router.HandleFunc("/contact", handleContact).Methods("POST")
 
 	//graphql
 	srv := handler.NewDefaultServer(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
@@ -55,7 +54,7 @@ func ConfigureCors(router *mux.Router) http.Handler {
 	return corsHandler.Handler(router)
 }
 
-func handleContact(w http.ResponseWriter, r *http.Request) {
+/*func handleContact(w http.ResponseWriter, r *http.Request) {
 	var mailReq MailRequest
 	err := json.NewDecoder(r.Body).Decode(&mailReq)
 	if err != nil {
@@ -72,4 +71,4 @@ func handleContact(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Email sent successfully"))
-}
+}*/
