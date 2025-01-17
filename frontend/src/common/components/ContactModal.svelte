@@ -1,35 +1,59 @@
 <script lang="ts">
-import { createEventDispatcher } from 'svelte';
-import { notify } from '$lib/server/api'
+    export let showModal: boolean = false;
+    export let onClose: () => void;
+    let email: string = "";
 
-export let showModal: boolean = false;
-let email: string = "";
+    const closeModal = () => {
+        showModal = false;
+        email = "";
+        if (onClose) {
+            onClose();
+        }
+    };
 
-const dispatch = createEventDispatcher();
+    async function notify(email: string): Promise<boolean> {
+        try {
+            const response = await fetch('/api/notify', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ sender: email }),
+            });
 
-const closeModal = () => {
-    showModal = false
-    email = "";
-    dispatch('close');
-};
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
 
-const handleSubmit = (event: SubmitEvent) => {
-    event.preventDefault();
-    const emailPattern = /^[a-zA-Z0-9._%+-]{4,25}@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-        alert('Please enter a valid email address.');
-        return;
+            const result = await response.json();
+            return result.success;
+        } catch (error) {
+            console.error('Error notifying:', error);
+            return false;
+        }
     }
-    const result: boolean = notify(email);
-    if (result) {
-        alert("I'll contact you soon!.");
-    } else {
-        alert("There was an error, please retry later.");
-    }
-    closeModal();
-};
+
+    const handleSubmit = async (event: SubmitEvent) => {
+        event.preventDefault();
+        const emailPattern = /^[a-zA-Z0-9._%+-]{4,25}@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+        try {
+            const result: boolean = await notify(email);
+            if (result) {
+                alert("I'll contact you soon!.");
+            } else {
+                alert("There was an error, please retry later.");
+            }
+        } catch (error) {
+            alert("An unexpected error occurred. Please try again later.");
+        }
+        closeModal();
+    };
 </script>
-  
+
 {#if showModal}
 <div id="contact-modal"
     class="fixed inset-0 flex items-center justify-center 

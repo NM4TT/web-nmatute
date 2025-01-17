@@ -9,10 +9,11 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"moduleResolution": "bundler",
+		"moduleResolution": "node",
 		"baseUrl": "./src",
 		"paths": {
-			"$common": ["common"],
+			"$common/*": ["common/*"],
+			"$lib/*": ["lib/*"],
 		}
 	}
 	// Path aliases are handled by https://svelte.dev/docs/kit/configuration#alias

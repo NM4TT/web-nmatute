@@ -2,6 +2,10 @@
     import {
             MobileSection
         } from '$common/components';
+    import PLACA_JARC from '$lib/assets/images/placa_jarc.jpg';
+    import INDRA_PIC from '$lib/assets/images/indra_selfie.jpg';
+    import RECENT_PIC from '$lib/assets/images/recent_pic.jpg';
+    import CLOSE_PIC from '$lib/assets/images/close_pic.jpg'
 </script>
 
 <main 
@@ -29,7 +33,7 @@
                 </p>
             </div>
             <div class="w-1/2 flex justify-end">
-                <img src="/images/close_pic.jpg" 
+                <img src={CLOSE_PIC}
                     alt="Nicolas Matute" class="h-auto w-3/4" />
             </div>
         </div>
@@ -51,7 +55,8 @@
             Thanks to self-learning and the internet, Nicolás significantly improved his academic performance, earning the 
             top honor in his high school, graduating with a degree in Computer Science.
         </p>
-        <img src="/images/placa_jarc.jpg" alt="My image">
+        <!-- svelte-ignore a11y_img_redundant_alt -->
+        <img src={PLACA_JARC} alt="My image">
         
         <h2>Career</h2>
         <p>
@@ -69,7 +74,8 @@
             Yet, even as a professional programmer, Nicolás wasn’t satisfied and continued learning new programming languages 
             and tools on his own, particularly focusing on improving his English.
         </p>
-        <img src="/images/indra_selfie.jpg" alt="My image">
+        <!-- svelte-ignore a11y_img_redundant_alt -->
+        <img src={INDRA_PIC} alt="My image">
         
         <h2>Today</h2>
         <p>
@@ -83,6 +89,7 @@
             his family, for the people he met, and for all the experiences that have shaped him. He looks forward to continuing 
             to grow and explore new opportunities in the future.
         </p>
-        <img src="/images/recent_pic.jpg" alt="My image">
+        <!-- svelte-ignore a11y_img_redundant_alt -->
+        <img src={RECENT_PIC} alt="My image">
     </section>
 </main>

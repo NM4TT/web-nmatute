@@ -1,17 +1,18 @@
 <script lang="ts">
 import { ICON_COLOR } from '$lib/constants'
-export let data: Object = {
-    name: "Tech Corp",
-    role: "Software Developer",
-    start: "January 20**",
-    end: "Present",
-    tasks: [
-        "Task 1",
-        "Task 2",
-        "Task 3"
-    ],
-    difference: "",
-};
+	import type { WorkExperienceItemType } from '$lib/types';
+    export let data: WorkExperienceItemType = {
+        name: "Tech Corp",
+        role: "Software Developer",
+        start: "January 20**",
+        end: "Present",
+        tasks: [
+            "Task 1",
+            "Task 2",
+            "Task 3"
+        ],
+        difference: "",
+    };
 </script>
 
 <article class="mb-6">

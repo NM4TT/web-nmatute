@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { MobileSection} from '$common/components';
+  import { MobileSection } from '$common/components';
+	import type { ProjectItemType } from '$lib/types';
   import ProjectItem from './components/ProjectItem.svelte';
-  import { getContent } from '$lib/server/api';
-  import { formatProjects } from '$lib/utils';
-  const projects = formatProjects((await getContent("projects", ["name", "url"])))
+  export let projects: ProjectItemType[];
 </script>
 
 <main id="portfolio" class="pt-10">
@@ -34,9 +33,9 @@
         class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32
         grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3
         gap-y-16 text-center">
-        {
-          projects.map(item => <ProjectItem data={item} />)
-        }
+        {#each projects as item}
+          <ProjectItem data={item} />
+        {/each}
       </div>
     </section>
 </main>

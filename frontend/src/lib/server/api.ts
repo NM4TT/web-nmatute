@@ -1,16 +1,7 @@
-const DATA_URL = `${import.meta.env.PUBLIC_SERVER_URL}/query`;
-const NOTIFY_URL = `${import.meta.env.PUBLIC_SERVER_URL}/contact`;
+import type { ContentType } from '$lib/types';
+import { SERVER_URL } from '$env/static/private';
 
-export type Content = {
-    name: string;
-    role: string;
-    start: string;
-    end: string;
-    tasks: string[];
-    title: string;
-    url: string;
-    difference?: string;
-};
+const DATA_URL = `${SERVER_URL}/query`
 
 export async function getKeywords(name: string): Promise<string[]> {
     const response = await fetch(DATA_URL, {
@@ -46,7 +37,7 @@ export async function getKeywords(name: string): Promise<string[]> {
     return keywords;
 }
 
-export async function getContent(name: string, contentFields: string[]): Promise<Content[]> {
+export async function getContent(name: string, contentFields: string[]): Promise<ContentType[]> {
     const fieldsString = contentFields.join('\n');
 
     const response = await fetch(DATA_URL, {
@@ -77,32 +68,8 @@ export async function getContent(name: string, contentFields: string[]): Promise
     }
 
     const json = await response.json();
-    const items: Content[] = json.data.getData.items.map((item: { content: any; }) => (item.content));
+    const items: ContentType[] = json.data.getData.items.map((item: { content: any; }) => (item.content));
 
     return items;
 }
 
-export async function notify(email: string): Promise<boolean> {
-    let done: boolean = false;
-    const payload = {
-        sender: email,
-    };
-
-    try {
-        const response = await fetch(NOTIFY_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(payload),
-        });
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        done = true;
-    } catch (error) {
-        console.error('Error Notifying:', error);
-    }
-    return done;
-}

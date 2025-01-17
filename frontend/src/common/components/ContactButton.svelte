@@ -1,10 +1,12 @@
 <script lang="ts">
+    import { PUBLIC_MAILTO } from '$env/static/public';
+
     import Modal from './ContactModal.svelte';
 
     export let bgColor: string = "bg-secondary";
     export let textColor: string = "text-white";
     let showModal: boolean = false;
-    const mailto: string | undefined = import.meta.env.PUBLIC_MAILTO;
+    const mailto: string = PUBLIC_MAILTO;
 
     const handleClick = () => {
         if (mailto) {
@@ -25,4 +27,4 @@
     <span>Contact Me</span>
 </button>
     
-<Modal {showModal} on:close={closeModal} />
+<Modal {showModal} onClose={closeModal} />

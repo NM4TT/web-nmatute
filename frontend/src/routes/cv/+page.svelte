@@ -1,36 +1,21 @@
 <script lang="ts">
+    import Icon from "@iconify/svelte";
     import {
         ContactButton,
         MobileSection
     } from '$common/components';
-	import Certifications from './components/Certifications.svelte';
-	import Keywords from './components/Keywords.svelte';
+    import MAIN_PIC from '$lib/assets/images/main_pic.jpg';
+    import Certifications from './components/Certifications.svelte';
+    import Keywords from './components/Keywords.svelte';
     import EducationItem from './components/EducationItem.svelte';
     import WorkExperienceItem from './components/WorkExperienceItem.svelte';
-    import { formatItemDates } from '$lib/utils'
-    import { ICON_COLOR } from '$lib/constants'
-    import { getContent, getKeywords } from '$lib/server';
+    import { ICON_COLOR } from '$lib/constants';
+	import type { EducationItemType, WorkExperienceItemType } from '$lib/types';
 
-    const skills = await getKeywords("tools-skills");
-    const languages = await getKeywords("languages");
-
-    const experience = formatItemDates(
-        (await getContent("professional-exp", 
-            ["name", 
-            "role", 
-            "start", 
-            "end", 
-            "tasks",
-        ])
-    ));
-    const education = formatItemDates(
-        (await getContent("education", 
-            ["name", 
-            "title", 
-            "start", 
-            "end",
-        ])
-    ));
+    export let skills: string[];
+    export let languages: string[];
+    export let experience: WorkExperienceItemType[];
+    export let education: EducationItemType[];
 </script>
 
 <main id="curriculum" class="pt-10">
@@ -40,7 +25,7 @@
             class="hidden md:flex justify-center space-x-24"
         >
             <div class="w-1/2 flex justify-end">
-                <img src="/images/main_pic.jpg" 
+                <img src={MAIN_PIC} 
                     alt="Nicolas Matute" class="h-auto w-3/4  rounded" />
             </div>
             <div class="w-1/2 flex flex-col justify-center items-center">
@@ -54,19 +39,19 @@
                 </div>
                 <ul class="list-none flex flex-col py-5">
                     <li class="flex items-center py-2">
-                        <Icon name="mdi:check-bold" color={ICON_COLOR} />
+                        <Icon icon="mdi:check-bold" color={ICON_COLOR} />
                         <span class="ml-2">Professional Experience</span>
                     </li>
                     <li class="flex items-center py-2">
-                        <Icon name="mdi:check-bold" color={ICON_COLOR} />
+                        <Icon icon="mdi:check-bold" color={ICON_COLOR} />
                         <span class="ml-2">Education, Certifications</span>
                     </li>
                     <li class="flex items-center py-2">
-                        <Icon name="mdi:check-bold" color={ICON_COLOR} />
+                        <Icon icon="mdi:check-bold" color={ICON_COLOR} />
                         <span class="ml-2">Tools, Skills and Languages</span>
                     </li>
                 </ul>
-                <ContactButton client:load />
+                <ContactButton />
             </div>
         </div>
         <MobileSection title="Resume" />
@@ -99,10 +84,10 @@
             md:text-3xl lg:text-4xl xl:text-5xl"
         >Work Experience</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
-            {
-                experience.map(item => <WorkExperienceItem data={item} />)
-            }
-        </div>
+            {#each experience as item}
+            <WorkExperienceItem data={item} />
+            {/each}
+        </div>          
     </section>
 
     <section class="cv-section mt-20 pt-10 flex flex-col">
@@ -113,9 +98,9 @@
             md:text-3xl lg:text-4xl xl:text-5xl"
         >Education</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
-            {
-                education.map(item => <EducationItem data={item} />)
-            }
+            {#each education as item}
+            <EducationItem data={item} />
+            {/each}
         </div>
     </section>
 
@@ -152,9 +137,9 @@
         >Languages</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
             <ul class="font-medium">
-                {
-                    languages.map(item => <li class="my-3">{item}</li>)
-                }
+                {#each languages as item}
+                <li class="my-3">{item}</li>
+                {/each}
             </ul>
         </div>
     </section>

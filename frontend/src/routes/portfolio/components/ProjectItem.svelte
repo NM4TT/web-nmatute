@@ -1,9 +1,11 @@
 <script lang="ts">
-export let data: Object = {
-    name: "Super Cool Project",
-    tags: "Amazing STACK",
-    url: "https://www.example.com"
-};
+	import type { ProjectItemType } from "$lib/types";
+
+  export let data: ProjectItemType = {
+      name: "Super Cool Project",
+      tags: "Amazing STACK",
+      url: "https://www.example.com"
+  };
 </script>
 
 <article 

@@ -1,9 +1,9 @@
-import type { Content } from "./server/api";
+import type { ContentType } from '$lib/types';
 
 export const imagePlaceholder = 
     (width: number, height: number = width): string => `https://placehold.co/${width}x${height}`;
 
-const sortByStartDate = (collection: Content[]): Content[] => {
+const sortByStartDate = (collection: ContentType[]): ContentType[] => {
     // Return a new sorted array without modifying the original collection
     return [...collection].sort((a, b) => Number(b.start) - Number(a.start));
 }
@@ -34,7 +34,7 @@ const calculateDuration = (startDate: Date, endDate?: Date): string => {
     return duration;
 }
 
-const formatDates = (item: Content): Content | undefined => {
+const formatDates = (item: ContentType): ContentType | undefined => {
     const monthNames = [
         "January", "February", "March", "April", "May", "June", 
         "July", "August", "September", "October", "November", "December"
@@ -64,7 +64,7 @@ const formatDates = (item: Content): Content | undefined => {
     };
 }
 
-export const formatItemDates  = (collection: Content[]): Content[] => {
+export const formatItemDates  = (collection: ContentType[]): ContentType[] => {
     const sortedData = sortByStartDate(collection);
     const formattedData = sortedData.map(item => {
         let formatedItem = formatDates(item);
@@ -76,7 +76,7 @@ export const formatItemDates  = (collection: Content[]): Content[] => {
     return formattedData;
 }
 
-export const formatProjects = (collection: Content[]): Content[] => {
+export const formatProjects = (collection: ContentType[]): ContentType[] => {
     return collection.map(input => {
         const regex = /^(.*?)(?:\s*\((.*?)\))?$/;
         const match = input.name.match(regex);

@@ -1,10 +1,12 @@
 <script lang="ts">
-export let data: Object = {
-    title: "Master Degree",
-    name: "Technological University Of Panama (UTP)",
-    start: "January 20**",
-    end: "Present",
-};
+	import type { EducationItemType } from "$lib/types";
+
+    export let data: EducationItemType = {
+        title: "Master Degree",
+        name: "Technological University Of Panama (UTP)",
+        start: "January 20**",
+        end: "Present",
+    };
 </script>
 
 <article class="mb-6">
