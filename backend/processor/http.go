@@ -1,15 +1,18 @@
 package processor
 
 import (
-	"log"
 	"net/http"
-	"os"
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/gorilla/mux"
-	"github.com/rs/cors"
 	"nmatute.com/web-nmatute-backend/graph"
+)
+
+var (
+	ORIGIN         string
+	ORIGIN_METHODS string
+	ORIGIN_HEADERS string
 )
 
 func ConfigureRoutes(router *mux.Router) {
@@ -37,21 +40,13 @@ func readinessCheck(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("OK"))
 }
 
-func ConfigureCors(router *mux.Router) http.Handler {
-	corsOrigin := "nmatute.com"
-	debugOrigin := os.Getenv("ORIGIN")
-	if debugOrigin != "" {
-		corsOrigin = debugOrigin
-	}
-	corsHandler := cors.New(cors.Options{
-		AllowedOrigins: []string{corsOrigin},
-		AllowedMethods: []string{"GET", "POST"},
-		//AllowedHeaders:   []string{"Content-Type", "Authorization"},
-		//AllowCredentials: true,
-		//Debug:            true,
+func AddCors(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Access-Control-Allow-Origin", ORIGIN)
+		w.Header().Set("Access-Control-Allow-Methods", ORIGIN_METHODS)
+		w.Header().Set("Access-Control-Allow-Headers", ORIGIN_HEADERS)
+		next.ServeHTTP(w, r)
 	})
-	log.Printf("\nORIGIN %s\n", corsOrigin)
-	return corsHandler.Handler(router)
 }
 
 /*func handleContact(w http.ResponseWriter, r *http.Request) {
