@@ -1,12 +1,24 @@
 <script lang="ts">
+  /** @type {import('./$types').PageData} */
+  export let data;
+
   import { MobileSection } from '$common/components';
 	import type { ProjectItemType } from '$lib/types';
   import ProjectItem from './components/ProjectItem.svelte';
-  export let projects: ProjectItemType[];
+
+  const { 
+      projects = [],
+  }: { 
+      projects?: ProjectItemType[]; 
+  } = data || {};
 </script>
 
+<svelte:head>
+    <title>Portfolio</title> 
+</svelte:head>
+
 <main id="portfolio" class="pt-10">
-    <section id="first" class="mt-5">
+    <section id="first" class="mt-5"> 
       <div 
         id="desktop-first-look"
         class="hidden md:flex justify-center space-x-24"

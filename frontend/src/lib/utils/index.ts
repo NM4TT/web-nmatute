@@ -1,4 +1,4 @@
-import type { ContentType } from '$lib/types';
+import type { ContentType, ProjectItemType } from '$lib/types';
 
 export const imagePlaceholder = 
     (width: number, height: number = width): string => `https://placehold.co/${width}x${height}`;
@@ -76,17 +76,16 @@ export const formatItemDates  = (collection: ContentType[]): ContentType[] => {
     return formattedData;
 }
 
-export const formatProjects = (collection: ContentType[]): ContentType[] => {
+export const formatProjects = (collection: ContentType[]): ProjectItemType[] => {
     return collection.map(input => {
         const regex = /^(.*?)(?:\s*\((.*?)\))?$/;
         const match = input.name.match(regex);
 
         // Destructure the result
-        const mainName = match ? match[1].trim() : '';
-        const tags = match && match[2] ? match[2].trim() : '';
+        const mainName = match ? match[1].trim() : "";
+        const tags = match && match[2] ? match[2].trim() : "";
 
         return {
-            ...input,
             name: mainName,
             tags: tags,
             url: input.url,

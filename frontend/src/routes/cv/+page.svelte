@@ -1,22 +1,34 @@
 <script lang="ts">
+    export let data;
     import Icon from "@iconify/svelte";
     import {
         ContactButton,
         MobileSection
     } from '$common/components';
     import MAIN_PIC from '$lib/assets/images/main_pic.jpg';
-    import Certifications from './components/Certifications.svelte';
-    import Keywords from './components/Keywords.svelte';
-    import EducationItem from './components/EducationItem.svelte';
-    import WorkExperienceItem from './components/WorkExperienceItem.svelte';
     import { ICON_COLOR } from '$lib/constants';
 	import type { EducationItemType, WorkExperienceItemType } from '$lib/types';
+    import Keywords from './components/Keywords.svelte';
+    import EducationItem from './components/EducationItem.svelte';
+	import WorkExperienceItem from "./components/WorkExperienceItem.svelte";
+	import Certifications from "./components/Certifications.svelte";
 
-    export let skills: string[];
-    export let languages: string[];
-    export let experience: WorkExperienceItemType[];
-    export let education: EducationItemType[];
+    const { 
+        experience = [], 
+        education = [], 
+        skills = [], 
+        languages = [] 
+    }: { 
+        experience?: WorkExperienceItemType[]; 
+        education?: EducationItemType[]; 
+        skills?: string[]; 
+        languages?: string[]; 
+    } = data || {};
 </script>
+
+<svelte:head>
+    <title>Resume</title> 
+</svelte:head>
 
 <main id="curriculum" class="pt-10">
     <section id="first" class="mt-5">
@@ -85,7 +97,7 @@
         >Work Experience</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
             {#each experience as item}
-            <WorkExperienceItem data={item} />
+                <WorkExperienceItem data={item} />
             {/each}
         </div>          
     </section>
@@ -99,7 +111,7 @@
         >Education</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
             {#each education as item}
-            <EducationItem data={item} />
+                <EducationItem data={item} />
             {/each}
         </div>
     </section>
@@ -138,7 +150,7 @@
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
             <ul class="font-medium">
                 {#each languages as item}
-                <li class="my-3">{item}</li>
+                    <li class="my-3">{item}</li>
                 {/each}
             </ul>
         </div>

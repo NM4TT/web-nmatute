@@ -8,6 +8,10 @@
     import CLOSE_PIC from '$lib/assets/images/close_pic.jpg'
 </script>
 
+<svelte:head>
+    <title>Biography</title> 
+</svelte:head>
+
 <main 
         id="biography" 
         class="pt-10 prose lg:prose-xl mx-auto max-w-6xl w-3/4"

@@ -6,7 +6,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"time"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -19,14 +18,22 @@ var port string = "80"
 var dataPath string = "/app/data/data.yaml"
 
 func init() {
+	var err error
 	godotenv.Load()
 	http.
 		DefaultTransport.(*http.Transport).
 		TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
-}
 
-func refreshData() {
-	var err error
+	customDataPath := os.Getenv("DATA_PATH")
+	if customDataPath != "" {
+		dataPath = customDataPath
+	}
+
+	customPort := os.Getenv("PORT")
+	if customPort != "" {
+		port = customPort
+	}
+
 	processor.MyData, err = processor.LoadData(dataPath)
 	if err != nil {
 		log.Fatal(err)
@@ -42,28 +49,10 @@ func main() {
 	processor.ConfigureRoutes(router)
 	protectedRouter := processor.ConfigureCors(router)
 
-	customDataPath := os.Getenv("DATA_PATH")
-	if customDataPath != "" {
-		dataPath = customDataPath
-	}
-
-	customPort := os.Getenv("PORT")
-	if customPort != "" {
-		port = customPort
-	}
-
 	svc := &http.Server{
 		Addr:    fmt.Sprintf(":%s", port),
 		Handler: handlers.CompressHandler(protectedRouter),
 	}
-	log.Printf("\n*** UP at %s ***\n", port)
+	log.Println(fmt.Sprintf("*** UP at %s ***", port))
 	log.Fatal(svc.ListenAndServe())
-
-	ticker := time.NewTicker(5 * time.Minute)
-	defer ticker.Stop()
-
-	refreshData()
-	for range ticker.C {
-		refreshData()
-	}
 }

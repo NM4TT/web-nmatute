@@ -22,7 +22,7 @@ export type WorkExperienceItemType = {
     start: string;
     end: string;
     tasks: string[];
-    difference: string;
+    difference?: string;
 }
 
 export type ProjectItemType = {

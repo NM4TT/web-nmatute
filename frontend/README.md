@@ -41,3 +41,11 @@ You can preview the production build with `npm run preview`.
 ## CSS
 
 npx tailwindcss -i ./src/app.css -o ./src/generated.css
+
+## Testing
+
+npm install --save-dev @playwright/test
+
+npx playwright install
+
+npx playwright test
