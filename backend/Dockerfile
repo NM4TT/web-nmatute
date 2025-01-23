@@ -20,5 +20,5 @@ COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /app/sillyapp /bin/sillyapp
 
 USER dummy
-EXPOSE 80
+EXPOSE 80 3000
 ENTRYPOINT ["/bin/sillyapp"]

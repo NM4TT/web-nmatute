@@ -1,0 +1,44 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+      args:
+        SERVER_URL: "http://backend"
+        PUBLIC_MAILTO: contact@nmatute.com #optional
+    ports:
+      - "8080:8080"
+    depends_on:
+      - backend
+    volumes:
+      - type: volume
+        source: frontend-data
+        target: /app/frontend
+        read_only: true
+    networks:
+      - web
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      ORIGIN: "localhost"
+    volumes:
+      - type: volume
+        source: backend-data
+        target: /app/backend
+        read_only: true
+      - type: bind
+        source: C:/workdir/nmatute.com/web-nmatute-test
+        target: /app/data
+        read_only: true
+    networks:
+      - web
+        
+
+networks:
+  web:
+
+volumes:
+  frontend-data:
+  backend-data:

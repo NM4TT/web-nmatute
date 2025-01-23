@@ -1,3 +1,7 @@
+<svelte:head>
+    <title>Oops</title> 
+</svelte:head>
+
 <main class="pt-10">
     <section class="flex flex-col">
       <h1 class="font-bold text-center self-center

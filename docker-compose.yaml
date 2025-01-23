@@ -1,0 +1,41 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        SERVER_URL: "http://backend"
+        PUBLIC_MAILTO: contact@nmatute.com #optional
+    ports:
+      - "443:443"
+    depends_on:
+      - backend
+    volumes:
+      - type: volume
+        source: frontend-data
+        target: /app/frontend
+        read_only: true
+    networks:
+      - web
+
+  backend:
+    build:
+      context: ./backend
+    volumes:
+      - type: volume
+        source: backend-data
+        target: /app/backend
+        read_only: true
+      - type: bind
+        source: /docker-data/web-nmatute
+        target: /app/data
+        read_only: true
+    networks:
+      - web
+        
+
+networks:
+  web:
+
+volumes:
+  frontend-data:
+  backend-data:
