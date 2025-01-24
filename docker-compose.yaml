@@ -1,12 +1,26 @@
-version: '3'
 services:
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./frontend/nginx.dev.conf:/etc/nginx/nginx.conf
+      - type: bind
+        source: /docker-data/web-nmatute
+        target: /app/config
+        read_only: true
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - frontend
+    networks:
+      - web
+
   frontend:
     build:
       context: ./frontend
-    environment:
-      PUBLIC_SERVER_URL: "/api"
-    ports:
-      - "443:443"
+      args:
+        SERVER_URL: "http://backend"
+        PUBLIC_MAILTO: contact@nmatute.com #optional
     depends_on:
       - backend
     volumes:
@@ -20,11 +34,6 @@ services:
   backend:
     build:
       context: ./backend
-    environment:
-      - ORIGIN=${ORIGIN}
-      - MAIL_ACCOUNT=${MAIL_ACCOUNT}
-      - MAIL_PASS=${MAIL_PASS}
-      - MAIL_SIGNATURE=${MAIL_SIGNATURE}
     volumes:
       - type: volume
         source: backend-data

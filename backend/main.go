@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -14,8 +15,13 @@ import (
 	"nmatute.com/web-nmatute-backend/processor"
 )
 
-var port string = "80"
-var dataPath string = "/app/data/data.yaml"
+var (
+	port          string = "80"
+	dataPath      string = "/app/data/data.yaml"
+	origin        string = "nmatute.com"
+	originMethods string = "GET"
+	originHeaders string = "Accept, Content-Type"
+)
 
 func init() {
 	var err error
@@ -42,17 +48,35 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	customOrigin := os.Getenv("ORIGIN")
+	customOriginMethods := os.Getenv("ORIGIN_METHODS")
+	customOriginHeaders := os.Getenv("ORIGIN_HEADERS")
+	if customOrigin != "" {
+		origin = customOrigin
+	}
+	if customOriginMethods != "" {
+		originMethods = strings.ToUpper(customOriginMethods)
+	}
+	if customOriginHeaders != "" {
+		originHeaders = customOriginHeaders
+	}
 }
 
 func main() {
+	processor.ORIGIN = origin
+	processor.ORIGIN_HEADERS = originHeaders
+	processor.ORIGIN_METHODS = originMethods
+
 	router := mux.NewRouter()
 	processor.ConfigureRoutes(router)
-	protectedRouter := processor.ConfigureCors(router)
 
 	svc := &http.Server{
 		Addr:    fmt.Sprintf(":%s", port),
-		Handler: handlers.CompressHandler(protectedRouter),
+		Handler: processor.AddCors(handlers.CompressHandler(router)),
 	}
-	log.Println(fmt.Sprintf("*** UP at %s ***", port))
+	log.Printf("ORIGIN: %s", origin)
+	log.Printf("ORIGIN_METHODS: %s", originMethods)
+	log.Printf("ORIGIN_HEADERS: %s", originHeaders)
+	log.Printf("*** UP at %s ***", port)
 	log.Fatal(svc.ListenAndServe())
 }

@@ -10,3 +10,5 @@ go run github.com/99designs/gqlgen generate
 useful links
 
 https://www.unixtimestamp.com/
+
+check vulnerabilities: govulncheck ./...
