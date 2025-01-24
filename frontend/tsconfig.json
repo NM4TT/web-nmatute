@@ -9,7 +9,8 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"moduleResolution": "node",
+		"moduleResolution": "node16",
+		"module": "Node16",
 		"baseUrl": "./src",
 		"paths": {
 			"$common/*": ["common/*"],

@@ -25,8 +25,10 @@ COPY ./tsconfig.json ./tsconfig.json
 
 ARG SERVER_URL
 ARG PUBLIC_MAILTO
+ARG PORT
 ENV SERVER_URL=${SERVER_URL}
 ENV PUBLIC_MAILTO=${PUBLIC_MAILTO}
+ENV PORT=${PORT}
 
 RUN npx tailwindcss -i ./src/app.css -o ./src/generated.css
 RUN npm run build

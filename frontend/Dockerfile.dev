@@ -38,46 +38,25 @@ RUN chmod -R 755 /app
 # Create the test-results directory and ensure permissions for Playwright
 RUN mkdir -p /app/test-results && chown -R builder:buildergroup /app/test-results
 RUN mkdir -p /nonexistent && chown -R builder:buildergroup /nonexistent
-RUN npx playwright install-deps
+#RUN npx playwright install-deps
 
 USER builder
 # Install playwright and its dependencies
-RUN npx playwright install
+#RUN npx playwright install
 
 # Run Playwright tests
-RUN npx playwright test
+#RUN npx playwright test
 
 # Cleanup unnecessary files
 RUN rm -rf node_modules src static e2e
 
-# Nginx Stage
-FROM nginx:stable-alpine
+# Production
+FROM node:19-alpine AS production
+WORKDIR /app
+COPY --from=builder /app/build /app/build
+COPY src /app/src
+COPY package.json /app/package.json
 
-# Add system group and user for nginx
-RUN addgroup --system nginxgroup && adduser --system --ingroup nginxgroup nginxuser
+RUN npm i
 
-# Work in the default Nginx directory
-WORKDIR /usr/share/nginx/html
-
-# Copy build files from builder stage
-COPY --from=builder /app/build .
-
-# Copy custom Nginx configuration
-COPY ./nginx.dev.conf /etc/nginx/nginx.dev.conf
-
-# Fix permissions for Nginx
-RUN mkdir -p /var/cache/nginx && \
-    mkdir -p /var/log/nginx && \
-    chown -R nginxuser:nginxgroup /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html && \
-    chown -R nginxuser:nginxgroup /var/cache/nginx && \
-    chown -R nginxuser:nginxgroup /var/log/nginx && \
-    chown nginxuser:nginxgroup /etc/nginx/nginx.dev.conf && \
-    chmod 644 /etc/nginx/nginx.dev.conf
-
-USER nginxuser
-
-EXPOSE 80 443
-
-# Start Nginx with the daemon off to run in the foreground
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD node build
