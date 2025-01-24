@@ -19,16 +19,12 @@ jobs:
 
       # Step 3: Upload code to VPS using FTPS    
       - name: 📂 Sync files
-        env:
-          FTP_HOST: 
-          FTP_USER: 
-          FTP_PASS: 
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          port: 990
+          port: 21
           protocol: ftps
           server-dir: ./web-nmatute/
           dangerous-clean-slate: true
