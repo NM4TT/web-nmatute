@@ -30,6 +30,7 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           port: 990
           protocol: ftps
+          server-dir: ./web-nmatute/
           dangerous-clean-slate: true
 
       # Step 4: Trigger docker-compose build via SSH
