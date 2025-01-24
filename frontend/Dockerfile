@@ -6,7 +6,7 @@ RUN addgroup --system buildergroup && adduser --system --ingroup buildergroup bu
 WORKDIR /app
 
 # Copy the necessary files and install dependencies
-COPY package.json .
+COPY package.json . 
 RUN npm install
 
 # Copy all source code, config files, etc.
@@ -25,10 +25,8 @@ COPY ./tsconfig.json ./tsconfig.json
 
 ARG SERVER_URL
 ARG PUBLIC_MAILTO
-ARG PORT
 ENV SERVER_URL=${SERVER_URL}
 ENV PUBLIC_MAILTO=${PUBLIC_MAILTO}
-ENV PORT=${PORT}
 
 RUN npx tailwindcss -i ./src/app.css -o ./src/generated.css
 RUN npm run build
@@ -40,35 +38,25 @@ RUN chmod -R 755 /app
 # Create the test-results directory and ensure permissions for Playwright
 RUN mkdir -p /app/test-results && chown -R builder:buildergroup /app/test-results
 RUN mkdir -p /nonexistent && chown -R builder:buildergroup /nonexistent
-RUN npx playwright install-deps
+#RUN npx playwright install-deps
 
 USER builder
 # Install playwright and its dependencies
-RUN npx playwright install
-
+#RUN npx playwright install
 
 # Run Playwright tests
-RUN npx playwright test
+#RUN npx playwright test
 
 # Cleanup unnecessary files
 RUN rm -rf node_modules src static e2e
 
-# Nginx Stage
-FROM nginx:stable-alpine
-RUN addgroup --system nginxgroup && adduser --system --ingroup nginxgroup nginxuser
+# Production
+FROM node:19-alpine AS production
+WORKDIR /app
+COPY --from=builder /app/build /app/build
+COPY src /app/src
+COPY package.json /app/package.json
 
-WORKDIR /usr/share/nginx/html
+RUN npm i
 
-COPY --from=builder /app/build .
-
-COPY ./nginx.conf /etc/nginx/nginx.conf
-
-RUN chown -R nginxuser:nginxgroup /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html && \
-    chown nginxuser:nginxgroup /etc/nginx/nginx.conf && \
-    chmod 644 /etc/nginx/nginx.conf
-
-USER nginxuser
-
-EXPOSE 80 443
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+CMD node build

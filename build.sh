@@ -9,18 +9,10 @@ if [[ "$1" == "--debug" || "$1" == "-d" ]]; then
   echo "Debug mode enabled: Using docker-compose.dev.yaml"
 fi
 
-# Backend service setup
-echo "Starting backend service..."
+docker container prune -f && docker image prune -a -f
+
 if [ "$DEBUG_MODE" = true ]; then
   docker-compose -f "./docker-compose.yaml" -f "./docker-compose.dev.yaml" up -d --build --force-recreate
 else
   docker-compose -f "./docker-compose.yaml" up -d --build --force-recreate
-fi
-
-# Frontend service setup
-echo "Starting frontend service..."
-if [ "$DEBUG_MODE" = true ]; then
-  docker-compose -f "./docker-compose.yaml" -f "./docker-compose.dev.yaml" up --build --force-recreate
-else
-  docker-compose -f "./docker-compose.yaml" up --build --force-recreate
 fi

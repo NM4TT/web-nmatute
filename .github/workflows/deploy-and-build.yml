@@ -14,9 +14,8 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      # Step 2: Install dependencies
-      - name: Install ssh
-        run: sudo apt update && sudo apt install -y openssh-client
+      - name: Install sshpass
+        run: sudo apt update && sudo apt install -y sshpass
 
       # Step 3: Upload code to VPS using FTPS    
       - name: 📂 Sync files
@@ -31,7 +30,6 @@ jobs:
           password: ${{ secrets.FTP_PASS }}
           port: 990
           protocol: ftps
-          server-dir: /home/silly/web-nmatute/
           dangerous-clean-slate: true
 
       # Step 4: Trigger docker-compose build via SSH
@@ -39,10 +37,9 @@ jobs:
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_KEY: ${{ secrets.SSH_KEY }}
+          SSH_PASS: ${{ secrets.SSH_PASS }}
+          SOURCE_PATH: ${{ secrets.SOURCE_PATH }}
         run: |
-            echo "$SSH_KEY" > private_key.pem
-            chmod 600 private_key.pem
-            ssh -i private_key.pem -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
-                cd /home/silly/web-nmatute && docker-compose up --build --force-recreate
-            "
+          sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
+            cd $SOURCE_PATH && ./build.sh
+          "
