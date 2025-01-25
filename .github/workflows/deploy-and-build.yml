@@ -38,7 +38,8 @@ jobs:
           SOURCE_PATH: ${{ secrets.SOURCE_PATH }}
         run: |
           sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
-            cd $SOURCE_PATH && \ 
-            docker container prune -f && docker image prune -a -f \
+            cd $SOURCE_PATH && \
+            docker container prune -f && \
+            docker image prune -a -f && \
             docker-compose -f "./docker-compose.yaml" up -d --build --force-recreate
           "
