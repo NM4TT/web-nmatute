@@ -41,5 +41,5 @@ jobs:
             cd $SOURCE_PATH && \
             docker container prune -f && \
             docker image prune -a -f && \
-            docker-compose -f "./docker-compose.yaml" up -d --build --force-recreate
+            docker compose -f "./docker-compose.yaml" up -d --build --force-recreate
           "
