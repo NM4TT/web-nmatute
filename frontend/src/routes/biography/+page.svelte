@@ -52,20 +52,18 @@
             md:text-3xl lg:text-4xl xl:text-5xl"
         >Early Life</h2>
         <p>
-            Manuel Nicolás Matute Zapata was born in Venezuela in the early 2000s. From a young age, he showed remarkable 
-            Nicolás was born in Venezuela in the early 2000s. From a young age, he developed a love for computing and had 
-            big dreams of leading a major company specializing in robotic assistants (though he admits these were "wild ideas"). 
-            As he grew older, he began to appreciate the power of learning—particularly the importance of studying things 
-            that truly interested him. During his adolescence, he realized he wasn’t a “genius” and might not be able to 
-            solve complex mathematical problems or find the cure for cancer. However, he learned that through discipline 
-            and hard work, he could still achieve remarkable things. This realization led him to embrace self-learning.
+            Manuel Nicolás Matute Zapata was born in Venezuela in the early 2000s, 2001 to be more specific. 
+            From a young age, he developed a strong interest in computers, especially video games. As he grew older, 
+            he began to appreciate the value of learning things that truly interested him. During his adolescence, 
+            he was an excellent student, but he did not see himself as a "genius."
         </p>
         <p>
-            Thanks to self-learning and the internet, Nicolás significantly improved his academic performance, earning the 
-            top honor in his high school, graduating with a degree in Computer Science.
+            However, even though he did not consider himself a genius, he always stood out for being disciplined and dedicated. 
+            Thanks to self-learning and the internet, Nicolás consistently achieved strong academic performance, earning the top honor 
+            in his high school and graduating with a degree in Computer Science.
         </p>
         <!-- svelte-ignore a11y_img_redundant_alt -->
-        <img src={PLACA_JARC} alt="My image" class="md:w-1/2">
+        <img src={PLACA_JARC} alt="top honor plate" class="md:w-1/2">
         
         <h2
             class="font-bold mb-10 text-2xl
@@ -83,13 +81,13 @@
         </p>
         <p>
             One of the most important career opportunities he encountered came when he landed a job as a programmer for 
-            Indra in Panama (a Spanish-based company). He worked there for a year and a half, gaining practical experience 
+            Indra in Panama. He worked there for a year and a half, gaining practical experience 
             with modern software development practices, often from the comfort of his home due to the remote nature of the job. 
-            Yet, even as a professional programmer, Nicolás wasn’t satisfied and continued learning new programming languages 
-            and tools on his own, particularly focusing on improving his English.
+            Yet, even as a professional programmer, Nicolás wasn't satisfied and continued learning new programming languages 
+            and technologies on his own.
         </p>
         <!-- svelte-ignore a11y_img_redundant_alt -->
-        <img src={INDRA_PIC} alt="My image" class="md:w-1/2">
+        <img src={INDRA_PIC} alt="selfie at Indra office" class="md:w-1/2">
         
         <h2
             class="font-bold mb-10 text-2xl
@@ -101,7 +99,7 @@
             His hard work paid off when an even more exciting opportunity arose: a remote programming position with a 
             U.S.-based company. Although the prospect of working in English, a language he had never spoken regularly, 
             was intimidating, Nicolás decided to go for it. He completed three interviews and secured the job, where he now 
-            continues to learn and work in a new language.
+            continues to learn and improve in new tools, programming languages and modern software engineering practices.
         </p>
         <p>
             Nicolás feels incredibly grateful for both the successes and challenges he has encountered, for the support from 
@@ -109,6 +107,6 @@
             to grow and explore new opportunities in the future.
         </p>
         <!-- svelte-ignore a11y_img_redundant_alt -->
-        <img src={RECENT_PIC} alt="My image" class="md:w-1/2">
+        <img src={RECENT_PIC} alt="recent selfie" class="md:w-1/2">
     </section>
 </main>
