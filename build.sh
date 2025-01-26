@@ -10,7 +10,6 @@ if [[ "$1" == "--debug" || "$1" == "-d" ]]; then
   echo "Debug mode enabled: Using docker-compose.dev.yaml"
 fi
 
-echo "$ROOT_PASS" | sudo -S chmod -R 750 .
 docker container prune -f && docker image prune -a -f
 
 if [ "$DEBUG_MODE" = true ]; then
