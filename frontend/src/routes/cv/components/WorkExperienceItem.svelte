@@ -23,10 +23,10 @@ import { ICON_COLOR } from '$lib/constants'
     </div>
     <div class="flex justify-normal my-1">
         <p>{data.start}</p>
-        <p class="ml-3">-</p>
-        <p class="ml-3">{data.end}</p>
-        <p class="ml-3 font-bold">|</p>
-        <p class="ml-3">{data.difference}</p>
+        <p class="ml-2">-</p>
+        <p class="ml-2">{data.end}</p>
+        <p class="ml-2 font-bold">|</p>
+        <p class="ml-2">{data.difference}</p>
     </div>
     <div class="my-2">
         <h4 class="font-medium">Responsibilities:</h4>

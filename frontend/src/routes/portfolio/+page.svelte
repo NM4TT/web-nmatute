@@ -34,7 +34,7 @@
         <p class="mx-4 md:mx-16 lg:mx-24 xl:mx-32">
           Welcome to my portfolio 💼. On this page, you will find the projects 
           I have done so far; these projects are not limited solely to programming. 
-          You can learn more about each one by clicking on it, 
+          Feel free to know more about each one by clicking on it, 
           which will direct you to a page with more information.
         </p>
       </div>

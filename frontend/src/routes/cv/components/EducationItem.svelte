@@ -14,7 +14,7 @@
     <p class="font-medium">{data.name}</p>
     <div class="flex justify-normal my-1">
         <p>{data.start}</p>
-        <p class="ml-3">-</p>
-        <p class="ml-3">{data.end}</p>
+        <p class="ml-2">-</p>
+        <p class="ml-2">{data.end}</p>
     </div>
 </article>

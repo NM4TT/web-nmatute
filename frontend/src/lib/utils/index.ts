@@ -36,8 +36,8 @@ const calculateDuration = (startDate: Date, endDate?: Date): string => {
 
 const formatDates = (item: ContentType): ContentType | undefined => {
     const monthNames = [
-        "January", "February", "March", "April", "May", "June", 
-        "July", "August", "September", "October", "November", "December"
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ];
 
     const startUnixTime = Number(item.start);
