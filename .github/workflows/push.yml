@@ -1,4 +1,4 @@
-name: deploy
+name: push
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  push:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,17 +29,3 @@ jobs:
           server-dir: ./uploads/web-nmatute/
           dangerous-clean-slate: true
 
-      # Step 4: Trigger docker-compose build via SSH
-      - name: Trigger docker-compose build
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_PASS: ${{ secrets.SSH_PASS }}
-          SOURCE_PATH: ${{ secrets.SOURCE_PATH }}
-        run: |
-          sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
-            cd $SOURCE_PATH && \
-            docker container prune -f && \
-            docker image prune -a -f && \
-            docker compose -f "./docker-compose.yaml" up -d --build --force-recreate
-          "
