@@ -35,6 +35,7 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_PASS: ${{ secrets.SSH_PASS }}
+          ROOT_PASS: ${{ secrets.ROOT_PASS }}
           SOURCE_PATH: ${{ secrets.SOURCE_PATH }}
         run: |
           sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST "
