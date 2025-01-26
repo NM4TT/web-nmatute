@@ -44,8 +44,13 @@
         <MobileSection title="Personal Biography" />
     </section>
 
-    <section class="bio-section">
-        <h2>Early Life</h2>
+    <section class="bio-section pt-10 flex flex-col">
+        <h2
+            class="font-bold mb-10 text-2xl
+            text-center self-center
+            w-1/3 border-b-2 border-secondary
+            md:text-3xl lg:text-4xl xl:text-5xl"
+        >Early Life</h2>
         <p>
             Manuel Nicolás Matute Zapata was born in Venezuela in the early 2000s. From a young age, he showed remarkable 
             Nicolás was born in Venezuela in the early 2000s. From a young age, he developed a love for computing and had 
@@ -60,9 +65,14 @@
             top honor in his high school, graduating with a degree in Computer Science.
         </p>
         <!-- svelte-ignore a11y_img_redundant_alt -->
-        <img src={PLACA_JARC} alt="My image">
+        <img src={PLACA_JARC} alt="My image" class="md:w-1/2">
         
-        <h2>Career</h2>
+        <h2
+            class="font-bold mb-10 text-2xl
+            text-center self-center
+            w-1/3 border-b-2 border-secondary
+            md:text-3xl lg:text-4xl xl:text-5xl"
+        >Career</h2>
         <p>
             After finishing high school, he began to wonder, as many do at that age, what to do with his life. Fortunately, 
             he already knew: he wanted to become a programmer. He started studying Java, the programming language that 
@@ -79,9 +89,14 @@
             and tools on his own, particularly focusing on improving his English.
         </p>
         <!-- svelte-ignore a11y_img_redundant_alt -->
-        <img src={INDRA_PIC} alt="My image">
+        <img src={INDRA_PIC} alt="My image" class="md:w-1/2">
         
-        <h2>Today</h2>
+        <h2
+            class="font-bold mb-10 text-2xl
+            text-center self-center
+            w-1/3 border-b-2 border-secondary
+            md:text-3xl lg:text-4xl xl:text-5xl"
+        >Today</h2>
         <p>
             His hard work paid off when an even more exciting opportunity arose: a remote programming position with a 
             U.S.-based company. Although the prospect of working in English, a language he had never spoken regularly, 
@@ -94,6 +109,6 @@
             to grow and explore new opportunities in the future.
         </p>
         <!-- svelte-ignore a11y_img_redundant_alt -->
-        <img src={RECENT_PIC} alt="My image">
+        <img src={RECENT_PIC} alt="My image" class="md:w-1/2">
     </section>
 </main>

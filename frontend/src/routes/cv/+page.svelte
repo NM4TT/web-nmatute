@@ -73,7 +73,7 @@
         <h2 
             class="font-bold mb-10 text-2xl
             text-center self-center
-            w-1/3 border-b-2 border-secondary
+            border-b-2 border-secondary
             md:text-3xl lg:text-4xl xl:text-5xl"
         >Who I Am</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
@@ -92,7 +92,7 @@
         <h2 
             class="font-bold mb-10 text-2xl
             text-center self-center
-            w-1/3 border-b-2 border-secondary
+            border-b-2 border-secondary
             md:text-3xl lg:text-4xl xl:text-5xl"
         >Work Experience</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
@@ -106,7 +106,7 @@
         <h2 
             class="font-bold mb-10 text-2xl
             text-center self-center
-            w-1/3 border-b-2 border-secondary
+            border-b-2 border-secondary
             md:text-3xl lg:text-4xl xl:text-5xl"
         >Education</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
@@ -120,7 +120,7 @@
         <h2 
             class="font-bold mb-10 text-2xl
             text-center self-center
-            w-1/3 border-b-2 border-secondary
+            border-b-2 border-secondary
             md:text-3xl lg:text-4xl xl:text-5xl"
         >Certifications</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
@@ -132,7 +132,7 @@
         <h2 
             class="font-bold mb-10 text-2xl
             text-center self-center
-            w-1/3 border-b-2 border-secondary
+            border-b-2 border-secondary
             md:text-3xl lg:text-4xl xl:text-5xl"
         >Tools & Skills</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
@@ -144,7 +144,7 @@
         <h2 
             class="font-bold mb-10 text-2xl
             text-center self-center
-            w-1/3 border-b-2 border-secondary
+            border-b-2 border-secondary
             md:text-3xl lg:text-4xl xl:text-5xl"
         >Languages</h2>
         <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
