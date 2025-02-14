@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../generated.css';
-	import { Header, Footer } from '$common/components';
+	import { Header, Footer } from '$common/components/index.js';
 	let { children } = $props();
 </script>
 

@@ -1,6 +1,6 @@
 import { SERVER_URL } from '$env/static/private';
-import type { ContentType } from '$lib/types';
-import { formatItemDates, formatProjects } from '$lib/utils';
+import type { ContentType } from '$lib/types/index.js';
+import { formatItemDates, formatProjects } from '$lib/utils/index.js';
 
 const DATA_URL = `${SERVER_URL}/query`
 

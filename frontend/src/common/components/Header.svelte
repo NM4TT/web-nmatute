@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DesktopMenu, MobileMenu, ContactButton, Logo } from '$common/components';
+import { DesktopMenu, MobileMenu, ContactButton, Logo } from '$common/components/index.js';
 </script>
 
 <header>

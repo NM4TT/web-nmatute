@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ProjectItemType } from "$lib/types";
+	import type { ProjectItemType } from "$lib/types/index.js";
 
   export let data: ProjectItemType = {
       name: "Super Cool Project",

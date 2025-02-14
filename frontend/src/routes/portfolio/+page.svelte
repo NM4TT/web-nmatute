@@ -2,9 +2,9 @@
   /** @type {import('./$types').PageData} */
   export let data;
 
-  import { MobileSection } from '$common/components';
-	import type { ProjectItemType } from '$lib/types';
-  import ProjectItem from './components/ProjectItem.svelte';
+  import { MobileSection } from '$common/components/index.js';
+	import type { ProjectItemType } from '$lib/types/index.js';
+  import { ProjectItem } from './components/index.js';
 
   const { 
       projects = [],

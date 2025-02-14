@@ -1,7 +1,7 @@
 <script lang="ts">
     import {
             MobileSection
-        } from '$common/components';
+        } from '$common/components/index.js';
     import PLACA_JARC from '$lib/assets/images/placa_jarc.jpg';
     import INDRA_PIC from '$lib/assets/images/indra_selfie.jpg';
     import RECENT_PIC from '$lib/assets/images/recent_pic.jpg';

@@ -1,5 +1,5 @@
 import type { PageLoad } from './$types';
-import type { ProjectItemType } from '$lib/types';
+import type { ProjectItemType } from '$lib/types/index.js';
 
 export const load: PageLoad = async ({ fetch }) => {
     const res = await fetch('/api/data');

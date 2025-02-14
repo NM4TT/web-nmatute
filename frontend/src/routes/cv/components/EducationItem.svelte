@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { EducationItemType } from "$lib/types";
+	import type { EducationItemType } from "$lib/types/index.js";
 
     export let data: EducationItemType = {
         title: "Master Degree",

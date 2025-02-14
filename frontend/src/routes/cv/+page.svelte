@@ -3,15 +3,13 @@
     import Icon from "@iconify/svelte";
     import {
         ContactButton,
-        MobileSection
-    } from '$common/components';
+        MobileSection,
+        SocialMedia
+    } from '$common/components/index.js';
     import MAIN_PIC from '$lib/assets/images/main_pic.jpg';
-    import { ICON_COLOR } from '$lib/constants';
-	import type { EducationItemType, WorkExperienceItemType } from '$lib/types';
-    import Keywords from './components/Keywords.svelte';
-    import EducationItem from './components/EducationItem.svelte';
-	import WorkExperienceItem from "./components/WorkExperienceItem.svelte";
-	import Certifications from "./components/Certifications.svelte";
+    import { ICON_COLOR, SOCIAL_MEDIA_LIST } from '$lib/constants/index.js';
+	import type { EducationItemType, WorkExperienceItemType } from '$lib/types/index.js';
+    import { Keywords, EducationItem, WorkExperienceItem, Certifications } from './components/index.js';
 
     const { 
         experience = [], 
@@ -48,6 +46,15 @@
                     <h2 class="font-medium mb-4 text-2xl lg:text-3xl xl:text-4xl">
                         Resume
                     </h2>
+                </div>
+                <div>
+                    <ul class="list-none flex items-center py-2">
+                        {#each SOCIAL_MEDIA_LIST as socialMedia}
+                            <li class="text-3xl xl:text-4xl px-2">
+                                <SocialMedia data={socialMedia} />
+                            </li>
+                        {/each}
+                    </ul>
                 </div>
                 <ul class="list-none flex flex-col py-5">
                     <li class="flex items-center py-2">

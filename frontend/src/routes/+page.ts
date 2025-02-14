@@ -1,5 +1,5 @@
 import type { PageLoad } from './cv/$types';
-import type { ContentType, EducationItemType, WorkExperienceItemType } from '$lib/types';
+import type { ContentType, EducationItemType, WorkExperienceItemType } from '$lib/types/index.js';
 
 export const load: PageLoad  = async ({ fetch }) => {
     const res = await fetch('/api/data');

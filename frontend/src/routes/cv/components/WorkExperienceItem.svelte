@@ -1,6 +1,6 @@
 <script lang="ts">
-import { ICON_COLOR } from '$lib/constants'
-	import type { WorkExperienceItemType } from '$lib/types';
+import { ICON_COLOR } from '$lib/constants/index.js'
+	import type { WorkExperienceItemType } from '$lib/types/index.js';
     export let data: WorkExperienceItemType = {
         name: "Tech Corp",
         role: "Software Developer",
