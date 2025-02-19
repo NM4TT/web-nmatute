@@ -15,7 +15,7 @@ services:
         target: /app/frontend
         read_only: true
     networks:
-      - nginx-subdomain-proxy
+      - web-nmatute
 
   backend:
     container_name: nmatute-backend
@@ -31,7 +31,12 @@ services:
         target: /app/data
         read_only: true
     networks:
-      - nginx-subdomain-proxy
+      - web-nmatute
+
+networks:
+  web-nmatute:
+    name: web-nmatute-network
+
 
 volumes:
   frontend-data:
