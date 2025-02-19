@@ -13,7 +13,7 @@ fi
 docker container prune -f && docker image prune -a -f
 
 if [ "$DEBUG_MODE" = true ]; then
-  docker compose -f "./docker-compose.yaml" -f "./docker-compose.dev.yaml" up -d --build --force-recreate
+  docker compose -f "docker-compose.yaml" -f "docker-compose.dev.yaml" up -d --build --force-recreate
 else
-  docker compose -f "./docker-compose.yaml" up -d --build --force-recreate
+  docker compose -f "docker-compose.yaml" up -d --build --force-recreate
 fi

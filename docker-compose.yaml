@@ -1,25 +1,11 @@
 services:
-  nginx:
-    image: nginx:alpine
-    volumes:
-      - ./frontend/nginx.conf:/etc/nginx/nginx.conf
-      - type: bind
-        source: /docker-data/web-nmatute
-        target: /app/config
-        read_only: true
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - frontend
-    networks:
-      - web
 
   frontend:
+    container_name: nmatute-frontend
     build:
       context: ./frontend
       args:
-        SERVER_URL: "http://backend"
+        SERVER_URL: "http://nmatute-backend"
         PUBLIC_MAILTO: contact@nmatute.com #optional
     depends_on:
       - backend
@@ -29,9 +15,10 @@ services:
         target: /app/frontend
         read_only: true
     networks:
-      - web
+      - nginx-subdomain-proxy
 
   backend:
+    container_name: nmatute-backend
     build:
       context: ./backend
     volumes:
@@ -44,11 +31,7 @@ services:
         target: /app/data
         read_only: true
     networks:
-      - web
-        
-
-networks:
-  web:
+      - nginx-subdomain-proxy
 
 volumes:
   frontend-data:
