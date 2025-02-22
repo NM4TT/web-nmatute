@@ -39,8 +39,8 @@ You can preview the production build with `npm run preview`.
 
 
 ## CSS
-
-npx tailwindcss -i ./src/app.css -o ./src/generated.css
+npm install tailwindcss @tailwindcss/cli
+npx @tailwindcss/cli -i ./src/app.css -o ./src/generated.css
 
 ## Testing
 

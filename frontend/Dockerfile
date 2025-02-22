@@ -18,7 +18,6 @@ COPY ./eslint.config.js ./eslint.config.js
 COPY ./svelte.config.js ./svelte.config.js
 COPY ./package.json ./package.json
 COPY ./playwright.config.ts ./playwright.config.ts
-COPY ./postcss.config.js ./postcss.config.js
 COPY ./tailwind.config.ts ./tailwind.config.ts
 COPY ./vite.config.ts ./vite.config.ts
 COPY ./tsconfig.json ./tsconfig.json
@@ -28,7 +27,7 @@ ARG PUBLIC_MAILTO
 ENV SERVER_URL=${SERVER_URL}
 ENV PUBLIC_MAILTO=${PUBLIC_MAILTO}
 
-RUN npx tailwindcss -i ./src/app.css -o ./src/generated.css
+RUN npx @tailwindcss/cli -i ./src/app.css -o ./src/generated.css
 RUN npm run build
 
 # Ensure permissions are correct for the app directory and any files that need write access
