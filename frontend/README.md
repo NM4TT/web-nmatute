@@ -39,8 +39,7 @@ You can preview the production build with `npm run preview`.
 
 
 ## CSS
-npm install tailwindcss @tailwindcss/cli
-npx @tailwindcss/cli -i ./src/app.css -o ./src/generated.css
+https://tailwindcss.com/docs/installation/framework-guides/sveltekit
 
 ## Testing
 

@@ -27,7 +27,6 @@ ARG PUBLIC_MAILTO
 ENV SERVER_URL=${SERVER_URL}
 ENV PUBLIC_MAILTO=${PUBLIC_MAILTO}
 
-RUN npx @tailwindcss/cli -i ./src/app.css -o ./src/generated.css
 RUN npm run build
 
 # Ensure permissions are correct for the app directory and any files that need write access
