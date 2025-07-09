@@ -13,7 +13,6 @@
 		"module": "Node16",
 		"baseUrl": "./src",
 		"paths": {
-			"$common/*": ["common/*"],
 			"$lib/*": ["lib/*"],
 		}
 	}

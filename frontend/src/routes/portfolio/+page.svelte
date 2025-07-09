@@ -2,9 +2,9 @@
   /** @type {import('./$types').PageData} */
   export let data;
 
-  import { MobileSection } from '$common/components/index.js';
+  import { MobileSection } from '$lib/components/common/index.js';
 	import type { ProjectItemType } from '$lib/types/index.js';
-  import { ProjectItem } from './components/index.js';
+  import { ProjectItem } from '$lib/components/portfolio/index.js';
 
   const { 
       projects = [],
@@ -40,7 +40,7 @@
       </div>
     </section>
 
-    <section class="portfolio-section mt-15 pt-10 flex flex-col">
+    <section class="portfolio-section mt-[3.75rem] pt-10 flex flex-col">
       <div 
         class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32
         grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3

@@ -5,9 +5,9 @@
 export let title: string = "Dummy Title";
 </script>
 
-<div id="mobile-first-look" class="md:hidden max-md:flex flex-col justify-center">
+<div id="mobile-first-look" class="md:hidden flex flex-col justify-center">
     <div class="flex justify-center">
-        <h1 class="font-bold text-center pb-4 max-xs:text-2.5xl max-sm:text-4xl max-md:text-5xl">
+        <h1 class="font-bold text-center pb-4 text-xl sm:text-3xl md:text-5xl">
             { title }
         </h1>
     </div>
@@ -15,7 +15,7 @@ export let title: string = "Dummy Title";
     <div class="flex justify-center">
         <ul class="list-none flex items-center">
             {#each SOCIAL_MEDIA_LIST as socialMedia}
-                <li class="max-xs:text-2.5xl max-sm:text-4xl max-md:text-5xl px-2">
+                <li class="text-xl sm:text-3xl md:text-5xl px-2">
                     <SocialMedia data={socialMedia} />
                 </li>
             {/each}

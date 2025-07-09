@@ -5,11 +5,10 @@
         ContactButton,
         MobileSection,
         SocialMedia
-    } from '$common/components/index.js';
-    import MAIN_PIC from '$lib/assets/images/main_pic.jpg';
+    } from '$lib/components/common/index.js';
     import { ICON_COLOR, SOCIAL_MEDIA_LIST } from '$lib/constants/index.js';
 	import type { EducationItemType, WorkExperienceItemType } from '$lib/types/index.js';
-    import { Keywords, EducationItem, WorkExperienceItem, Certifications } from './components/index.js';
+    import { Keywords, EducationItem, WorkExperienceItem, Certifications } from '$lib//components/cv/index.js';
 
     const { 
         experience = [], 
@@ -35,7 +34,7 @@
             class="hidden md:flex justify-center space-x-24"
         >
             <div class="w-1/2 flex justify-end">
-                <img src={MAIN_PIC} 
+                <img src="/images/main_pic.jpg" 
                     alt="Nicolas Matute" class="h-auto w-3/4  rounded" />
             </div>
             <div class="w-1/2 flex flex-col justify-center items-center">

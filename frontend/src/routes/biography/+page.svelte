@@ -1,11 +1,7 @@
 <script lang="ts">
     import {
             MobileSection
-        } from '$common/components/index.js';
-    import PLACA_JARC from '$lib/assets/images/placa_jarc.jpg';
-    import INDRA_PIC from '$lib/assets/images/indra_selfie.jpg';
-    import RECENT_PIC from '$lib/assets/images/recent_pic.jpg';
-    import CLOSE_PIC from '$lib/assets/images/close_pic.jpg'
+        } from '$lib/components/common/index.js';
 </script>
 
 <svelte:head>
@@ -37,7 +33,7 @@
                 </p>
             </div>
             <div class="w-1/2 flex justify-end">
-                <img src={CLOSE_PIC}
+                <img src="/images/close_pic.jpg"
                     alt="Nicolas Matute" class="h-auto w-3/4" />
             </div>
         </div>
@@ -63,7 +59,7 @@
             in his high school and graduating with a degree in Computer Science.
         </p>
         <!-- svelte-ignore a11y_img_redundant_alt -->
-        <img src={PLACA_JARC} alt="top honor plate" class="md:w-1/2">
+        <img src="/images/placa_jarc.jpg" alt="top honor plate" class="md:w-1/2">
         
         <h2
             class="font-bold mb-10 text-2xl
@@ -87,7 +83,7 @@
             and technologies on his own.
         </p>
         <!-- svelte-ignore a11y_img_redundant_alt -->
-        <img src={INDRA_PIC} alt="selfie at Indra office" class="md:w-1/2">
+        <img src="/images/indra_selfie.jpg" alt="selfie at Indra office" class="md:w-1/2">
         
         <h2
             class="font-bold mb-10 text-2xl
@@ -107,6 +103,6 @@
             to grow and explore new opportunities in the future.
         </p>
         <!-- svelte-ignore a11y_img_redundant_alt -->
-        <img src={RECENT_PIC} alt="recent selfie" class="md:w-1/2">
+        <img src="/images/recent_pic.jpg" alt="recent selfie" class="md:w-1/2">
     </section>
 </main>
