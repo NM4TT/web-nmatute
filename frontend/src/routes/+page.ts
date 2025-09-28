@@ -2,7 +2,7 @@ import type { PageLoad } from './cv/$types';
 import type { ContentType, EducationItemType, WorkExperienceItemType } from '$lib/types/index.js';
 
 export const load: PageLoad  = async ({ fetch }) => {
-    const res = await fetch('/api/data');
+    const res = await fetch('/app/data');
 
     if (!res.ok) {
         console.error("Failed to fetch data:", res.statusText);
