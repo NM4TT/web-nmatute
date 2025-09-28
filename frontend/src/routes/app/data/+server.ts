@@ -1,8 +1,8 @@
-import { SERVER_URL } from '$env/static/private';
+import { BACKEND_ORIGIN } from '$env/static/private';
 import type { ContentType } from '$lib/types/index.js';
 import { formatItemDates, formatProjects } from '$lib/utils/index.js';
 
-const DATA_URL = `${SERVER_URL}/query`
+const DATA_URL = `${BACKEND_ORIGIN}/query`
 
 export async function GET() {
     const skills = await getKeywords("tools-skills");

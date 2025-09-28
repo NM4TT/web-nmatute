@@ -1,7 +1,7 @@
 import { json } from '@sveltejs/kit';
-import { SERVER_URL } from '$env/static/private';
+import { BACKEND_ORIGIN } from '$env/static/private';
 
-const NOTIFY_URL = `${SERVER_URL}/contact`
+const NOTIFY_URL = `${BACKEND_ORIGIN}/contact`
 
 export async function POST({ request }: { request: Request }) {
     try {

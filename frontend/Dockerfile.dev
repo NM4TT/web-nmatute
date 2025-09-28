@@ -23,9 +23,9 @@ COPY ./tailwind.config.ts ./tailwind.config.ts
 COPY ./vite.config.ts ./vite.config.ts
 COPY ./tsconfig.json ./tsconfig.json
 
-ARG SERVER_URL
+ARG BACKEND_ORIGIN
 ARG PUBLIC_MAILTO
-ENV SERVER_URL=${SERVER_URL}
+ENV BACKEND_ORIGIN=${BACKEND_ORIGIN}
 ENV PUBLIC_MAILTO=${PUBLIC_MAILTO}
 
 RUN npx tailwindcss -i ./src/app.css -o ./src/generated.css

@@ -15,7 +15,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.dev
       args:
-        SERVER_URL: "http://backend"
+        BACKEND_ORIGIN: "http://backend"
         PUBLIC_MAILTO: contact@nmatute.com #optional
     depends_on:
       - backend
