@@ -13,7 +13,7 @@ services:
   frontend:
     container_name: nmatute-frontend
     restart: always
-    expose: ["80"]
+    expose: ["3000"]
     build:
       context: ./frontend
       args:
@@ -30,7 +30,7 @@ services:
       - "traefik.http.routers.nmatute.rule=Host(`nmatute.com`)"
       - "traefik.http.routers.nmatute.entrypoints=websecure"
       - "traefik.http.routers.nmatute.tls=true"
-      - "traefik.http.services.nmatute.loadbalancer.server.port=80"
+      - "traefik.http.services.nmatute.loadbalancer.server.port=3000"
 
   backend:
     container_name: nmatute-backend
