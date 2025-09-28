@@ -11,6 +11,9 @@ COPY ./gqlgen.yml ./gqlgen.yml
 COPY ./tools.go ./tools.go
 COPY ./main.go ./main.go
 
+ARG PORT
+ENV PORT=${PORT}
+
 RUN go mod tidy
 RUN go mod download && go test -v ./...
 RUN CGO_ENABLED=0 go build -v -o sillyapp

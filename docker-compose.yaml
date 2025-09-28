@@ -37,6 +37,8 @@ services:
     restart: always
     build:
       context: ./backend
+      args:
+        PORT: 8000
     volumes:
       - type: bind
         source: /docker-data/web-nmatute
