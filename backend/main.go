@@ -2,11 +2,10 @@ package main
 
 import (
 	"crypto/tls"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
-	"strings"
+	"time"
 
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
@@ -16,67 +15,52 @@ import (
 )
 
 var (
-	port          string = "80"
-	dataPath      string = "/app/data/data.yaml"
-	origin        string = "nmatute.com"
-	originMethods string = "GET"
-	originHeaders string = "Accept, Content-Type"
+	port     = "80"
+	dataPath = "/app/data/data.yaml"
 )
 
 func init() {
-	var err error
 	godotenv.Load()
-	http.
-		DefaultTransport.(*http.Transport).
-		TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 
-	customDataPath := os.Getenv("DATA_PATH")
-	if customDataPath != "" {
-		dataPath = customDataPath
+	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+
+	if v := os.Getenv("DATA_PATH"); v != "" {
+		dataPath = v
+	}
+	if v := os.Getenv("PORT"); v != "" {
+		port = v
 	}
 
-	customPort := os.Getenv("PORT")
-	if customPort != "" {
-		port = customPort
-	}
-
+	var err error
 	processor.MyData, err = processor.LoadData(dataPath)
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = processor.ParseDataToSchema()
-	if err != nil {
+	if err = processor.ParseDataToSchema(); err != nil {
 		log.Fatal(err)
-	}
-	customOrigin := os.Getenv("ORIGIN")
-	customOriginMethods := os.Getenv("ORIGIN_METHODS")
-	customOriginHeaders := os.Getenv("ORIGIN_HEADERS")
-	if customOrigin != "" {
-		origin = customOrigin
-	}
-	if customOriginMethods != "" {
-		originMethods = strings.ToUpper(customOriginMethods)
-	}
-	if customOriginHeaders != "" {
-		originHeaders = customOriginHeaders
 	}
 }
 
 func main() {
-	processor.ORIGIN = origin
-	processor.ORIGIN_HEADERS = originHeaders
-	processor.ORIGIN_METHODS = originMethods
-
 	router := mux.NewRouter()
 	processor.ConfigureRoutes(router)
 
-	svc := &http.Server{
-		Addr:    fmt.Sprintf(":%s", port),
-		Handler: processor.AddCors(handlers.CompressHandler(router)),
+	// Middlewares: compression -> router
+	var h http.Handler = router
+	h = handlers.CompressHandler(h)
+
+	srv := &http.Server{
+		Addr:              ":" + port,
+		Handler:           h,
+		ReadHeaderTimeout: 5 * time.Second,
+		IdleTimeout:       60 * time.Second,
 	}
-	log.Printf("ORIGIN: %s", origin)
-	log.Printf("ORIGIN_METHODS: %s", originMethods)
-	log.Printf("ORIGIN_HEADERS: %s", originHeaders)
-	log.Printf("*** UP at %s ***", port)
-	log.Fatal(svc.ListenAndServe())
+
+	log.Printf("PORT=%s", port)
+	log.Printf("DATA_PATH=%s", dataPath)
+	log.Printf("*** UP at :%s ***", port)
+
+	if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		log.Fatal(err)
+	}
 }

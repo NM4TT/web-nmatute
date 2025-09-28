@@ -9,12 +9,6 @@ import (
 	"nmatute.com/web-nmatute-backend/graph"
 )
 
-var (
-	ORIGIN         string
-	ORIGIN_METHODS string
-	ORIGIN_HEADERS string
-)
-
 func ConfigureRoutes(router *mux.Router) {
 	router.HandleFunc("/liveness", livenessCheck).Methods("GET")
 	router.HandleFunc("/readiness", readinessCheck).Methods("GET")
@@ -38,15 +32,6 @@ func readinessCheck(w http.ResponseWriter, r *http.Request) {
 	}
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("OK"))
-}
-
-func AddCors(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", ORIGIN)
-		w.Header().Set("Access-Control-Allow-Methods", ORIGIN_METHODS)
-		w.Header().Set("Access-Control-Allow-Headers", ORIGIN_HEADERS)
-		next.ServeHTTP(w, r)
-	})
 }
 
 /*func handleContact(w http.ResponseWriter, r *http.Request) {
