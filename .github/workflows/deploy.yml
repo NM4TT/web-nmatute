@@ -47,3 +47,17 @@ jobs:
             cd /home/${{ secrets.SSH_USER }}/deploys/${{ vars.DIRECTORY_NAME }}
             chmod +x build.sh
             ./build.sh
+
+      - name: Send success email
+        if: ${{ success() }}
+        uses: dawidd6/action-send-mail@v6
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: 587
+          secure: false         # 587 → STARTTLS
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: "✅ CI succeeded on ${{ github.repository }}@${{ github.ref_name }}"
+          to: manuelnmatute@gmail.com
+          from: "NMATUTE Automation <no-reply@nmatute.com>"
+          body: "Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
