@@ -1,43 +1,58 @@
-services:
+networks:
+  traefik:
+    external: true
+    name: traefik
+  web-nmatute:
+    internal: true
+    name: web-nmatute
 
+volumes:
+  backend-data:
+
+services:
   frontend:
     container_name: nmatute-frontend
+    restart: always
+    expose: ["8080"]
     build:
       context: ./frontend
       args:
-        SERVER_URL: "http://nmatute-backend"
+        SERVER_URL: "/api"
         PUBLIC_MAILTO: contact@nmatute.com #optional
     depends_on:
       - backend
-    volumes:
-      - type: volume
-        source: frontend-data
-        target: /app/frontend
-        read_only: true
     networks:
+      - traefik
       - web-nmatute
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik
+      - traefik.http.routers.nmatute.rule=Host(`nmatute.com`, `www.nmatute.com`)
+      - traefik.http.routers.nmatute.entrypoints=websecure
+      - traefik.http.routers.nmatute.tls=true
+      - traefik.http.services.nmatute.loadbalancer.server.port=8080
 
   backend:
     container_name: nmatute-backend
+    restart: always
     build:
       context: ./backend
     volumes:
-      - type: volume
-        source: backend-data
-        target: /app/backend
-        read_only: true
       - type: bind
         source: /docker-data/web-nmatute
         target: /app/data
         read_only: true
     networks:
+      - traefik
       - web-nmatute
-
-networks:
-  web-nmatute:
-    name: web-nmatute-network
-
-
-volumes:
-  frontend-data:
-  backend-data:
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=traefik
+      - traefik.http.routers.nmatute-api.rule=Host(`nmatute.com`, `www.nmatute.com`) && PathPrefix(`/api`)
+      - traefik.http.routers.nmatute-api.priority=1000
+      - traefik.http.routers.nmatute-api.entrypoints=websecure
+      - traefik.http.routers.nmatute-api.tls=true
+      - traefik.http.services.nmatute-api.loadbalancer.server.port=8000
+      # strip /api before proxying to the backend
+      - traefik.http.middlewares.nmatute-strip.stripprefix.prefixes=/api
+      - traefik.http.routers.nmatute-api.middlewares=nmatute-strip

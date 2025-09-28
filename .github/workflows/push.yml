@@ -1,31 +1,49 @@
-name: push
-
+name: deploy
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  push:
+  deploy:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
-      # Step 1: Checkout the code
-      - name: 🚚 Get latest code
+      - name: Checkout (shallow)
         uses: actions/checkout@v4
-
-      - name: Install sshpass
-        run: sudo apt update && sudo apt install -y sshpass
-
-      # Step 3: Upload code to VPS using FTPS    
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          port: 21
-          protocol: ftps
-          server-dir: ./uploads/web-nmatute/
-          dangerous-clean-slate: true
+          fetch-depth: 1
 
+      - name: Upload files via SCP
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          # Explicit list beats "." — tailor to what build.sh needs:
+          source: "backend,frontend,Dockerfile,docker-compose.yaml,build.sh"
+          target: "/home/${{ secrets.SSH_USER }}/deploys/${{ vars.DIRECTORY_NAME }}"
+          overwrite: true
+
+      - name: Run remote build
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 22
+          command_timeout: 30m
+          script: |
+            set -euo pipefail
+            cd /home/${{ secrets.SSH_USER }}/deploys/${{ vars.DIRECTORY_NAME }}
+            chmod +x build.sh
+            ./build.sh
