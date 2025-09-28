@@ -1,31 +1,16 @@
 <nav id="desktop">
-    <ul class="flex justify-between font-medium">
-        <li 
-            class="relative px-3 hover:text-secondary 
-            after:content-[''] after:absolute 
-            after:left-1/2 after:bottom-0 
-            after:w-0 after:h-[2px] after:bg-secondary 
-            after:transition-all after:duration-300 
-            hover:after:left-0 hover:after:w-full">
-            <a href="/">Resume</a>
-        </li>
-        <li 
-            class="relative px-3 hover:text-secondary 
-            after:content-[''] after:absolute 
-            after:left-1/2 after:bottom-0 
-            after:w-0 after:h-[2px] after:bg-secondary 
-            after:transition-all after:duration-300 
-            hover:after:left-0 hover:after:w-full">
-            <a href="/portfolio">Portfolio</a>
-        </li>
-        <li  
-            class="relative px-3 hover:text-secondary 
-            after:content-[''] after:absolute 
-            after:left-1/2 after:bottom-0 
-            after:w-0 after:h-[2px] after:bg-secondary 
-            after:transition-all after:duration-300 
-            hover:after:left-0 hover:after:w-full">
-            <a href="/biography">Biography</a>
-        </li>
-    </ul>
+  <ul class="flex justify-between font-medium">
+    <li class="group relative px-3">
+      <a href="/" class="hover:text-secondary transition-colors duration-300">Resume</a>
+      <span class="absolute left-1/2 bottom-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:left-0 group-hover:w-full"></span>
+    </li>
+    <li class="group relative px-3">
+      <a href="/portfolio" class="hover:text-secondary transition-colors duration-300">Portfolio</a>
+      <span class="absolute left-1/2 bottom-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:left-0 group-hover:w-full"></span>
+    </li>
+    <li class="group relative px-3">
+      <a href="/biography" class="hover:text-secondary transition-colors duration-300">Biography</a>
+      <span class="absolute left-1/2 bottom-0 w-0 h-[2px] bg-secondary transition-all duration-300 group-hover:left-0 group-hover:w-full"></span>
+    </li>
+  </ul>
 </nav>
