@@ -13,7 +13,7 @@ services:
   frontend:
     container_name: nmatute-frontend
     restart: always
-    expose: ["8080"]
+    expose: ["80"]
     build:
       context: ./frontend
       args:
@@ -30,16 +30,14 @@ services:
       - "traefik.http.routers.nmatute.rule=Host(`nmatute.com`)"
       - "traefik.http.routers.nmatute.entrypoints=websecure"
       - "traefik.http.routers.nmatute.tls=true"
-      - "traefik.http.services.nmatute.loadbalancer.server.port=8080"
+      - "traefik.http.services.nmatute.loadbalancer.server.port=80"
 
   backend:
     container_name: nmatute-backend
     restart: always
-    expose: ["8000"]
+    expose: ["80"]
     build:
       context: ./backend
-      args:
-        PORT: 8000
     volumes:
       - type: bind
         source: /docker-data/web-nmatute
@@ -55,6 +53,6 @@ services:
       - "traefik.http.routers.nmatute-api.priority=1000"
       - "traefik.http.routers.nmatute-api.entrypoints=websecure"
       - "traefik.http.routers.nmatute-api.tls=true"
-      - "traefik.http.services.nmatute-api.loadbalancer.server.port=8000"
+      - "traefik.http.services.nmatute-api.loadbalancer.server.port=80"
       - "traefik.http.middlewares.nmatute-strip.stripprefix.prefixes=/api"
       - "traefik.http.routers.nmatute-api.middlewares=nmatute-strip"
