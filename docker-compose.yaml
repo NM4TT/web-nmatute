@@ -35,6 +35,7 @@ services:
   backend:
     container_name: nmatute-backend
     restart: always
+    expose: ["8000"]
     build:
       context: ./backend
       args:
