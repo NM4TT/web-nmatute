@@ -23,8 +23,8 @@
     <!-- Background overlay -->
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-    <div 
-      class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-xs z-50"
+    <div
+      class="fixed inset-0 bg-transparent backdrop-blur-sm z-50"
       on:click={toggleMenu}
       role="dialog"
       aria-modal="true"
