@@ -1,0 +1,23 @@
+networks:
+  web:
+    internal: true
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        BACKEND_ORIGIN: "http://backend"
+        PUBLIC_MAILTO: contact-me.fable876@passmail.com
+    depends_on:
+      - backend
+    ports:
+      - "80:3000"
+    networks:
+      - web
+
+  backend:
+    build:
+      context: ./backend
+    networks:
+      - web

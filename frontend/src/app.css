@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary:        #FFFFFF;
+  --color-secondary:      #a19f88;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Sora", var(--font-sans);
+  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.bio-section img { @apply mx-auto w-full md:w-1/2 rounded-lg py-6; }

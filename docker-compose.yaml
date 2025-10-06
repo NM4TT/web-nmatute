@@ -1,0 +1,37 @@
+networks:
+  traefik:
+    external: true
+    name: traefik
+  web-nmatute:
+    internal: true
+    name: web-nmatute
+
+services:
+  frontend:
+    restart: always
+    expose: ["3000"]
+    build:
+      context: ./frontend
+      args:
+        BACKEND_ORIGIN: "http://backend"
+        PUBLIC_MAILTO: contact-me.fable876@passmail.com
+    depends_on:
+      - backend
+    networks:
+      - traefik
+      - web-nmatute
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      - "traefik.http.routers.nmatute.rule=Host(`nmatute.com`)"
+      - "traefik.http.routers.nmatute.entrypoints=websecure"
+      - "traefik.http.routers.nmatute.tls=true"
+      - "traefik.http.services.nmatute.loadbalancer.server.port=3000"
+
+  backend:
+    restart: always
+    expose: ["80"]
+    build:
+      context: ./backend
+    networks:
+      - web-nmatute
