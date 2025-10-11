@@ -17,7 +17,7 @@
     <title>Nicolas Portfolio</title> 
 </svelte:head>
 
-<main id="portfolio" class="pt-10">
+<div id="portfolio" class="pt-10">
     <section id="first" class="mt-5"> 
       <div 
         id="desktop-first-look"
@@ -50,4 +50,4 @@
         {/each}
       </div>
     </section>
-</main>
+</div>

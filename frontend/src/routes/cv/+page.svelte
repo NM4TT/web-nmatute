@@ -28,7 +28,7 @@
     <title>Nicolas Resume</title> 
 </svelte:head>
 
-<main id="curriculum" class="pt-10">
+<div id="curriculum" class="pt-10">
     <section id="first" class="mt-5">
         <div
             id="desktop-first-look"
@@ -162,4 +162,4 @@
             </ul>
         </div>
     </section>
-</main>
+</div>

@@ -12,7 +12,7 @@
     <title>Nicolas Biography</title> 
 </svelte:head>
 
-<main 
+<div 
         id="biography" 
         class="pt-10 prose lg:prose-xl mx-auto max-w-6xl w-3/4"
 >
@@ -106,4 +106,4 @@
         <!-- svelte-ignore a11y_img_redundant_alt -->
         <img src={RECENT_PIC} alt="recent selfie">
     </section>
-</main>
+</div>
