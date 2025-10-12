@@ -30,7 +30,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik"
-      - "traefik.http.routers.nmatute.rule=Host(`nmatute.com`)"
+      - "traefik.http.routers.nmatute.rule=Host(`nmatute.com`) || Host(`www.nmatute.com`)"
       - "traefik.http.routers.nmatute.entrypoints=websecure"
       - "traefik.http.routers.nmatute.tls=true"
       - "traefik.http.services.nmatute.loadbalancer.server.port=3000"
