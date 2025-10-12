@@ -24,7 +24,7 @@ services:
       resources:
         limits:
           memory: 128m
-          cpus: 0.01
+          cpus: 0.10
         reservations:
           memory: 64m
     labels:
@@ -46,6 +46,6 @@ services:
       resources:
         limits:
           memory: 128m
-          cpus: 0.01
+          cpus: 0.10
         reservations:
           memory: 64m
