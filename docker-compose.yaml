@@ -20,6 +20,13 @@ services:
     networks:
       - traefik
       - web-nmatute
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+          cpus: 10m
+        reservations:
+          memory: 64m
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik"
@@ -35,3 +42,10 @@ services:
       context: ./backend
     networks:
       - web-nmatute
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+          cpus: 10m
+        reservations:
+          memory: 64m
