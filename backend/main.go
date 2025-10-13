@@ -16,7 +16,7 @@ import (
 
 var (
 	port     = "80"
-	dataPath = "/data/data.yaml"
+	dataPath = "/etc/app/data.yaml"
 )
 
 func init() {

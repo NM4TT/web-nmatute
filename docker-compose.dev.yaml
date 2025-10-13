@@ -21,3 +21,5 @@ services:
       context: ./backend
     networks:
       - web
+    volumes:
+      - ./data.yaml:/etc/app/data.yaml:ro

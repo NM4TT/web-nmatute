@@ -30,7 +30,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           # Explicit list beats "." — tailor to what build.sh needs:
-          source: "backend,frontend,docker-compose.yaml,build.sh"
+          source: "data.yaml,backend,frontend,docker-compose.yaml,build.sh"
           target: "/home/${{ secrets.SSH_USER }}/deploys/${{ vars.DIRECTORY_NAME }}"
           overwrite: true
 

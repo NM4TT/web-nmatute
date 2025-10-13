@@ -21,7 +21,6 @@ RUN CGO_ENABLED=0 go build -v -o sillyapp
 FROM scratch
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /app/sillyapp /bin/sillyapp
-COPY data.yaml /data/data.yaml
 
 USER dummy
 

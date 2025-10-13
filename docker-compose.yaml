@@ -42,6 +42,8 @@ services:
       context: ./backend
     networks:
       - web-nmatute
+    volumes:
+      - ./data.yaml:/etc/app/data.yaml:ro
     deploy:
       resources:
         limits:
