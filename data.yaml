@@ -1,6 +1,4 @@
----
-############
-- section: professional-exp
+professional-exp:
   items:
     - name: 'PanamaSTEM Education Inc'
       role: 'Coding Instructor / Content Creator / Technical Support'
@@ -10,7 +8,6 @@
         - "Create content for the company's internet platforms on robotics and programming."
         - "Lead generation and appointment management for sales of company services."
         - "Provide technical support."
-
     - name: 'Colegio Real de Panama'
       role: 'Computer Science Teacher / Technical Support'
       start: 1643713200 #Febr 01 2022
@@ -19,7 +16,6 @@
         - "Administration and maintenance of various computer equipment."
         - "Development of didactic strategies to facilitate students' understanding of computer science."
         - "Provide technical support."
-
     - name: 'STT Group / Indra'
       role: 'Software Developer'
       start: 1667300400 #Nov 01 2022
@@ -28,7 +24,6 @@
         - "Maintain Web Services made in JAVA (SOAP and REST)."
         - "Participate in the migration of onpremise environments and their apps to Oracle Cloud Infrastructure."
         - "Maintain Blue Prism's automated processes (RPAs)."
-
     - name: 'Daugherty Business Solutions'
       role: 'Software Engineering Consultant'
       start: 1709290800 #March 01 2024
@@ -37,7 +32,6 @@
         - "Perform software improvements, bug fixes, testing and devops tasks."
         - "Guarantee the succesful integration & delivery of software solutions."
         - "Document important aspects of assigned software solutions."
-
     - name: 'CGI'
       role: 'Software Engineering Consultant'
       start: 1735729200 #Jan 01 2025
@@ -46,29 +40,25 @@
         - "Actively contribute to agile ceremonies, including sprint planning, daily stand-ups, retrospectives, demos with stakeholders, and technical team discussions."
         - "Take ownership of the full software development lifecycle — from design and implementation to deployment — leveraging modern CI/CD practices in cloud-based environments."
 
-############
-- section: education
+education:
   items:
     - name: 'Universidad Interamericana de Panama (UIP)'
       title: "Bachelor's Degree in Software Development"
       start: 1577876400 # 2020
 
-############
-- section: certifications
+certifications:
   items:
     - name: 'Courses'
       url: "http://www.example.com"
 
-############
-- section: projects
+projects:
   items:
-    - name: 'This website (SvelteKit, GraphQL, Golang)'
+    - name: 'This website (Astro, TailwindCSS, Cloudflare Pages)'
       url: "https://github.com/NM4TT/web-nmatute"
     - name: 'Springboot API samples (Java, REST, SOAP, GraphQL, gRPC)'
       url: "https://github.com/NM4TT/Springboot-Api-Samples"
 
-############
-- section: tools-skills
+tools-skills:
   items:
     - keywords:
         - Java
@@ -103,7 +93,7 @@
         - Svelte
         - SvelteKit
 
-- section: languages
+languages:
   items:
     - keywords:
       - Spanish

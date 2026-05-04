@@ -1,52 +1,49 @@
-name: deploy
+name: Deploy to Cloudflare Pages
+
 on:
   push:
     branches: [main]
 
 permissions:
   contents: read
-
-concurrency:
-  group: deploy-${{ github.ref }}
-  cancel-in-progress: false
+  deployments: write
 
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 20
-
+    name: Deploy
     steps:
-      - name: Checkout (shallow)
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
 
-      - name: Upload files via SCP
-        uses: appleboy/scp-action@v1
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          # Explicit list beats "." — tailor to what build.sh needs:
-          source: "data.yaml,backend,frontend,docker-compose.yaml,build.sh"
-          target: "/home/${{ secrets.SSH_USER }}/deploys/${{ vars.DIRECTORY_NAME }}"
-          overwrite: true
+          version: 10
 
-      - name: Run remote build
-        uses: appleboy/ssh-action@v1.2.2
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          command_timeout: 30m
-          script: |
-            set -euo pipefail
-            cd /home/${{ secrets.SSH_USER }}/deploys/${{ vars.DIRECTORY_NAME }}
-            chmod +x build.sh
-            ./build.sh
+          node-version: 24
+          cache: 'pnpm'
+          cache-dependency-path: frontend/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: frontend
+
+      - name: Build
+        run: pnpm run build
+        working-directory: frontend
+        env:
+          PUBLIC_MAILTO: nmatute.petition332@passmail.net
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy frontend/dist --project-name=web-nmatute
 
       - name: Send success email
         if: ${{ success() }}
