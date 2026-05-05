@@ -1,7 +1,4 @@
-import type { ContentType, ProjectItemType } from '#lib/types';
-
-export const imagePlaceholder = 
-    (width: number, height: number = width): string => `https://placehold.co/${width}x${height}`;
+import type { ContentType } from '#lib/types';
 
 const sortByStartDate = (collection: ContentType[]): ContentType[] => {
     // Return a new sorted array without modifying the original collection
@@ -26,7 +23,7 @@ const calculateDuration = (startDate: Date, endDate?: Date): string => {
             duration += `${years} year${years > 1 ? "s" : ""}`;
         }
         if (months > 0) {
-            if (duration.length > 0) duration += " and ";
+            if (duration.length > 0) duration += " ";
             duration += `${months} month${months > 1 ? "s" : ""}`;
         }
     }
@@ -48,6 +45,7 @@ const formatDates = (item: ContentType): ContentType | undefined => {
         return {
             ...item,
             start: formattedStart,
+            end: "Present",
             difference: calculateDuration(startDate)
         };
     }
@@ -74,21 +72,4 @@ export const formatItemDates  = (collection: ContentType[]): ContentType[] => {
         return formatedItem;
     })
     return formattedData;
-}
-
-export const formatProjects = (collection: ContentType[]): ProjectItemType[] => {
-    return collection.map(input => {
-        const regex = /^(.*?)(?:\s*\((.*?)\))?$/;
-        const match = input.name.match(regex);
-
-        // Destructure the result
-        const mainName = match ? match[1].trim() : "";
-        const tags = match && match[2] ? match[2].trim() : "";
-
-        return {
-            name: mainName,
-            tags: tags,
-            url: input.url,
-        };
-    });
 }

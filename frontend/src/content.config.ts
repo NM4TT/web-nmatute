@@ -1,12 +1,11 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { file } from 'astro/loaders';
+import { z } from 'astro/zod'; 
 
 const dataCollection = defineCollection({
-    // Point to the data.yaml in the project root
     loader: file("../data.yaml"),
-    schema: z.object({
-        items: z.array(z.any())
-    })
+    // 2. Use the arrow function signature for the schema
+    schema: () => z.any() 
 });
 
 export const collections = {

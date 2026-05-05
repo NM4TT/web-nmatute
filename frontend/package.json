@@ -1,7 +1,11 @@
 {
   "name": "web-nmatute",
   "imports": {
-    "#lib/*": "./src/*",
+    "#lib/types": "./src/lib/types/index.ts",
+    "#lib/utils": "./src/lib/utils/index.ts",
+    "#lib/constants": "./src/lib/constants/index.ts",
+    "#assets/*": "./src/assets/*",
+    "#layouts/*": "./src/layouts/*",
     "#components/*": "./src/components/*"
   },
   "type": "module",

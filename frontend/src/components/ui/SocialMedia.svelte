@@ -4,8 +4,7 @@
     import MdiInstagram from '~icons/mdi/instagram'
     import MdiDinosaurPixel from '~icons/mdi/dinosaur-pixel'
 
-	import type { SocialMediaType } from "#lib/types/index.js";
-	import { ICON_COLOR } from '#lib/constants/index.js';
+	import type { SocialMediaType } from "#lib/types";
 
 	let { data = {
 	    name: "unknown",
@@ -28,6 +27,7 @@
     aria-label={data.name}
     target="_blank"
     rel="noopener noreferrer"
+    class="text-secondary"
 >
-    <SelectedIcon color={ICON_COLOR} />
+    <SelectedIcon />
 </a>

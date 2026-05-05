@@ -1,27 +1,59 @@
 <script lang="ts">
-	import type { ProjectItemType } from "#lib/types/index.js";
+  import { fade } from 'svelte/transition';
+  import type { ProjectItemType } from '#lib/types';
 
   export let data: ProjectItemType = {
-      name: "Super Cool Project",
-      tags: "Amazing STACK",
-      url: "https://www.example.com"
+      name: "Project Name",
+      tools: ["Tech"],
+      codebase: "#",
+      live: "#"
   };
 </script>
 
 <article 
-  class="text-white w-3/4
-  bg-secondary rounded-sm py-3
-  max-w-sm mx-auto relative group">
-  <a href={data.url} target="_blank" rel="noopener noreferrer" class="block">
-    <header class="mb-3 text-center"> <!-- Center the header -->
-      <h3 
-        class="font-medium inline-block relative px-3 after:content-[''] after:absolute 
-        after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-white
-        after:transition-all after:duration-300 
-        group-hover:after:left-0 group-hover:after:w-full">
-        {data.name}
-      </h3>
-    </header>
-    <p class="text-center">{data.tags}</p> <!-- Center the tags -->
-  </a>
+  in:fade={{ duration: 400, delay: 200 }}
+  class="group flex flex-col p-6 rounded-lg border border-secondary/30 
+         hover:border-secondary transition-colors duration-200 h-full"
+  style="background-color: var(--bg-surface);">
+  
+  <header class="mb-4">
+    <h3 class="text-xl font-bold tracking-tight">
+      {data.name}
+    </h3>
+  </header>
+
+  <div class="grow">
+    <div class="flex flex-wrap gap-2 mb-6">
+      {#each data.tools as tool}
+        <span class="font-mono text-[10px] uppercase tracking-wider px-2 py-1 
+                     rounded-full bg-secondary/10 text-secondary border border-secondary/10 font-bold">
+          {tool}
+        </span>
+      {/each}
+    </div>
+  </div>
+
+  <footer class="flex items-center gap-4 mt-auto">
+    <a 
+      href={data.codebase} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="flex items-center gap-1 text-sm font-medium opacity-70 hover:opacity-100 
+             hover:text-secondary transition-all"
+    >
+      Details
+    </a>
+    
+    {#if data.live}
+      <a 
+        href={data.live} 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="flex items-center gap-1 text-sm font-medium opacity-70 hover:opacity-100 
+               hover:text-secondary transition-all"
+      >
+        Demo
+      </a>
+    {/if}
+  </footer>
 </article>

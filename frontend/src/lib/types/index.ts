@@ -1,12 +1,9 @@
 export type ContentType = {
     name: string;
-    role: string;
-    start: string;
-    end: string;
-    tasks: string[];
-    title: string;
-    url: string;
+    start: string | number;
+    end?: string | number;
     difference?: string;
+    [key: string]: any;
 };
 
 export type EducationItemType = {
@@ -27,12 +24,27 @@ export type WorkExperienceItemType = {
 
 export type ProjectItemType = {
     name: string;
-    tags: string;
-    url: string;
+    tools: string[];
+    codebase: string;
+    live?: string;
 };
 
 export type SocialMediaType = {
     name: string;
     icon: string;
     url: string;
+};
+
+export type BiographyType = {
+    hero: {
+        title: string;
+        quote: string;
+        image: string;
+    };
+    sections: {
+        title: string;
+        image: string;
+        image_first?: boolean;
+        paragraphs: string[];
+    }[];
 };

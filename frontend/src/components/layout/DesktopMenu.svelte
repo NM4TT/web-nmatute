@@ -1,31 +1,16 @@
 <nav id="desktop">
-    <ul class="flex justify-between font-medium">
-        <li 
-            class="relative px-3 hover:text-secondary 
-            after:content-[''] after:absolute 
-            after:left-1/2 after:bottom-0 
-            after:w-0 after:h-[2px] after:bg-secondary 
-            after:transition-all after:duration-300 
-            hover:after:left-0 hover:after:w-full">
-            <a href="/">Resume</a>
-        </li>
-        <li 
-            class="relative px-3 hover:text-secondary 
-            after:content-[''] after:absolute 
-            after:left-1/2 after:bottom-0 
-            after:w-0 after:h-[2px] after:bg-secondary 
-            after:transition-all after:duration-300 
-            hover:after:left-0 hover:after:w-full">
-            <a href="/portfolio/">Portfolio</a>
-        </li>
-        <li  
-            class="relative px-3 hover:text-secondary 
-            after:content-[''] after:absolute 
-            after:left-1/2 after:bottom-0 
-            after:w-0 after:h-[2px] after:bg-secondary 
-            after:transition-all after:duration-300 
-            hover:after:left-0 hover:after:w-full">
-            <a href="/biography/">Biography</a>
-        </li>
+    <ul class="flex justify-between items-center gap-6">
+        {#each [{name: "Resume", href: "/"}, {name: "Portfolio", href: "/portfolio/"}, {name: "Biography", href: "/biography/"}] as link}
+            <li class="relative group">
+                <a 
+                    href={link.href}
+                    class="font-display text-sm font-bold uppercase tracking-widest 
+                           hover:text-secondary px-1 cursor-pointer transition-colors duration-200"
+                >
+                    {link.name}
+                </a>
+                <span class="absolute -bottom-1 left-0 w-0 h-px bg-secondary transition-[width] duration-300 group-hover:w-full"></span>
+            </li>
+        {/each}
     </ul>
 </nav>

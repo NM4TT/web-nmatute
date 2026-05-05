@@ -1,37 +1,37 @@
 professional-exp:
   items:
     - name: 'PanamaSTEM Education Inc'
-      role: 'Coding Instructor / Content Creator / Technical Support'
+      role: 'Coding Instructor / Content Creator'
       start: 1577876400 #Jan 01 2020
       end: 1609498800 #Jan 01 2021
       tasks:
-        - "Create content for the company's internet platforms on robotics and programming."
-        - "Lead generation and appointment management for sales of company services."
-        - "Provide technical support."
+        - "Developed educational content for robotics and programming platforms."
+        - "Managed lead generation and appointment scheduling for service sales."
+        - "Provided technical support and troubleshooting."
     - name: 'Colegio Real de Panama'
-      role: 'Computer Science Teacher / Technical Support'
+      role: 'Computer Science Teacher'
       start: 1643713200 #Febr 01 2022
       end: 1667300400 #Nov 01 2022
       tasks:
-        - "Administration and maintenance of various computer equipment."
-        - "Development of didactic strategies to facilitate students' understanding of computer science."
-        - "Provide technical support."
+        - "Administered and maintained computer laboratory equipment."
+        - "Developed didactic strategies to facilitate student understanding of CS."
+        - "Implemented technical support workflows for staff and students."
     - name: 'STT Group / Indra'
       role: 'Software Developer'
       start: 1667300400 #Nov 01 2022
       end: 1709290800 #March 01 2024
       tasks:
-        - "Maintain Web Services made in JAVA (SOAP and REST)."
-        - "Participate in the migration of onpremise environments and their apps to Oracle Cloud Infrastructure."
-        - "Maintain Blue Prism's automated processes (RPAs)."
+        - "Maintained enterprise Java Web Services (SOAP and REST)."
+        - "Orchestrated the migration of on-premise environments to Oracle Cloud Infrastructure."
+        - "Maintained and optimized Blue Prism automated processes (RPA)."
     - name: 'Daugherty Business Solutions'
       role: 'Software Engineering Consultant'
       start: 1709290800 #March 01 2024
       end: 1735729200 #Jan 01 2025
       tasks:
-        - "Perform software improvements, bug fixes, testing and devops tasks."
-        - "Guarantee the succesful integration & delivery of software solutions."
-        - "Document important aspects of assigned software solutions."
+        - "Delivered software improvements, bug fixes, and DevOps automation."
+        - "Ensured seamless integration and delivery of client software solutions."
+        - "Architected and documented technical specifications for complex systems."
     - name: 'CGI'
       role: 'Software Engineering Consultant'
       start: 1735729200 #Jan 01 2025
@@ -40,23 +40,24 @@ professional-exp:
         - "Actively contribute to agile ceremonies, including sprint planning, daily stand-ups, retrospectives, demos with stakeholders, and technical team discussions."
         - "Take ownership of the full software development lifecycle — from design and implementation to deployment — leveraging modern CI/CD practices in cloud-based environments."
 
+about:
+  text: "I am a resilient person who learns quickly and enjoys technology. Over the past few years, I have had the opportunity to develop software solutions for multiple industries. I specialize in web development, software architecture, and DevOps."
+
 education:
   items:
     - name: 'Universidad Interamericana de Panama (UIP)'
       title: "Bachelor's Degree in Software Development"
       start: 1577876400 # 2020
 
-certifications:
-  items:
-    - name: 'Courses'
-      url: "http://www.example.com"
-
 projects:
   items:
-    - name: 'This website (Astro, TailwindCSS, Cloudflare Pages)'
-      url: "https://github.com/NM4TT/web-nmatute"
-    - name: 'Springboot API samples (Java, REST, SOAP, GraphQL, gRPC)'
-      url: "https://github.com/NM4TT/Springboot-Api-Samples"
+    - name: 'Personal Website'
+      tools: ['Astro', 'Svelte', 'TailwindCSS', 'Cloudflare']
+      codebase: "https://github.com/NM4TT/web-nmatute"
+      live: "https://nmatute.com"
+    - name: 'Springboot API samples'
+      tools: ['Java', 'Springboot', 'REST', 'SOAP', 'GraphQL', 'gRPC']
+      codebase: "https://github.com/NM4TT/Springboot-Api-Samples"
 
 tools-skills:
   items:
@@ -98,3 +99,26 @@ languages:
     - keywords:
       - Spanish
       - English
+
+biography:
+  hero:
+    title: "Personal Biography"
+    quote: "Nice to meet you 😉! I'm Nicolás, and on this page, you'll get to know a bit of my story (written by me), which will give you some insights into who I am."
+    image: "close_pic"
+  sections:
+    - title: "Early Life"
+      image: "placa_jarc"
+      paragraphs:
+        - "Born in Venezuela in 2001, my journey began with a curiosity for how virtual worlds were built. From my first video games to my first lines of code, I've always been driven by the need to understand the 'why' behind the technology we use every day."
+        - "Despite not being a 'natural genius,' I discovered early on that discipline and self-learning were far more powerful. This mindset allowed me to excel academically, eventually graduating with honors and a deep-seated passion for computer science."
+    - title: "The Path to Engineering"
+      image: "indra_pic"
+      image_first: true
+      paragraphs:
+        - "My professional path crystallized at the Universidad Tecnológica de Panamá. While studying, I took on the challenge of teaching—a pivot that taught me more about communication and patience than any code ever could."
+        - "The defining moment of my early career was joining Indra. It was here that I transitioned from a student of code to a practitioner of engineering, working on enterprise-grade systems and navigating the complexities of modern software delivery."
+    - title: "Present & Future"
+      image: "recent_pic"
+      paragraphs:
+        - "Today, I work as a consultant for U.S.-based firms, operating at the intersection of full-stack development and cloud architecture. The transition to working entirely in English was a hurdle, but one that has opened a global landscape of opportunities."
+        - "My focus remains constant: building things that matter, learning every day, and maintaining the same curiosity that started it all in 2001."

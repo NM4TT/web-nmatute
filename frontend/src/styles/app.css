@@ -1,11 +1,83 @@
 @import "tailwindcss";
 
+/* Fonts remain unchanged */
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Inter'; src: url('/fonts/Inter-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Syne'; src: url('/fonts/Syne-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Syne'; src: url('/fonts/Syne-ExtraBold.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Office Code Pro'; src: url('/fonts/OfficeCodePro-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+
 @theme {
-  --color-primary:        #FFFFFF;
-  --color-secondary:      #a19f88;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-display: "Sora", var(--font-sans);
-  --font-mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-secondary: var(--secondary);
+  /* Semantic Brand Colors */
+  --color-accent:         var(--color-secondary);
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Syne", var(--font-sans);
+  --font-mono: "Office Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-.bio-section img { @apply mx-auto w-full md:w-1/2 rounded-lg py-6; }
+:root {
+  /* Light Mode - High Contrast */
+  --bg-base: #ffffff;
+  --bg-surface: #f9fafb;
+  --text-base: #000000;
+  --secondary: #7c7a65;
+  --border-color: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  /* Dark Mode - Deep Charcoals (Better than pure black) */
+  --bg-base: #0a0a0a;
+  --bg-surface: #171717;
+  --text-base: #f9fafb;
+  --secondary: #7c7a65;
+  --border-color: rgba(20, 11, 11, 0.1);
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-base);
+    color: var(--text-base);
+    @apply font-sans antialiased;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-base);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-current font-extrabold;
+  }
+}
+
+/* UI Components */
+.glass-header {
+  @apply sticky top-0 z-50 backdrop-blur-xl border-b shadow-none;
+  background-color: color-mix(in srgb, var(--bg-base) 70%, transparent);
+  border-color: transparent;
+}
+
+.light .glass-header, .dark .glass-header {
+  @apply shadow-none border-transparent;
+}
+
+/* Buttons & Links */
+.btn-primary {
+  @apply font-display text-xs font-bold uppercase tracking-widest py-3 px-8 rounded-lg cursor-pointer
+         border-2 active:opacity-80 inline-block;
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: #ffffff; /* Solid white for Light Mode */
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.dark .btn-primary {
+  color: #000000 !important; /* Solid black for Dark Mode on the olive background */
+}
+
+.btn-primary:hover {
+  background-color: transparent;
+  color: var(--secondary) !important;
+}

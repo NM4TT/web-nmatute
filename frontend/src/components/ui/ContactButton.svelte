@@ -1,17 +1,13 @@
 <script lang="ts">
-    export let bgColor: string = "bg-secondary";
-    export let textColor: string = "text-white";
-    let showModal: boolean = false;
     const mailto: string = import.meta.env.PUBLIC_MAILTO;
 
     const handleClick = () => {
        window.open(`mailto:${mailto}`, '_blank');
     };
-
 </script>
 
 <button 
-    class={`${bgColor} ${textColor} font-medium py-2 px-4 rounded-sm cursor-pointer`}
+    class="btn-primary"
     on:click={handleClick}>
-    <span>Contact Me</span>
+    Contact Me
 </button>

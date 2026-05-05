@@ -1,42 +1,55 @@
 <script lang="ts">
-import { ICON_COLOR } from '#lib/constants/index.js'
-	import type { WorkExperienceItemType } from '#lib/types/index.js';
-    export let data: WorkExperienceItemType = {
-        name: "Tech Corp",
-        role: "Software Developer",
-        start: "January 20**",
-        end: "Present",
-        tasks: [
-            "Task 1",
-            "Task 2",
-            "Task 3"
-        ],
-        difference: "",
-    };
+  import { fade } from 'svelte/transition';
+  import type { WorkExperienceItemType } from '#lib/types';
+
+  export let data: WorkExperienceItemType = {
+      name: "Tech Corp",
+      role: "Software Developer",
+      start: "January 20**",
+      end: "Present",
+      tasks: [
+          "Task 1",
+          "Task 2",
+          "Task 3"
+      ],
+      difference: "",
+  };
 </script>
 
-<article class="mb-6">
-    <h3 class="font-bold text-lg md:text-1xl">{data.name}</h3>
-    <div class="flex justify-start my-1">
-        <p class="font-medium">Role:</p>
-        <p class="ml-3">{data.role}</p>
+<article in:fade={{ duration: 400 }} class="mb-12 group">
+    <header class="flex flex-col md:flex-row md:items-baseline justify-between mb-4 border-b border-secondary/10 pb-2">
+        <h3 class="font-display text-2xl font-extrabold">{data.name}</h3>
+        <div class="flex items-center gap-3">
+            <div class="font-mono text-sm text-secondary tracking-tight">
+                <span>{data.start}</span>
+                <span class="mx-1">—</span>
+                <span class={(data.end?.toLowerCase() || '') === 'present' ? 'text-secondary font-bold' : ''}>
+                    {data.end || 'Present'}
+                </span>
+            </div>
+            <span class="font-sans text-[11px] uppercase font-black tracking-wider px-3 py-1 rounded-md bg-secondary shadow-sm flex items-center gap-1.5" style="color: var(--bg-base);">
+                {#if (data.end?.toLowerCase() || '') === 'present'}
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: var(--bg-base);"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2" style="background-color: var(--bg-base);"></span>
+                    </span>
+                {/if}
+                {data.difference}
+            </span>
+        </div>
+    </header>
+
+    <div class="flex items-center gap-2 mb-4">
+        <span class="text-sm font-semibold uppercase tracking-widest opacity-60">Role:</span>
+        <span class="text-lg font-bold">{data.role}</span>
     </div>
-    <div class="flex justify-normal my-1">
-        <p>{data.start}</p>
-        <p class="ml-2">-</p>
-        <p class="ml-2">{data.end}</p>
-        <p class="ml-2 font-bold">|</p>
-        <p class="ml-2">{data.difference}</p>
-    </div>
-    <div class="my-2">
-        <h4 class="font-medium">Responsibilities:</h4>
-        <ul>
+
+    <div class="space-y-3">
+        <ul class="space-y-3">
             {#each data.tasks as task}
-                <li class="flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                        <path fill={ICON_COLOR} d="m9 20.42l-6.21-6.21l2.83-2.83L9 14.77l9.88-9.89l2.83 2.83z" />
-                    </svg>
-                    <span class="ml-2">{task}</span>
+                <li class="flex items-start">
+                    <span class="mt-1.5 mr-3 h-1.5 w-1.5 rounded-full bg-secondary shrink-0"></span>
+                    <span class="leading-relaxed">{task}</span>
                 </li>
             {/each}
         </ul>

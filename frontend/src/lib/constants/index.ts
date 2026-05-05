@@ -1,6 +1,4 @@
-import type { SocialMediaType } from "#lib/types/index.js";
-
-export const ICON_COLOR: string = "#a19f88";
+import type { SocialMediaType } from "#lib/types";
 
 export const SOCIAL_MEDIA_LIST: SocialMediaType[] = [
     {name: "github", icon: "mdi:github", url: "https://github.com/NM4TT"},

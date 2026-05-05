@@ -1,18 +1,16 @@
 ---
-import Layout from '#lib/layouts/Layout.astro';
-import IconCheckBold from '~icons/mdi/check-bold';
+import Layout from '#layouts/Layout.astro';
 import ContactButton from '#components/ui/ContactButton.svelte';
 import MobileSection from '#components/ui/MobileSection.svelte';
 import SocialMedia from '#components/ui/SocialMedia.svelte';
 import Keywords from '#components/cv/Keywords.svelte';
 import EducationItem from '#components/cv/EducationItem.svelte';
 import WorkExperienceItem from '#components/cv/WorkExperienceItem.svelte';
-import Certifications from '#components/cv/Certifications.svelte';
 
 import { getEntry } from 'astro:content';
-import { formatItemDates } from '#lib/utils/index.js';
-import { ICON_COLOR, SOCIAL_MEDIA_LIST } from '#lib/constants/index.js';
-import MAIN_PIC from '#lib/assets/images/main_pic.jpg';
+import { formatItemDates } from '#lib/utils';
+import { SOCIAL_MEDIA_LIST } from '#lib/constants';
+import MAIN_PIC from '#assets/images/main_pic.jpg';
 
 const getSectionItems = async (id: string) => {
     const entry = await getEntry('data', id);
@@ -21,6 +19,7 @@ const getSectionItems = async (id: string) => {
 
 const experience = formatItemDates(await getSectionItems('professional-exp'));
 const education = formatItemDates(await getSectionItems('education'));
+const about = (await getEntry('data', 'about'))?.data;
 const skills = (await getSectionItems('tools-skills')).flatMap((item: any) => item.keywords || []);
 const languages = (await getSectionItems('languages')).flatMap((item: any) => item.keywords || []);
 ---
@@ -30,132 +29,97 @@ const languages = (await getSectionItems('languages')).flatMap((item: any) => it
         <section id="first" class="mt-5">
             <div
                 id="desktop-first-look"
-                class="hidden md:flex justify-center space-x-24"
+                class="hidden md:flex flex-row items-center justify-center gap-20 max-w-6xl mx-auto"
             >
-                <div class="w-1/2 flex justify-end">
+                <div class="w-2/5">
                     <img src={MAIN_PIC.src} 
-                        alt="Nicolas Matute" class="h-auto w-3/4  rounded-sm" />
+                        alt="Nicolas Matute" class="h-auto w-full rounded-2xl shadow-2xl transition-all duration-700" />
                 </div>
-                <div class="w-1/2 flex flex-col justify-center items-center">
-                    <div class="flex flex-col justify-center items-center">
-                        <h1 class="font-bold mb-4 md:text-4xl lg:text-5xl xl:text-6xl">
-                            Nicolas Matute
-                        </h1>
-                        <h2 class="font-medium mb-4 text-2xl lg:text-3xl xl:text-4xl">
-                            Resume
-                        </h2>
-                    </div>
-                    <div>
-                        <ul class="list-none flex items-center py-2">
+                <div class="w-3/5 flex flex-col items-start">
+                    <h1 class="font-extrabold mb-2 text-6xl lg:text-7xl xl:text-8xl tracking-tighter">
+                        Nicolas Matute
+                    </h1>
+                    <h2 class="font-mono text-2xl lg:text-3xl text-secondary mb-8 tracking-widest uppercase font-bold">
+                        Software Engineer
+                    </h2>
+                    
+                    <p class="text-xl mb-8 max-w-lg leading-relaxed opacity-90">
+                        {about?.text || "Building scalable systems and modern web experiences with a focus on clean architecture and technical excellence."}
+                    </p>
+
+                    <div class="flex items-center gap-6 mb-10">
+                        <ContactButton client:load />
+                        <ul class="list-none flex items-center gap-4">
                             {SOCIAL_MEDIA_LIST.map((socialMedia) => (
-                                <li class="text-3xl xl:text-4xl px-2">
+                                <li class="text-2xl">
                                     <SocialMedia data={socialMedia} />
                                 </li>
                             ))}
                         </ul>
                     </div>
-                    <ul class="list-none flex flex-col py-5">
-                        <li class="flex items-center py-2">
-                            <IconCheckBold color={ICON_COLOR} />
-                            <span class="ml-2">Professional Experience</span>
-                        </li>
-                        <li class="flex items-center py-2">
-                            <IconCheckBold color={ICON_COLOR} />
-                            <span class="ml-2">Education, Certifications</span>
-                        </li>
-                        <li class="flex items-center py-2">
-                            <IconCheckBold color={ICON_COLOR} />
-                            <span class="ml-2">Tools, Skills and Languages</span>
-                        </li>
-                    </ul>
-                    <ContactButton />
                 </div>
             </div>
-            <MobileSection title="Resume" client:load />
+            <MobileSection title="Resume" />
         </section>
 
-        <section class="cv-section mt-20 pt-10 flex flex-col">
-            <h2 
-                class="font-bold mb-10 text-2xl
-                text-center self-center
-                border-b-2 border-secondary
-                md:text-3xl lg:text-4xl xl:text-5xl"
-            >Who I Am</h2>
-            <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
-                <p>
-                    I am a resilient person who learns quickly and enjoys technology. 
-                    Over the past few years, I have had the opportunity to develop software 
-                    solutions for multiple industries. I specialize in web development, 
-                    software architecture, and DevOps. While I may not know the vast 
-                    majority of programming languages or tools, I am always willing to learn 
-                    whatever is necessary to achieve my goals.
+        <section class="cv-section mt-32 flex flex-col max-w-4xl mx-auto px-4">
+            <h2 class="font-display text-4xl font-bold mb-8 flex items-center gap-4">
+                <span class="h-0.5 w-12 bg-secondary/30"></span>
+                Who I Am
+            </h2>
+            <div class="content">
+                <p class="text-xl leading-relaxed font-light italic">
+                    "{about?.text}"
                 </p>
             </div>
         </section>
 
-        <section class="cv-section mt-20 pt-10 flex flex-col">
-            <h2 
-                class="font-bold mb-10 text-2xl
-                text-center self-center
-                border-b-2 border-secondary
-                md:text-3xl lg:text-4xl xl:text-5xl"
-            >Work Experience</h2>
-            <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
+        <section class="cv-section mt-32 flex flex-col max-w-4xl mx-auto px-4">
+            <h2 class="font-display text-4xl font-bold mb-12 flex items-center gap-4">
+                <span class="h-0.5 w-12 bg-secondary/30"></span>
+                Work Experience
+            </h2>
+            <div class="content">
                 {experience.map((item) => (
                     <WorkExperienceItem data={item} />
                 ))}
             </div>          
         </section>
 
-        <section class="cv-section mt-20 pt-10 flex flex-col">
-            <h2 
-                class="font-bold mb-10 text-2xl
-                text-center self-center
-                border-b-2 border-secondary
-                md:text-3xl lg:text-4xl xl:text-5xl"
-            >Education</h2>
-            <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
+        <section class="cv-section mt-32 flex flex-col max-w-4xl mx-auto px-4">
+            <h2 class="font-display text-4xl font-bold mb-12 flex items-center gap-4">
+                <span class="h-0.5 w-12 bg-secondary/30"></span>
+                Education
+            </h2>
+            <div class="content">
                 {education.map((item) => (
                     <EducationItem data={item} />
                 ))}
             </div>
         </section>
 
-        <section class="cv-section mt-20 pt-10 flex flex-col">
-            <h2 
-                class="font-bold mb-10 text-2xl
-                text-center self-center
-                border-b-2 border-secondary
-                md:text-3xl lg:text-4xl xl:text-5xl"
-            >Certifications</h2>
-            <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
-                <Certifications />
-            </div>
-        </section>
-
-        <section class="cv-section mt-20 pt-10 flex flex-col">
-            <h2 
-                class="font-bold mb-10 text-2xl
-                text-center self-center
-                border-b-2 border-secondary
-                md:text-3xl lg:text-4xl xl:text-5xl"
-            >Tools & Skills</h2>
-            <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
+        <section class="cv-section mt-32 flex flex-col max-w-4xl mx-auto px-4">
+            <h2 class="font-display text-4xl font-bold mb-12 flex items-center gap-4">
+                <span class="h-0.5 w-12 bg-secondary/30"></span>
+                Tools & Skills
+            </h2>
+            <div class="content">
                 <Keywords data={skills} />
             </div>
         </section>
 
-        <section class="cv-section mt-20 pt-10 flex flex-col pb-10">
-            <h2 
-                class="font-bold mb-10 text-2xl
-                text-center self-center
-                border-b-2 border-secondary
-                md:text-3xl lg:text-4xl xl:text-5xl"
-            >Languages</h2>
-            <div class="content mx-4 md:mx-16 lg:mx-24 xl:mx-32">
-                <ul class="font-medium">
-                    {languages.map((item) => (
-                        <li class="my-3">{item}</li>
+        <section class="cv-section mt-32 flex flex-col max-w-4xl mx-auto px-4 pb-32">
+            <h2 class="font-display text-4xl font-bold mb-12 flex items-center gap-4">
+                <span class="h-0.5 w-12 bg-secondary/30"></span>
+                Languages
+            </h2>
+            <div class="content">
+                <ul class="flex flex-wrap gap-8">
+                    {languages.map((item: string) => (
+                        <li class="group">
+                            <span class="text-sm font-mono text-secondary uppercase tracking-widest block mb-1">Language</span>
+                            <span class="text-2xl font-bold">{item}</span>
+                        </li>
                     ))}
                 </ul>
             </div>

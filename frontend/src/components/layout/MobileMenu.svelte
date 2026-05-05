@@ -1,57 +1,145 @@
 <script lang="ts">
+  import { fade, fly } from 'svelte/transition';
+  import { z } from 'astro/zod'; // Following the modern Zod import
+  import ThemeToggle from '#components/ui/ThemeToggle.svelte';
+  import ContactButton from '#components/ui/ContactButton.svelte';
+
   let isOpen: boolean = false;
   
-  const toggleMenu = () => {
-      isOpen = !isOpen; // Reactive assignment triggers UI updates
+  // Position state (initial values match bottom-6 right-6 which is 24px)
+  let x = 24;
+  let y = 24;
+  let isDragging = false;
+  let startTimestamp = 0;
+
+  const toggleMenu = (e: MouseEvent | TouchEvent) => {
+    // Prevent opening if the interaction was a drag (held longer than 200ms)
+    const duration = Date.now() - startTimestamp;
+    if (duration > 200) return;
+    
+    isOpen = !isOpen;
   };
-  </script>
-  
-<!-- Menu Toggle Button -->
-<!-- svelte-ignore a11y_consider_explicit_label -->
+
+  // Svelte Action for Dragging
+  function draggable(node: HTMLElement) {
+    let moving = false;
+
+    const handleStart = () => {
+      moving = true;
+      isDragging = true;
+      startTimestamp = Date.now();
+    };
+
+    const handleStop = () => {
+      moving = false;
+      setTimeout(() => isDragging = false, 50);
+    };
+
+    const handleMove = (e: MouseEvent | TouchEvent) => {
+      if (!moving) return;
+
+      // Prevent page scroll while dragging
+      if (e.cancelable) e.preventDefault();
+
+      const clientX = e instanceof MouseEvent ? e.clientX : e.touches[0].clientX;
+      const clientY = e instanceof MouseEvent ? e.clientY : e.touches[0].clientY;
+
+      // Calculate distance from bottom-right corner
+      // 28 is half the button width (w-14 = 56px) to center it on finger
+      x = Math.max(10, window.innerWidth - clientX - 28);
+      y = Math.max(10, window.innerHeight - clientY - 28);
+    };
+
+    node.addEventListener('mousedown', handleStart);
+    node.addEventListener('touchstart', handleStart);
+    
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('touchmove', handleMove, { passive: false });
+    window.addEventListener('mouseup', handleStop);
+    window.addEventListener('touchend', handleStop);
+
+    return {
+      destroy() {
+        node.removeEventListener('mousedown', handleStart);
+        node.removeEventListener('touchstart', handleStart);
+        window.removeEventListener('mousemove', handleMove);
+        window.removeEventListener('touchmove', handleMove);
+        window.removeEventListener('mouseup', handleStop);
+        window.removeEventListener('touchend', handleStop);
+      }
+    };
+  }
+</script>
+
+<!-- Floating Toggle Button -->
 <button 
-    class="rounded-sm border-4 bg-secondary border-secondary h-3/4 self-center"
-    on:click={toggleMenu}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="2.5em" height="2.5em" viewBox="0 0 24 24">
-      <path fill="#FFFFFF" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
-    </svg>
+    use:draggable
+    class="md:hidden fixed z-[110] flex flex-col gap-1.5 justify-center items-center w-14 h-14 rounded-full border border-secondary/20 bg-secondary shadow-2xl transition-transform active:scale-95 touch-none"
+    style="right: {x}px; bottom: {y}px;"
+    on:click={toggleMenu}
+    aria-label="Toggle Menu">
+
+    <span class="h-0.5 w-6 transition-all duration-300 {isOpen ? 'rotate-45 translate-y-2' : ''}" style="background-color: var(--bg-base);"></span>
+    <span class="h-0.5 w-6 transition-all duration-300 {isOpen ? 'opacity-0' : ''}" style="background-color: var(--bg-base);"></span>
+    <span class="h-0.5 w-6 transition-all duration-300 {isOpen ? '-rotate-45 -translate-y-2' : ''}" style="background-color: var(--bg-base);"></span>
 </button>
 
-<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 {#if isOpen}
-    <!-- Background overlay -->
-    <!-- svelte-ignore a11y_click_events_have_key_events -->
-    <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+    <!-- Backdrop/Blur Overlay -->
     <div
-      class="fixed inset-0 bg-transparent backdrop-blur-sm z-50"
-      on:click={toggleMenu}
-      role="dialog"
-      aria-modal="true"
-      tabindex="0">
-  
-      <!-- Menu Content -->
-      <div 
-        class="flex flex-col fixed top-0 right-0 w-1/3 h-full bg-white shadow-lg transition-transform duration-300 transform translate-x-0"
+      in:fade={{ duration: 200 }}
+      out:fade={{ duration: 200 }}
+      class="fixed inset-0 z-[100] backdrop-blur-xl bg-black/40 dark:bg-black/60"
+      on:click={() => isOpen = false}
+      role="presentation">
+    </div>
+
+    <!-- Solid Menu Container -->
+    <div 
+        in:fly={{ x: 200, duration: 300 }}
+        out:fly={{ x: 200, duration: 300 }}
+        class="flex flex-col fixed top-0 right-0 w-[85%] max-w-xs h-full z-[101] shadow-2xl p-8 border-l border-secondary/10"
+        style="background-color: var(--bg-base); color: var(--text-base);"
         role="navigation"
         aria-label="mobile menu"
-        tabindex="0"
-        on:click|stopPropagation>
-        
-        <!-- Close Button -->
-        <button 
-          class="rounded-sm bg-red-500 w-1/2 self-center py-2 mt-6 text-white font-medium"
-          on:click={toggleMenu}
-          aria-label="Close menu">
-          Close
-        </button>
+        tabindex="0">
+
+        <!-- Action Row -->
+        <div class="flex items-center justify-between mb-12">
+            <div class="scale-90 origin-left">
+                <ContactButton />
+            </div>
+            <div class="flex items-center gap-4">
+                <ThemeToggle />
+            </div>
+        </div>
 
         <!-- Navigation Links -->
-        <nav class="flex flex-col mx-2 mt-4 space-y-4 text-center">
-          <a href="/" class="text-lg font-medium text-secondary mt-4">Resume</a>
-          <a href="/portfolio/" class="text-lg font-medium text-secondary mt-4">Portfolio</a>
-          <a href="/biography/" class="text-lg font-medium text-secondary mt-4">Biography</a>
+        <nav class="flex flex-col gap-6">
+          {#each [{name: "Resume", href: "/"}, {name: "Portfolio", href: "/portfolio/"}, {name: "Biography", href: "/biography/"}] as link}
+            <a 
+                href={link.href} 
+                on:click={() => isOpen = false}
+                class="font-display text-2xl font-bold tracking-tighter hover:text-secondary transition-colors duration-200"
+            >
+                {link.name}
+            </a>
+          {/each}
         </nav>
-      </div>
+
+        <!-- Centered Logo at Bottom -->
+        <div class="mt-auto pt-20 flex flex-col items-center gap-4">
+            <a href="/" on:click={() => isOpen = false}>
+                <img src="/logo.svg" alt="Nicolas Matute Logo" class="h-auto w-16" />
+            </a>
+            <p class="font-mono text-[10px] uppercase tracking-widest opacity-40">Nicolas Matute</p>
+        </div>
     </div>
 {/if}
+
+<style>
+    /* Prevent text selection while dragging */
+    :global(body.dragging) {
+        user-select: none;
+    }
+</style>
