@@ -1,63 +1,67 @@
 professional-exp:
   items:
-    - name: 'PanamaSTEM Education Inc'
-      role: 'Coding Instructor / Content Creator'
+    - name: PanamaSTEM Education Inc
+      role: Coding Instructor / Content Creator
       start: 1577876400 #Jan 01 2020
       end: 1609498800 #Jan 01 2021
       tasks:
-        - "Developed educational content for robotics and programming platforms."
-        - "Managed lead generation and appointment scheduling for service sales."
-        - "Provided technical support and troubleshooting."
-    - name: 'Colegio Real de Panama'
-      role: 'Computer Science Teacher'
+        - Developed educational content for robotics and programming platforms.
+        - Managed lead generation and appointment scheduling for service sales.
+        - Provided technical support and troubleshooting.
+    - name: Colegio Real de Panama
+      role: Computer Science Teacher
       start: 1643713200 #Febr 01 2022
       end: 1667300400 #Nov 01 2022
       tasks:
-        - "Administered and maintained computer laboratory equipment."
-        - "Developed didactic strategies to facilitate student understanding of CS."
-        - "Implemented technical support workflows for staff and students."
-    - name: 'STT Group / Indra'
-      role: 'Software Developer'
+        - Administered and maintained computer laboratory equipment.
+        - Developed didactic strategies to facilitate student understanding of CS.
+        - Implemented technical support workflows for staff and students.
+    - name: STT Group / Indra
+      role: Software Developer
       start: 1667300400 #Nov 01 2022
       end: 1709290800 #March 01 2024
       tasks:
-        - "Maintained enterprise Java Web Services (SOAP and REST)."
-        - "Orchestrated the migration of on-premise environments to Oracle Cloud Infrastructure."
-        - "Maintained and optimized Blue Prism automated processes (RPA)."
-    - name: 'Daugherty Business Solutions'
-      role: 'Software Engineering Consultant'
+        - Maintained enterprise Java Web Services (SOAP and REST).
+        - Orchestrated the migration of on-premise environments to Oracle Cloud Infrastructure.
+        - Maintained and optimized Blue Prism automated processes (RPA).
+    - name: Daugherty Business Solutions
+      role: Software Engineering Consultant
       start: 1709290800 #March 01 2024
       end: 1735729200 #Jan 01 2025
       tasks:
-        - "Delivered software improvements, bug fixes, and DevOps automation."
-        - "Ensured seamless integration and delivery of client software solutions."
-        - "Architected and documented technical specifications for complex systems."
-    - name: 'CGI'
-      role: 'Software Engineering Consultant'
+        - Delivered software improvements, bug fixes, and DevOps automation.
+        - Ensured seamless integration and delivery of client software solutions.
+        - Architected and documented technical specifications for complex systems.
+    - name: CGI
+      role: Software Engineering Consultant
       start: 1735729200 #Jan 01 2025
       tasks:
-        - "Consistently deliver high-quality features and resolve bugs within existing software systems for client engagements."
-        - "Actively contribute to agile ceremonies, including sprint planning, daily stand-ups, retrospectives, demos with stakeholders, and technical team discussions."
-        - "Take ownership of the full software development lifecycle — from design and implementation to deployment — leveraging modern CI/CD practices in cloud-based environments."
+        - Consistently deliver high-quality features and resolve bugs within existing software systems for client engagements.
+        - Actively contribute to agile ceremonies, including sprint planning, daily stand-ups, retrospectives, demos with stakeholders, and technical team discussions.
+        - Take ownership of the full software development lifecycle — from design and implementation to deployment — leveraging modern CI/CD practices in cloud-based environments.
 
 about:
-  text: "I am a resilient person who learns quickly and enjoys technology. Over the past few years, I have had the opportunity to develop software solutions for multiple industries. I specialize in web development, software architecture, and DevOps."
+  text: I am a resilient person who learns quickly and enjoys technology. Over the past few years, I have had the opportunity to develop software solutions for multiple industries. I specialize in web development, software architecture, and DevOps.
 
 education:
   items:
-    - name: 'Universidad Interamericana de Panama (UIP)'
+    - name: Universidad Interamericana de Panama (UIP)
       title: "Bachelor's Degree in Software Development"
       start: 1577876400 # 2020
 
 projects:
   items:
-    - name: 'Personal Website'
-      tools: ['Astro', 'Svelte', 'TailwindCSS', 'Cloudflare']
+    - name: Personal Website
+      tools: [Astro, Svelte, TailwindCSS, Cloudflare]
       codebase: "https://github.com/NM4TT/web-nmatute"
       live: "https://nmatute.com"
-    - name: 'Springboot API samples'
-      tools: ['Java', 'Springboot', 'REST', 'SOAP', 'GraphQL', 'gRPC']
+    - name: Springboot API samples
+      tools: [Java, Springboot, REST, SOAP, GraphQL, gRPC]
       codebase: "https://github.com/NM4TT/Springboot-Api-Samples"
+    - name: Instant Form
+      tools: [Astro, Svelte, TailwindCSS, Playwright]
+      codebase: "https://github.com/NM4TT/instant-form"
+      live: "https://instant-form.nmatute-projects.com"
 
 tools-skills:
   items:
@@ -102,23 +106,23 @@ languages:
 
 biography:
   hero:
-    title: "Personal Biography"
+    title: Personal Biography
     quote: "Nice to meet you 😉! I'm Nicolás, and on this page, you'll get to know a bit of my story (written by me), which will give you some insights into who I am."
-    image: "close_pic"
+    image: close_pic
   sections:
-    - title: "Early Life"
-      image: "placa_jarc"
+    - title: Early Life
+      image: placa_jarc
       paragraphs:
-        - "Born in Venezuela in 2001, my journey began with a curiosity for how virtual worlds were built. From my first video games to my first lines of code, I've always been driven by the need to understand the 'why' behind the technology we use every day."
+        - Born in Venezuela in 2001, my journey began with a curiosity for how virtual worlds were built. From my first video games to my first lines of code, I've always been driven by the need to understand the 'why' behind the technology we use every day.
         - "Despite not being a 'natural genius,' I discovered early on that discipline and self-learning were far more powerful. This mindset allowed me to excel academically, eventually graduating with honors and a deep-seated passion for computer science."
-    - title: "The Path to Engineering"
-      image: "indra_pic"
+    - title: The Path to Engineering
+      image: indra_pic
       image_first: true
       paragraphs:
-        - "My professional path crystallized at the Universidad Tecnológica de Panamá. While studying, I took on the challenge of teaching—a pivot that taught me more about communication and patience than any code ever could."
-        - "The defining moment of my early career was joining Indra. It was here that I transitioned from a student of code to a practitioner of engineering, working on enterprise-grade systems and navigating the complexities of modern software delivery."
-    - title: "Present & Future"
-      image: "recent_pic"
+        - My professional path crystallized at the Universidad Tecnológica de Panamá. While studying, I took on the challenge of teaching—a pivot that taught me more about communication and patience than any code ever could.
+        - The defining moment of my early career was joining Indra. It was here that I transitioned from a student of code to a practitioner of engineering, working on enterprise-grade systems and navigating the complexities of modern software delivery.
+    - title: Present & Future
+      image: recent_pic
       paragraphs:
-        - "Today, I work as a consultant for U.S.-based firms, operating at the intersection of full-stack development and cloud architecture. The transition to working entirely in English was a hurdle, but one that has opened a global landscape of opportunities."
-        - "My focus remains constant: building things that matter, learning every day, and maintaining the same curiosity that started it all in 2001."
+        - Today, I work as a consultant for U.S.-based firms, operating at the intersection of full-stack development and cloud architecture. The transition to working entirely in English was a hurdle, but one that has opened a global landscape of opportunities.
+        - My focus remains constant: building things that matter, learning every day, and maintaining the same curiosity that started it all in 2001.

@@ -74,7 +74,7 @@
 <!-- Floating Toggle Button -->
 <button 
     use:draggable
-    class="md:hidden fixed z-[110] flex flex-col gap-1.5 justify-center items-center w-14 h-14 rounded-full border border-secondary/20 bg-secondary shadow-2xl transition-transform active:scale-95 touch-none"
+    class="md:hidden fixed z-110 flex flex-col gap-1.5 justify-center items-center w-14 h-14 rounded-full border border-secondary/20 bg-secondary shadow-2xl transition-transform active:scale-95 touch-none"
     style="right: {x}px; bottom: {y}px;"
     on:click={toggleMenu}
     aria-label="Toggle Menu">
@@ -89,7 +89,7 @@
     <div
       in:fade={{ duration: 200 }}
       out:fade={{ duration: 200 }}
-      class="fixed inset-0 z-[100] backdrop-blur-xl bg-black/40 dark:bg-black/60"
+      class="fixed inset-0 z-100 backdrop-blur-xl bg-black/40 dark:bg-black/60"
       on:click={() => isOpen = false}
       role="presentation">
     </div>
@@ -98,11 +98,10 @@
     <div 
         in:fly={{ x: 200, duration: 300 }}
         out:fly={{ x: 200, duration: 300 }}
-        class="flex flex-col fixed top-0 right-0 w-[85%] max-w-xs h-full z-[101] shadow-2xl p-8 border-l border-secondary/10"
+        class="flex flex-col fixed top-0 right-0 w-[85%] max-w-xs h-full z-101 shadow-2xl p-8 border-l border-secondary/10"
         style="background-color: var(--bg-base); color: var(--text-base);"
         role="navigation"
-        aria-label="mobile menu"
-        tabindex="0">
+        aria-label="mobile menu">
 
         <!-- Action Row -->
         <div class="flex items-center justify-between mb-12">

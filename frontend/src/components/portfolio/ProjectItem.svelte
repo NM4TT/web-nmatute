@@ -52,7 +52,7 @@
         class="flex items-center gap-1 text-sm font-medium opacity-70 hover:opacity-100 
                hover:text-secondary transition-all"
       >
-        Demo
+        View
       </a>
     {/if}
   </footer>

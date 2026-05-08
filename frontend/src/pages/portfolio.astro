@@ -31,7 +31,7 @@ const projects = entry?.data.items || [];
         <section class="portfolio-section pb-32">
           <div class="flex flex-wrap gap-6">
             {projects.map((item: any) => (
-              <div class="flex-grow basis-full md:basis-[45%] lg:basis-[30%]">
+              <div class="grow basis-full md:basis-[45%] lg:basis-[30%]">
                 <ProjectItem data={item} />
               </div>
             ))}
