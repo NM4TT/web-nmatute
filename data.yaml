@@ -62,6 +62,10 @@ projects:
       tools: [Astro, Svelte, TailwindCSS, Playwright]
       codebase: "https://github.com/NM4TT/instant-form"
       live: "https://instant-form.nmatute-projects.com"
+    - name: Instant Landing Page
+      tools: [Astro, Svelte, TailwindCSS, Playwright]
+      codebase: "https://github.com/NM4TT/instant-landing-page"
+      live: "https://instant-landing-page.nmatute-projects.com"
 
 tools-skills:
   items:
@@ -125,4 +129,4 @@ biography:
       image: recent_pic
       paragraphs:
         - Today, I work as a consultant for U.S.-based firms, operating at the intersection of full-stack development and cloud architecture. The transition to working entirely in English was a hurdle, but one that has opened a global landscape of opportunities.
-        - My focus remains constant: building things that matter, learning every day, and maintaining the same curiosity that started it all in 2001.
+        - "My focus remains constant: building things that matter, learning every day, and staying as curious as ever."
