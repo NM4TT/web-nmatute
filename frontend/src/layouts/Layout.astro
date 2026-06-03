@@ -22,6 +22,12 @@ const currentYear = new Date().getFullYear();
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<!-- Preload critical fonts -->
+		<link rel="preload" href="/fonts/Syne-ExtraBold.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/Syne-Regular.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
+
 		<script is:inline>
 			const theme = (() => {
 				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
@@ -55,16 +61,16 @@ const currentYear = new Date().getFullYear();
 						</a>
 					</div>
 					<div id="navigation" class="flex items-center gap-8">
-						<DesktopMenu client:load />
-						<ThemeToggle client:load />
-						<ContactButton client:load />
+						<DesktopMenu />
+						<ThemeToggle client:idle />
+						<ContactButton />
 					</div>
 				</div>
 			</header>
 
 			<!-- Mobile Floating Navigation -->
 			<div class="md:hidden">
-				<MobileMenu client:load />
+				<MobileMenu client:media="(max-width: 767px)" />
 			</div>
 
 			<div class="py-5">

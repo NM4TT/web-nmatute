@@ -1,6 +1,7 @@
 ---
 import Layout from '#layouts/Layout.astro';
 import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
 
 import PLACA_JARC from '#assets/images/placa_jarc.jpg';
 import INDRA_PIC from '#assets/images/indra_selfie.jpg';
@@ -34,8 +35,8 @@ const imageMap: Record<string, any> = {
                         <div class="h-px w-24 bg-secondary/30"></div>
                     </div>
                     <div class="w-full md:w-2/5 order-1 md:order-2">
-                        <img 
-                            src={imageMap[bio.hero.image]?.src} 
+                        <Image 
+                            src={imageMap[bio.hero.image]} 
                             alt="Nicolas Matute" 
                             class="rounded-2xl shadow-2xl transition-all duration-700 w-full" 
                         />
@@ -58,11 +59,11 @@ const imageMap: Record<string, any> = {
                                     <p>{p}</p>
                                 ))}
                             </div>
-                            <img 
-                                src={imageMap[section.image]?.src} 
+                            <Image 
+                                src={imageMap[section.image]} 
                                 alt={section.title} 
                                 class={`rounded-xl transition-all duration-700 shadow-lg ${section.image_first ? 'order-1 md:order-1' : ''}`}
-                            >
+                            />
                         </div>
                     </article>
                 </section>

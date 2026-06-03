@@ -22,9 +22,9 @@
   "dependencies": {
     "@astrojs/svelte": "^8.1.0",
     "@astrojs/tailwind": "^6.0.2",
-    "@iconify/svelte": "^5.2.1",
     "@tailwindcss/vite": "^4.2.4",
     "astro": "^6.2.2",
+    "sharp": "^0.34.5",
     "svelte": "^5.55.5",
     "tailwindcss": "^4.2.4",
     "unplugin-icons": "^23.0.1"
@@ -33,5 +33,6 @@
     "@iconify-json/mdi": "^1.2.3",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^25.6.0"
-  }
+  },
+  "packageManager": "pnpm@11.1.2+sha512.415a1cc25974731e75455c1468371be74c5aa5fb7621b50d4056d222451609f11412f23fd602e6169f1e060466641f798597e1be961a10688836a67b16569499"
 }

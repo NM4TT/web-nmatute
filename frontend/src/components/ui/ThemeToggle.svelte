@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import Icon from '@iconify/svelte';
+  import IconSunny from '~icons/mdi/weather-sunny';
+  import IconNight from '~icons/mdi/weather-night';
 
   let isDark = $state(false);
 
@@ -47,8 +48,8 @@
   aria-label="Toggle Theme"
 >
   {#if isDark}
-    <Icon icon="mdi:weather-sunny" class="text-xl" />
+    <IconSunny class="text-xl" />
   {:else}
-    <Icon icon="mdi:weather-night" class="text-xl" />
+    <IconNight class="text-xl" />
   {/if}
 </button>
