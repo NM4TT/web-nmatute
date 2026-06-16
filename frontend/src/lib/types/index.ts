@@ -35,6 +35,12 @@ export type SocialMediaType = {
     url: string;
 };
 
+export type NavLinkType = {
+    name: string;
+    href: string;
+    external?: boolean;
+};
+
 export type BiographyType = {
     hero: {
         title: string;

@@ -3,6 +3,7 @@
   import { z } from 'astro/zod'; // Following the modern Zod import
   import ThemeToggle from '#components/ui/ThemeToggle.svelte';
   import ContactButton from '#components/ui/ContactButton.svelte';
+  import { NAV_LINKS } from "#lib/constants";
 
   let isOpen: boolean = false;
   
@@ -115,9 +116,11 @@
 
         <!-- Navigation Links -->
         <nav class="flex flex-col gap-6">
-          {#each [{name: "Resume", href: "/"}, {name: "Portfolio", href: "/portfolio/"}, {name: "Biography", href: "/biography/"}] as link}
+          {#each NAV_LINKS as link}
             <a 
                 href={link.href} 
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
                 on:click={() => isOpen = false}
                 class="font-display text-2xl font-bold tracking-tighter hover:text-secondary transition-colors duration-200"
             >
