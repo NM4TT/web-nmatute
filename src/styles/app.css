@@ -1,50 +1,17 @@
 @import "tailwindcss";
 
-/* Fonts declarations */
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Inter';
-  src: url('/fonts/Inter-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Syne';
-  src: url('/fonts/Syne-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Syne';
-  src: url('/fonts/Syne-ExtraBold.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Office Code Pro';
-  src: url('/fonts/OfficeCodePro-Regular.woff') format('woff');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+@import "./fonts.css";
+
+
 
 @theme {
   --color-secondary: var(--secondary);
   /* Semantic Brand Colors */
   --color-accent:         var(--color-secondary);
   
-  --font-sans: "Inter", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-display: "Syne", var(--font-sans);
-  --font-mono: "Office Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "Archivo", ui-sans-serif, system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Archivo", var(--font-sans);
+  --font-mono: "Archivo", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 :root {
