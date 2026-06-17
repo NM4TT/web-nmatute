@@ -9,7 +9,6 @@ import WorkExperienceItem from '#components/cv/WorkExperienceItem.svelte';
 
 import { getEntry } from 'astro:content';
 import { formatItemDates } from '#lib/utils';
-import { SOCIAL_MEDIA_LIST } from '#lib/constants';
 import { Image } from 'astro:assets';
 import MAIN_PIC from '#assets/images/main_pic.jpg';
 
@@ -23,6 +22,7 @@ const education = formatItemDates(await getSectionItems('education'));
 const about = (await getEntry('data', 'about'))?.data;
 const skills = (await getSectionItems('tools-skills')).flatMap((item: any) => item.keywords || []);
 const languages = (await getSectionItems('languages')).flatMap((item: any) => item.keywords || []);
+const socials = (await getEntry('data', 'socials'))?.data || [];
 ---
 
 <Layout title="Nicolas Resume">
@@ -51,7 +51,7 @@ const languages = (await getSectionItems('languages')).flatMap((item: any) => it
                     <div class="flex items-center gap-6 mb-10">
                         <ContactButton />
                         <ul class="list-none flex items-center gap-4">
-                            {SOCIAL_MEDIA_LIST.map((socialMedia) => (
+                            {socials.map((socialMedia: any) => (
                                 <li class="text-2xl">
                                     <SocialMedia data={socialMedia} />
                                 </li>
@@ -60,7 +60,7 @@ const languages = (await getSectionItems('languages')).flatMap((item: any) => it
                     </div>
                 </div>
             </div>
-            <MobileSection title="Resume" />
+            <MobileSection title="Resume" socials={socials} />
         </section>
 
         <section class="cv-section mt-32 flex flex-col max-w-4xl mx-auto px-4">

@@ -1,10 +1,4 @@
-import type { SocialMediaType, NavLinkType } from "#lib/types";
-
-export const SOCIAL_MEDIA_LIST: SocialMediaType[] = [
-    {name: "github", icon: "mdi:github", url: "https://github.com/NM4TT"},
-    {name: "linkedin", icon: "mdi:linkedin", url: "https://linkedin.com/in/nmatute-dev"},
-    {name: "instagram", icon: "mdi:instagram", url: "https://instagram.com/nmatute.dev"},
-];
+import type { NavLinkType } from "#lib/types";
 
 export const NAV_LINKS: NavLinkType[] = [
     { name: "Resume", href: "/" },

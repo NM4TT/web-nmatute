@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { SOCIAL_MEDIA_LIST } from "#lib/constants";
 	import SocialMedia from "./SocialMedia.svelte";
 
 export let title: string = "Dummy Title";
+export let socials: any[] = [];
 </script>
 
 <div id="mobile-first-look" class="md:hidden flex flex-col items-center justify-center py-10 px-4">
@@ -12,7 +12,7 @@ export let title: string = "Dummy Title";
     {#if title.toLowerCase() === "resume" || title.toLowerCase() === "portfolio"}
     <div class="flex justify-center">
         <ul class="list-none flex items-center gap-6">
-            {#each SOCIAL_MEDIA_LIST as socialMedia}
+            {#each socials as socialMedia}
                 <li class="text-3xl">
                     <SocialMedia data={socialMedia} />
                 </li>

@@ -130,3 +130,14 @@ biography:
       paragraphs:
         - Today, I work as a consultant for U.S.-based firms, operating at the intersection of full-stack development and cloud architecture. The transition to working entirely in English was a hurdle, but one that has opened a global landscape of opportunities.
         - "My focus remains constant: building things that matter, learning every day, and staying as curious as ever."
+
+socials:
+  - name: "github"
+    icon: "mdi:github"
+    url: "https://github.com/NM4TT"
+  - name: "linkedin"
+    icon: "mdi:linkedin"
+    url: "https://linkedin.com/in/nmatute-dev"
+  - name: "instagram"
+    icon: "mdi:instagram"
+    url: "https://instagram.com/nmatute.dev"

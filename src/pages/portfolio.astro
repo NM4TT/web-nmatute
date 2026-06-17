@@ -6,6 +6,7 @@ import { getEntry } from 'astro:content';
 
 const entry = await getEntry('data', 'projects');
 const projects = entry?.data.items || [];
+const socials = (await getEntry('data', 'socials'))?.data || [];
 ---
 
 <Layout title="Nicolas Portfolio">
@@ -25,7 +26,7 @@ const projects = entry?.data.items || [];
             </p>
             <div class="h-0.5 w-24 bg-secondary/30"></div>
           </div>
-          <MobileSection title="Portfolio" />
+          <MobileSection title="Portfolio" socials={socials} />
         </section>
     
         <section class="portfolio-section pb-32">
