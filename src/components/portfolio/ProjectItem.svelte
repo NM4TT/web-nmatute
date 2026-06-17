@@ -13,7 +13,7 @@
 <article 
   in:fade={{ duration: 400, delay: 200 }}
   class="group flex flex-col p-6 rounded-lg border border-secondary/30 
-         hover:border-secondary transition-colors duration-200 h-full"
+         hover:border-secondary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full"
   style="background-color: var(--bg-surface);">
   
   <header class="mb-4">

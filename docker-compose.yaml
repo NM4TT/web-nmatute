@@ -3,7 +3,7 @@ services:
     image: nginx:alpine
     container_name: web-nmatute
     volumes:
-      - ./frontend/dist:/usr/share/nginx/html:ro
+      - ./dist:/usr/share/nginx/html:ro
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     ports:
       - "8080:80"

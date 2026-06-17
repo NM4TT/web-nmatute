@@ -27,7 +27,7 @@
     aria-label={data.name}
     target="_blank"
     rel="noopener noreferrer"
-    class="text-secondary"
+    class="text-secondary/80 hover:text-secondary hover:scale-110 transition-all duration-200 inline-block text-2xl"
 >
     <SelectedIcon />
 </a>

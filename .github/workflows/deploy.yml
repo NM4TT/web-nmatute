@@ -26,24 +26,22 @@ jobs:
         with:
           node-version: 24
           cache: 'pnpm'
-          cache-dependency-path: frontend/pnpm-lock.yaml
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: frontend
 
       - name: Build
         run: pnpm run build
-        working-directory: frontend
         env:
-          PUBLIC_MAILTO: nmatute.petition332@passmail.net
+          PUBLIC_MAILTO: contact@nmatute.com
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy frontend/dist --project-name=web-nmatute
+          command: pages deploy dist --project-name=web-nmatute
 
       - name: Send success email
         if: ${{ success() }}

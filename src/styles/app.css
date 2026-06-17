@@ -18,21 +18,21 @@
 }
 
 :root {
-  /* Light Mode - High Contrast */
+  /* Light Mode */
   --bg-base: #ffffff;
   --bg-surface: #f9fafb;
-  --text-base: #000000;
-  --secondary: #7c7a65;
-  --border-color: rgba(0, 0, 0, 0.1);
+  --text-base: #0f172a;
+  --secondary: #777561; /* Remediated for WCAG 2.1 compliance (4.7:1 contrast ratio) */
+  --border-color: rgba(15, 23, 42, 0.08);
 }
 
 .dark {
-  /* Dark Mode - Deep Charcoals (Better than pure black) */
-  --bg-base: #0a0a0a;
-  --bg-surface: #171717;
-  --text-base: #f9fafb;
-  --secondary: #7c7a65;
-  --border-color: rgba(20, 11, 11, 0.1);
+  /* Dark Mode */
+  --bg-base: #080808;
+  --bg-surface: #121212;
+  --text-base: #f1f5f9;
+  --secondary: #a3a18a; /* sage-olive for dark mode readability (7.65:1 contrast) */
+  --border-color: rgba(241, 245, 249, 0.08);
 }
 
 @layer base {
@@ -54,23 +54,18 @@
 
 /* UI Components */
 .glass-header {
-  @apply sticky top-0 z-50 backdrop-blur-xl border-b shadow-none;
-  background-color: color-mix(in srgb, var(--bg-base) 70%, transparent);
-  border-color: transparent;
-}
-
-.light .glass-header, .dark .glass-header {
-  @apply shadow-none border-transparent;
+  @apply sticky top-0 z-50 backdrop-blur-xl border-b shadow-none transition-all duration-300;
+  background-color: color-mix(in srgb, var(--bg-base) 75%, transparent);
+  border-color: var(--border-color);
 }
 
 /* Buttons & Links */
 .btn-primary {
   @apply font-display text-xs font-bold uppercase tracking-widest py-3 px-8 rounded-lg cursor-pointer
-         border-2 active:opacity-80 inline-block;
+         border-2 active:opacity-80 inline-block transition-all duration-300 shadow-md;
   background-color: var(--secondary);
   border-color: var(--secondary);
   color: #ffffff; /* Solid white for Light Mode */
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .dark .btn-primary {
@@ -80,4 +75,5 @@
 .btn-primary:hover {
   background-color: transparent;
   color: var(--secondary) !important;
+  @apply shadow-lg scale-105;
 }
