@@ -5,17 +5,28 @@ import ContactButton from '#components/ui/ContactButton.svelte';
 import ThemeToggle from '#components/ui/ThemeToggle.svelte';
 import MobileMenu from '#components/layout/MobileMenu.svelte';
 import { ClientRouter } from 'astro:transitions';
+import { getLocalizedMenu, getUiTranslation } from '../lib/i18n';
 
 interface Props {
 	title: string;
+	lang?: 'en' | 'es';
 }
 
-const { title } = Astro.props;
+const { title, lang = 'en' } = Astro.props;
 const currentYear = new Date().getFullYear();
+
+const links = getLocalizedMenu(lang);
+const t = getUiTranslation(lang);
+
+// Language toggle URL calculation
+const currentPath = Astro.url.pathname;
+const toggleUrl = lang === 'en'
+  ? `/es${currentPath.replace(/\/$/, '')}/` // Appends /es, ensures trailing slash
+  : currentPath.replace(/^\/es/, '') || '/';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -54,14 +65,21 @@ const currentYear = new Date().getFullYear();
 		<header class="glass-header w-full px-6 sm:px-8 py-3 sticky top-0 z-50 hidden md:block">
 			<div class="flex justify-between items-center max-w-7xl mx-auto w-full">
 				<div id="logo">
-					<a href="/">
+					<a href={lang === 'es' ? "/es/" : "/"}>
 						<img src="/logo.svg" alt="Nicolas Matute Logo" class="h-auto w-16" width="64" height="64" />
 					</a>
 				</div>
 				<div id="navigation" class="flex items-center gap-8">
-					<DesktopMenu />
+					<DesktopMenu links={links} />
 					<ThemeToggle client:idle />
-					<ContactButton />
+					<a 
+						href={toggleUrl} 
+						class="p-2 rounded-lg border border-secondary/20 hover:border-secondary/50 transition-[border-color,background-color,transform] duration-200 text-secondary cursor-pointer relative overflow-hidden w-10 h-10 flex items-center justify-center active:scale-90 font-mono text-xs font-bold tracking-wider uppercase select-none"
+						aria-label="Toggle Language"
+					>
+						{lang === 'en' ? 'ES' : 'EN'}
+					</a>
+					<ContactButton text={t.contactMe} />
 				</div>
 			</div>
 		</header>
@@ -70,7 +88,7 @@ const currentYear = new Date().getFullYear();
 		<main class="lg:max-w-7xl px-6 sm:px-6 lg:px-8 max-w-full mx-auto min-h-screen">
 			<!-- Mobile Floating Navigation -->
 			<div class="md:hidden">
-				<MobileMenu client:media="(max-width: 767px)" />
+				<MobileMenu client:media="(max-width: 767px)" links={links} lang={lang} toggleUrl={toggleUrl} />
 			</div>
 
 			<div class="py-5">
@@ -79,7 +97,7 @@ const currentYear = new Date().getFullYear();
 
 			<footer class="flex flex-col items-center justify-center py-12 mt-20 border-t border-secondary/10">
 				<p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50">
-					&copy; {currentYear} Nicolas Matute
+					&copy; {currentYear} Nicolas Matute. {t.rightsReserved}
 				</p>
 			</footer>
 		</main>

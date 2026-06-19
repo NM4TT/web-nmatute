@@ -3,11 +3,16 @@ import { file } from 'astro/loaders';
 import { z } from 'astro/zod'; 
 
 const dataCollection = defineCollection({
-    loader: file("./data.yaml"),
-    // 2. Use the arrow function signature for the schema
+    loader: file("./content.yaml"),
+    schema: () => z.any() 
+});
+
+const dataEsCollection = defineCollection({
+    loader: file("./content.es.yaml"),
     schema: () => z.any() 
 });
 
 export const collections = {
     'data': dataCollection,
+    'data_es': dataEsCollection,
 };

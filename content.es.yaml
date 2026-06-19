@@ -1,0 +1,143 @@
+professional-exp:
+  items:
+    - name: PanamaSTEM Education Inc
+      role: Instructor de Programación / Creador de Contenido
+      start: 1577876400 #Jan 01 2020
+      end: 1609498800 #Jan 01 2021
+      tasks:
+        - Desarrollé contenido educativo para plataformas de robótica y programación.
+        - Gestioné la generación de prospectos y la programación de citas para la venta de servicios.
+        - Proporcioné soporte técnico y resolución de problemas.
+    - name: Colegio Real de Panama
+      role: Profesor de Ciencias de la Computación
+      start: 1643713200 #Febr 01 2022
+      end: 1667300400 #Nov 01 2022
+      tasks:
+        - Administré y mantuve el equipo del laboratorio de computación.
+        - Desarrollé estrategias didácticas para facilitar la comprensión de las ciencias de la computación por parte de los estudiantes.
+        - Implementé flujos de trabajo de soporte técnico para el personal y los estudiantes.
+    - name: STT Group / Indra
+      role: Desarrollador de Software
+      start: 1667300400 #Nov 01 2022
+      end: 1709290800 #March 01 2024
+      tasks:
+        - Mantuve servicios web Java empresariales (SOAP y REST).
+        - Orquesté la migración de entornos locales a Oracle Cloud Infrastructure.
+        - Mantuve y optimicé procesos automatizados de Blue Prism (RPA).
+    - name: Daugherty Business Solutions
+      role: Consultor de Ingeniería de Software
+      start: 1709290800 #March 01 2024
+      end: 1735729200 #Jan 01 2025
+      tasks:
+        - Entregué mejoras de software, corrección de errores y automatización de DevOps.
+        - Garanticé la integración y entrega sin problemas de soluciones de software para clientes.
+        - Diseñé y documenté especificaciones técnicas para sistemas complejos.
+    - name: CGI
+      role: Consultor de Ingeniería de Software
+      start: 1735729200 #Jan 01 2025
+      tasks:
+        - Entrego consistentemente características de alta calidad y resuelvo errores en los sistemas de software existentes para los compromisos de los clientes.
+        - Contribuyo activamente a las ceremonias ágiles, incluyendo planificación de sprints, reuniones diarias, retrospectivas, demostraciones con partes interesadas y discusiones del equipo técnico.
+        - Asumo la responsabilidad de todo el ciclo de vida del desarrollo de software — desde el diseño y la implementación hasta el despliegue — aprovechando prácticas modernas de CI/CD en entornos basados en la nube.
+
+about:
+  text: Soy una persona resiliente que aprende rápidamente y disfruta de la tecnología. En los últimos años, he tenido la oportunidad de desarrollar soluciones de software para múltiples industrias. Me especializo en desarrollo web, arquitectura de software y DevOps.
+
+education:
+  items:
+    - name: Universidad Interamericana de Panama (UIP)
+      title: "Licenciatura en Desarrollo de Software"
+      start: 1577876400 # 2020
+
+projects:
+  items:
+    - name: Sitio Web Personal
+      tools: [Astro, Svelte, TailwindCSS, Cloudflare]
+      codebase: "https://github.com/NM4TT/web-nmatute"
+      live: "https://nmatute.com"
+    - name: Ejemplos de API con Springboot
+      tools: [Java, Springboot, REST, SOAP, GraphQL, gRPC]
+      codebase: "https://github.com/NM4TT/Springboot-Api-Samples"
+    - name: Formulario Instantáneo
+      tools: [Astro, Svelte, TailwindCSS, Playwright]
+      codebase: "https://github.com/NM4TT/instant-form"
+      live: "https://instant-form.nmatute-projects.com"
+    - name: Página de Aterrizaje Instantánea
+      tools: [Astro, Svelte, TailwindCSS, Playwright]
+      codebase: "https://github.com/NM4TT/instant-landing-page"
+      live: "https://instant-landing-page.nmatute-projects.com"
+
+tools-skills:
+  items:
+    - keywords:
+        - Java
+        - Maven
+        - XML
+        - JSON
+        - Argo Workflows
+        - Argo CD
+        - Javascript
+        - Typescript
+        - SQL 
+        - OracleDB 
+        - MongoDB
+        - React.js
+        - Redux
+        - Golang
+        - Linux 
+        - Unix
+        - Git 
+        - Tortoise SVN
+        - Github 
+        - Bitbucket
+        - Fast Learning
+        - SOAP
+        - REST
+        - GraphQL
+        - gRPC
+        - Springboot
+        - Postman
+        - Docker
+        - Kubernetes
+        - Svelte
+        - SvelteKit
+
+languages:
+  items:
+    - keywords:
+      - Español
+      - Inglés
+
+biography:
+  hero:
+    title: Biografía Personal
+    quote: "¡Mucho gusto 😉! Soy Nicolás, y en esta página conocerás un poco de mi historia (escrita por mí), lo que te dará algunas ideas sobre quién soy."
+    image: close_pic
+  sections:
+    - title: Primeros Años
+      image: placa_jarc
+      paragraphs:
+        - Nacido en Venezuela en 2001, mi viaje comenzó con la curiosidad de cómo se construían los mundos virtuales. Desde mis primeros videojuegos hasta mi primer línea de código, siempre me ha impulsado la necesidad de entender el 'por qué' detrás de la tecnología que usamos todos los días.
+        - "A pesar de no ser un 'genio natural', descubrí temprano que la disciplina y el autoaprendizaje eran mucho más poderosos. Esta mentalidad me permitió sobresalir académicamente, eventualmente graduándome con honores y una profunda pasión por las ciencias de la computación."
+    - title: El Camino a la Ingeniería
+      image: indra_pic
+      image_first: true
+      paragraphs:
+        - Mi camino profesional se cristalizó en la Universidad Tecnológica de Panamá. Mientras estudiaba, asumí el desafío de enseñar, un giro que me enseñó más sobre comunicación y paciencia de lo que cualquier código podría hacerlo.
+        - El momento definitivo del inicio de mi carrera fue unirme a Indra. Fue aquí donde pasé de ser un estudiante de código a un profesional de la ingeniería, trabajando en sistemas de nivel empresarial y navegando por las complejidades de la entrega de software moderno.
+    - title: Presente y Futuro
+      image: recent_pic
+      paragraphs:
+        - Hoy en día, trabajo como consultor para empresas basadas en EE. UU., operando en la intersección del desarrollo full-stack y la arquitectura en la nube. La transición a trabajar completamente en inglés fue un obstáculo, pero que ha abierto un panorama global de oportunidades.
+        - "Mi enfoque sigue siendo constante: construir cosas que importen, aprender todos los días y seguir siendo tan curioso como siempre."
+
+socials:
+  - name: "github"
+    icon: "mdi:github"
+    url: "https://github.com/NM4TT"
+  - name: "linkedin"
+    icon: "mdi:linkedin"
+    url: "https://linkedin.com/in/nmatute-dev"
+  - name: "instagram"
+    icon: "mdi:instagram"
+    url: "https://instagram.com/nmatute.dev"

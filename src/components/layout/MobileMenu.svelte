@@ -4,6 +4,9 @@
   import ThemeToggle from '#components/ui/ThemeToggle.svelte';
   import ContactButton from '#components/ui/ContactButton.svelte';
   import { NAV_LINKS } from "#lib/constants";
+  import type { NavLinkType } from "#lib/types";
+
+  let { links = NAV_LINKS, lang = 'en', toggleUrl = '' } = $props<{ links?: NavLinkType[]; lang?: 'en' | 'es'; toggleUrl?: string }>();
 
   let isOpen = $state(false);
   let x = $state(24);
@@ -162,15 +165,24 @@
 
         <div class="flex items-center justify-between mb-12">
             <div class="scale-90 origin-left">
-                <ContactButton />
+                <ContactButton text={lang === 'es' ? 'Contáctame' : 'Contact Me'} />
             </div>
             <div class="flex items-center gap-4">
+                {#if toggleUrl}
+                    <a 
+                        href={toggleUrl} 
+                        class="p-2 rounded-lg border border-secondary/20 hover:border-secondary/50 transition-[border-color,background-color,transform] duration-200 text-secondary cursor-pointer relative overflow-hidden w-10 h-10 flex items-center justify-center active:scale-90 font-mono text-xs font-bold tracking-wider uppercase select-none"
+                        onclick={() => isOpen = false}
+                    >
+                        {lang === 'en' ? 'ES' : 'EN'}
+                    </a>
+                {/if}
                 <ThemeToggle />
             </div>
         </div>
 
         <nav class="flex flex-col gap-6">
-          {#each NAV_LINKS as link}
+          {#each links as link}
             <a 
                 href={link.href} 
                 target={link.external ? "_blank" : undefined}
@@ -187,7 +199,7 @@
         </nav>
 
         <div class="mt-auto pt-20 flex flex-col items-center gap-4">
-            <a href="/" onclick={() => isOpen = false}>
+            <a href={lang === 'es' ? "/es/" : "/"} onclick={() => isOpen = false}>
                 <img src="/logo.svg" alt="Nicolas Matute Logo" class="h-auto w-16" width="64" height="64" />
             </a>
             <p class="font-mono text-[10px] uppercase tracking-widest opacity-60">Nicolas Matute</p>

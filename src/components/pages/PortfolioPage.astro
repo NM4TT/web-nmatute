@@ -1,0 +1,49 @@
+---
+import Layout from '#layouts/Layout.astro';
+import MobileSection from '#components/ui/MobileSection.svelte';
+import ProjectItem from '#components/portfolio/ProjectItem.svelte';
+import { getLocalizedEntry, getUiTranslation } from '../../lib/i18n';
+
+interface Props {
+    lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const t = getUiTranslation(lang);
+
+const projectsData = await getLocalizedEntry(lang, 'projects');
+const projects = projectsData?.items || [];
+const socials = await getLocalizedEntry(lang, 'socials') || [];
+---
+
+<Layout title={t.portfolioTitle} lang={lang}>
+    <div id="portfolio" class="pt-20 max-w-4xl mx-auto px-4">
+        <section id="first" class="mb-24"> 
+          <div 
+            id="desktop-first-look"
+            class="hidden md:flex flex-col items-center justify-center space-y-6"
+          >
+            <h1
+              class="font-display font-extrabold text-center
+              text-6xl lg:text-7xl xl:text-8xl tracking-tighter">
+              {t.portfolioHeading}
+            </h1>
+            <p class="max-w-2xl text-center text-xl leading-relaxed opacity-80 font-light italic">
+              "{t.portfolioSubtitle}"
+            </p>
+            <div class="h-0.5 w-24 bg-secondary/30"></div>
+          </div>
+          <MobileSection title={t.portfolioHeading} socials={socials} />
+        </section>
+    
+        <section class="portfolio-section pb-32">
+          <div class="flex flex-wrap gap-6">
+            {projects.map((item: any) => (
+              <div class="grow basis-full md:basis-[45%] lg:basis-[30%]">
+                <ProjectItem data={item} />
+              </div>
+            ))}
+          </div>
+        </section>
+    </div>
+</Layout>

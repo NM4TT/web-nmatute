@@ -1,0 +1,79 @@
+---
+import Layout from '#layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+import PLACA_JARC from '#assets/images/placa_jarc.jpg';
+import INDRA_PIC from '#assets/images/indra_selfie.jpg';
+import RECENT_PIC from '#assets/images/recent_pic.jpg';
+import CLOSE_PIC from '#assets/images/close_pic.jpg';
+import type { BiographyType } from '#lib/types';
+import { getLocalizedEntry, getUiTranslation } from '../../lib/i18n';
+
+interface Props {
+    lang?: 'en' | 'es';
+}
+
+const { lang = 'en' } = Astro.props;
+const t = getUiTranslation(lang);
+
+const bio = await getLocalizedEntry(lang, 'biography') as BiographyType;
+
+const imageMap: Record<string, any> = {
+    'placa_jarc': PLACA_JARC,
+    'indra_pic': INDRA_PIC,
+    'recent_pic': RECENT_PIC,
+    'close_pic': CLOSE_PIC,
+};
+---
+
+<Layout title={t.biographyTitle} lang={lang}>
+    <div id="biography" class="pt-20 max-w-4xl mx-auto px-4">
+        {bio?.hero && (
+            <section id="hero" class="mb-24">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-full md:w-3/5 order-2 md:order-1">
+                        <h1 class="font-display font-extrabold text-5xl md:text-6xl lg:text-7xl mb-6 tracking-tighter">
+                            {bio.hero.title}
+                        </h1>
+                        <p class="text-xl leading-relaxed font-light italic mb-8 opacity-80">
+                            "{bio.hero.quote}"
+                        </p>
+                        <div class="h-px w-24 bg-secondary/30"></div>
+                    </div>
+                    <div class="w-full md:w-2/5 order-1 md:order-2">
+                        <Image 
+                            src={imageMap[bio.hero.image]} 
+                            alt="Nicolas Matute" 
+                            class="rounded-2xl shadow-2xl transition-all duration-700 w-full" 
+                        />
+                    </div>
+                </div>
+            </section>
+        )}
+    
+        <section class="bio-content space-y-24 pb-32">
+            {bio?.sections?.map((section: any) => (
+                <section>
+                    <h2 class="font-display text-4xl font-bold mb-8 flex items-center gap-4">
+                        <span class="h-0.5 w-12 bg-secondary/30"></span>
+                        {section.title}
+                    </h2>
+                    <article class="prose dark:prose-invert prose-xl max-w-none">
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div class={`space-y-6 ${section.image_first ? 'order-2 md:order-2' : ''}`}>
+                                {section.paragraphs.map((p: string) => (
+                                    <p>{p}</p>
+                                ))}
+                            </div>
+                            <Image 
+                                src={imageMap[section.image]} 
+                                alt={section.title} 
+                                class={`rounded-xl transition-all duration-700 shadow-lg ${section.image_first ? 'order-1 md:order-1' : ''}`}
+                            />
+                        </div>
+                    </article>
+                </section>
+            ))}
+        </section>
+    </div>
+</Layout>

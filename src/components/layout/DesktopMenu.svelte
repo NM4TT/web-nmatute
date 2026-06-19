@@ -1,10 +1,11 @@
 <script lang="ts">
-    import { NAV_LINKS } from "#lib/constants";
+    import type { NavLinkType } from "#lib/types";
+    let { links = [] } = $props<{ links: NavLinkType[] }>();
 </script>
 
 <nav id="desktop">
     <ul class="flex justify-between items-center gap-6">
-        {#each NAV_LINKS as link}
+        {#each links as link}
             <li class="relative group">
                 <a 
                     href={link.href}

@@ -105,8 +105,8 @@ tools-skills:
 languages:
   items:
     - keywords:
-      - Spanish
-      - English
+        - Spanish
+        - English
 
 biography:
   hero:

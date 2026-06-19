@@ -1,4 +1,5 @@
 <script lang="ts">
+    let { text = "Contact Me" } = $props<{ text?: string }>();
     const mailto: string = import.meta.env.PUBLIC_MAILTO;
 </script>
 
@@ -6,5 +7,5 @@
     href={`mailto:${mailto}`}
     class="btn-primary"
 >
-    Contact Me
+    {text}
 </a>
