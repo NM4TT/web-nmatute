@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
   import type { EducationItemType } from '#lib/types';
 
   export let data: EducationItemType = {
@@ -10,7 +9,7 @@
   };
 </script>
 
-<article in:fade={{ duration: 400 }} class="mb-10 group">
+<article class="mb-10 group animate-fade-in-up">
     <header class="flex flex-col md:flex-row md:items-baseline justify-between mb-2 border-b border-secondary/10 pb-2">
         <h3 class="font-display text-xl font-bold">{data.title}</h3>
         <div class="font-mono text-sm text-secondary tracking-tight">

@@ -44,12 +44,13 @@
 
 <button
   onclick={toggleTheme}
-  class="p-2 rounded-lg border border-secondary/20 hover:border-secondary/50 transition-[border-color,background-color] duration-200 text-secondary cursor-pointer"
+  class="p-2 rounded-lg border border-secondary/20 hover:border-secondary/50 transition-[border-color,background-color,transform] duration-200 text-secondary cursor-pointer relative overflow-hidden w-10 h-10 flex items-center justify-center active:scale-90"
   aria-label="Toggle Theme"
 >
-  {#if isDark}
-    <IconSunny class="text-xl" />
-  {:else}
+  <div class="transition-transform duration-300 {isDark ? 'rotate-90 scale-0 opacity-0' : 'rotate-0 scale-100 opacity-100'} absolute">
     <IconNight class="text-xl" />
-  {/if}
+  </div>
+  <div class="transition-transform duration-300 {isDark ? 'rotate-0 scale-100 opacity-100' : '-rotate-90 scale-0 opacity-0'} absolute">
+    <IconSunny class="text-xl" />
+  </div>
 </button>

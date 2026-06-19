@@ -50,23 +50,24 @@ const currentYear = new Date().getFullYear();
 		<ClientRouter />
 	</head>
 	<body>
-		<main class="lg:max-w-16xl px-6 sm:px-6 lg:px-8 max-w-full mx-auto min-h-screen">
-			<header class="glass-header px-4 md:px-8 py-3 shadow-none border-transparent">
-				<!-- Desktop Header -->
-				<div class="hidden md:flex justify-between items-center max-w-7xl mx-auto w-full">
-					<div id="logo">
-						<a href="/">
-							<img src="/logo.svg" alt="Nicolas Matute Logo" class="h-auto w-16" />
-						</a>
-					</div>
-					<div id="navigation" class="flex items-center gap-8">
-						<DesktopMenu />
-						<ThemeToggle client:idle />
-						<ContactButton />
-					</div>
+		<!-- Full-Width Sticky Glass Header (Hidden on Mobile) -->
+		<header class="glass-header w-full px-6 sm:px-8 py-3 sticky top-0 z-50 hidden md:block">
+			<div class="flex justify-between items-center max-w-7xl mx-auto w-full">
+				<div id="logo">
+					<a href="/">
+						<img src="/logo.svg" alt="Nicolas Matute Logo" class="h-auto w-16" width="64" height="64" />
+					</a>
 				</div>
-			</header>
+				<div id="navigation" class="flex items-center gap-8">
+					<DesktopMenu />
+					<ThemeToggle client:idle />
+					<ContactButton />
+				</div>
+			</div>
+		</header>
 
+		<!-- Main Layout Body -->
+		<main class="lg:max-w-7xl px-6 sm:px-6 lg:px-8 max-w-full mx-auto min-h-screen">
 			<!-- Mobile Floating Navigation -->
 			<div class="md:hidden">
 				<MobileMenu client:media="(max-width: 767px)" />

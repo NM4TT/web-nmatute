@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
   import type { ProjectItemType } from '#lib/types';
 
   export let data: ProjectItemType = {
@@ -11,9 +10,8 @@
 </script>
 
 <article 
-  in:fade={{ duration: 400, delay: 200 }}
   class="group flex flex-col p-6 rounded-lg border border-secondary/30 
-         hover:border-secondary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full"
+         hover:border-secondary hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full animate-fade-in-up"
   style="background-color: var(--bg-surface);">
   
   <header class="mb-4">
@@ -42,6 +40,7 @@
              hover:text-secondary transition-all"
     >
       Details
+      <span class="sr-only">(opens in a new tab)</span>
     </a>
     
     {#if data.live}
@@ -53,6 +52,7 @@
                hover:text-secondary transition-all"
       >
         View
+        <span class="sr-only">(opens in a new tab)</span>
       </a>
     {/if}
   </footer>

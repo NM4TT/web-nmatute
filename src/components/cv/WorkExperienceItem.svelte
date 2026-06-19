@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { fade } from 'svelte/transition';
   import type { WorkExperienceItemType } from '#lib/types';
 
   export let data: WorkExperienceItemType = {
@@ -16,7 +15,7 @@
   };
 </script>
 
-<article in:fade={{ duration: 400 }} class="mb-12 group">
+<article class="mb-12 group animate-fade-in-up">
     <header class="flex flex-col md:flex-row md:items-baseline justify-between mb-4 border-b border-secondary/10 pb-2">
         <h3 class="font-display text-2xl font-extrabold">{data.name}</h3>
         <div class="flex items-center gap-3">
