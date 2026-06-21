@@ -133,7 +133,8 @@ const toggleUrl = lang === 'en'
 <script is:inline>
   function setupThemeToggle() {
     const button = document.getElementById('m-theme-toggle');
-    if (button) {
+    if (button && !button.dataset.themeToggleSetup) {
+      button.dataset.themeToggleSetup = 'true';
       button.addEventListener('click', () => {
         const isDark = document.documentElement.classList.contains('dark');
         const newTheme = isDark ? 'light' : 'dark';

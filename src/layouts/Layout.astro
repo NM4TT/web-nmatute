@@ -43,24 +43,29 @@ const isMaintenance = MAINTENANCE;
 		<link rel="preload" href="/fonts/Archivo/Archivo-Bold.woff" as="font" type="font/woff" crossorigin />
 
 		<script is:inline>
-			const theme = (() => {
-				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-					return localStorage.getItem('theme');
+			const applyTheme = () => {
+				const theme = (() => {
+					if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+						return localStorage.getItem('theme');
+					}
+					if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+						return 'dark';
+					}
+					return 'light';
+				})();
+			
+				if (theme === 'light') {
+					document.documentElement.classList.remove('dark');
+					document.documentElement.classList.add('light');
+				} else {
+					document.documentElement.classList.add('dark');
+					document.documentElement.classList.remove('light');
 				}
-				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					return 'dark';
-				}
-				return 'light';
-			})();
-		
-			if (theme === 'light') {
-				document.documentElement.classList.remove('dark');
-				document.documentElement.classList.add('light');
-			} else {
-				document.documentElement.classList.add('dark');
-				document.documentElement.classList.remove('light');
-			}
-			window.localStorage.setItem('theme', theme);
+				window.localStorage.setItem('theme', theme);
+			};
+
+			applyTheme();
+			document.addEventListener('astro:after-swap', applyTheme);
 		</script>
 		<ClientRouter />
 	</head>
