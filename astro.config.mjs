@@ -24,5 +24,18 @@ export default defineConfig({
         autoInstall: true,
       }),
     ],
+    build: {
+      rollupOptions: {
+        onwarn(warning, warn) {
+          if (
+            warning.code === 'UNUSED_EXTERNAL_IMPORT' &&
+            (warning.exporter === 'svelte/transition' || warning.exporter === 'svelte/easing')
+          ) {
+            return;
+          }
+          warn(warning);
+        },
+      },
+    },
   },
 });

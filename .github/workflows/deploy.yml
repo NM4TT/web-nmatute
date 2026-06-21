@@ -12,8 +12,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: Deploy
-    env:
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,7 +43,7 @@ jobs:
 
       - name: Send success email
         if: ${{ success() }}
-        uses: dawidd6/action-send-mail@v6
+        uses: dawidd6/action-send-mail@v17
         with:
           server_address: ${{ secrets.SMTP_HOST }}
           server_port: 587
