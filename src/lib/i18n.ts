@@ -28,7 +28,9 @@ const UI_TRANSLATIONS = {
         menuBiography: "Biography",
         menuBlog: "Blog",
         menuServices: "Services",
-        contactMe: "Contact Me"
+        contactMe: "Contact Me",
+        maintenanceTitle: "Under Maintenance",
+        maintenanceMessage: "This page is under maintenance right now, please come back later."
     },
     es: {
         resumeTitle: "Currículum de Nicolás",
@@ -47,7 +49,9 @@ const UI_TRANSLATIONS = {
         menuBiography: "Biografía",
         menuBlog: "Blog",
         menuServices: "Servicios",
-        contactMe: "Contáctame"
+        contactMe: "Contáctame",
+        maintenanceTitle: "En Mantenimiento",
+        maintenanceMessage: "Esta página se encuentra en mantenimiento en este momento, por favor regrese más tarde."
     }
 };
 

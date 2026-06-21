@@ -1,0 +1,492 @@
+---
+interface Props {
+  lang?: 'en' | 'es';
+  title?: string;
+  message?: string;
+}
+
+const { lang = 'en', title, message } = Astro.props;
+
+// Default translations
+const defaultTitle = lang === 'es' ? 'Bajo Mantenimiento' : 'System Maintenance';
+const defaultMessage = lang === 'es' 
+  ? 'Esta página se encuentra en mantenimiento en este momento, por favor regrese más tarde.' 
+  : 'This page is under maintenance right now, please come back later.';
+
+const displayTitle = title || defaultTitle;
+const displayMessage = message || defaultMessage;
+
+// Calculate toggle language URL
+const currentPath = Astro.url.pathname;
+const toggleUrl = lang === 'en'
+  ? `/es${currentPath.replace(/\/$/, '')}/` // Appends /es, ensures trailing slash
+  : currentPath.replace(/^\/es/, '') || '/';
+---
+
+<div class="m-container select-none">
+  <!-- Subtle ambient glow in the background -->
+  <div class="m-ambient-glow"></div>
+
+  <!-- Isometric 3D Scene Wrapper -->
+  <div class="m-scene">
+    <div class="m-pivot">
+      <!-- Grid floor -->
+      <div class="m-grid-floor"></div>
+
+      <!-- Shadows for falling cubes -->
+      <div class="m-shadow" style="--x: -30px; --y: 30px; --delay: 0s;"></div>
+      <div class="m-shadow" style="--x: 30px; --y: 30px; --delay: 0.25s;"></div>
+      <div class="m-shadow" style="--x: 30px; --y: -30px; --delay: 0.5s;"></div>
+      <div class="m-shadow" style="--x: -30px; --y: -30px; --delay: 0.75s;"></div>
+      <div class="m-shadow" style="--x: 0px; --y: 0px; --delay: 1.0s;"></div>
+
+      <!-- 3D Cubes -->
+      <!-- Cube 1 (bottom left) -->
+      <div class="m-cube" style="--x: -30px; --y: 30px; --z: 0px; --delay: 0s;">
+        <div class="m-face m-front"></div>
+        <div class="m-face m-back"></div>
+        <div class="m-face m-left"></div>
+        <div class="m-face m-right"></div>
+        <div class="m-face m-top"></div>
+      </div>
+
+      <!-- Cube 2 (bottom right) -->
+      <div class="m-cube" style="--x: 30px; --y: 30px; --z: 0px; --delay: 0.25s;">
+        <div class="m-face m-front"></div>
+        <div class="m-face m-back"></div>
+        <div class="m-face m-left"></div>
+        <div class="m-face m-right"></div>
+        <div class="m-face m-top"></div>
+      </div>
+
+      <!-- Cube 3 (top right) -->
+      <div class="m-cube" style="--x: 30px; --y: -30px; --z: 0px; --delay: 0.5s;">
+        <div class="m-face m-front"></div>
+        <div class="m-face m-back"></div>
+        <div class="m-face m-left"></div>
+        <div class="m-face m-right"></div>
+        <div class="m-face m-top"></div>
+      </div>
+
+      <!-- Cube 4 (top left) -->
+      <div class="m-cube" style="--x: -30px; --y: -30px; --z: 0px; --delay: 0.75s;">
+        <div class="m-face m-front"></div>
+        <div class="m-face m-back"></div>
+        <div class="m-face m-left"></div>
+        <div class="m-face m-right"></div>
+        <div class="m-face m-top"></div>
+      </div>
+
+      <!-- Cube 5 (top center capstone) -->
+      <div class="m-cube" style="--x: 0px; --y: 0px; --z: 60px; --delay: 1.0s;">
+        <div class="m-face m-front"></div>
+        <div class="m-face m-back"></div>
+        <div class="m-face m-left"></div>
+        <div class="m-face m-right"></div>
+        <div class="m-face m-top"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Maintenance Copy Info -->
+  <div class="m-copy">
+    <h1 class="m-title">
+      {displayTitle}
+    </h1>
+    <p class="m-message">
+      {displayMessage}
+    </p>
+  </div>
+
+  <!-- Elegant Theme and Language controls at the bottom during maintenance -->
+  <div class="m-controls">
+    <button
+      id="m-theme-toggle"
+      class="m-theme-toggle"
+      aria-label="Toggle Theme"
+    >
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+    <span class="m-divider"></span>
+    <a 
+      href={toggleUrl}
+      class="m-lang-link"
+    >
+      {lang === 'en' ? 'Español' : 'English'}
+    </a>
+  </div>
+</div>
+
+<script is:inline>
+  function setupThemeToggle() {
+    const button = document.getElementById('m-theme-toggle');
+    if (button) {
+      button.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        const newTheme = isDark ? 'light' : 'dark';
+        
+        if (newTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        } else {
+          document.documentElement.classList.add('light');
+          document.documentElement.classList.remove('dark');
+        }
+        localStorage.setItem('theme', newTheme);
+        document.cookie = `theme=${newTheme}; path=/; max-age=31536000; SameSite=Lax`;
+      });
+    }
+  }
+  
+  setupThemeToggle();
+  document.addEventListener('astro:page-load', setupThemeToggle);
+</script>
+
+<style>
+  :root {
+    --cube-size: 60px;
+    --cube-half: 30px;
+  }
+
+  .m-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .m-ambient-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 9999px;
+    background-color: color-mix(in srgb, var(--secondary) 5%, transparent);
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: -10;
+    animation: m-pulse-glow 3s infinite ease-in-out;
+  }
+
+  @keyframes m-pulse-glow {
+    0%, 100% { opacity: 0.6; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.05); }
+  }
+
+  .m-scene {
+    width: 240px;
+    height: 240px;
+    perspective: 1000px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .m-pivot {
+    position: relative;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    transform: rotateX(60deg) rotateZ(-45deg);
+    transform-style: preserve-3d;
+  }
+
+  /* Grid Floor */
+  .m-grid-floor {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    left: -60px;
+    top: -60px;
+    background-image: 
+      linear-gradient(to right, color-mix(in srgb, var(--secondary) 15%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--secondary) 15%, transparent) 1px, transparent 1px);
+    background-size: 30px 30px;
+    transform: translate3d(0, 0, -1px);
+    border: 1px solid color-mix(in srgb, var(--secondary) 25%, transparent);
+    border-radius: 6px;
+    opacity: 0.8;
+  }
+
+  /* Cube Styles */
+  .m-cube {
+    position: absolute;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    transform-style: preserve-3d;
+    opacity: 0;
+    transform: translate3d(var(--x), var(--y), 300px) scale3d(0, 0, 0);
+    animation: m-cube-assembly 6s infinite cubic-bezier(0.25, 1, 0.5, 1);
+    animation-delay: var(--delay);
+  }
+
+  .m-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Glassmorphism face design */
+    background: color-mix(in srgb, var(--bg-surface) 90%, transparent);
+    border: 1px solid color-mix(in srgb, var(--secondary) 30%, transparent);
+    backdrop-filter: blur(2px);
+    transition: background-color 0.3s, border-color 0.3s;
+    box-sizing: border-box;
+  }
+
+  /* 3D Face positions */
+  .m-face.m-front {
+    transform: rotateY(0deg) translateZ(var(--cube-half));
+    background: color-mix(in srgb, var(--bg-surface) 80%, transparent);
+  }
+  .m-face.m-back {
+    transform: rotateY(180deg) translateZ(var(--cube-half));
+    background: color-mix(in srgb, var(--bg-surface) 95%, transparent);
+  }
+  .m-face.m-left {
+    transform: rotateY(-90deg) translateZ(var(--cube-half));
+    background: color-mix(in srgb, var(--bg-surface) 85%, transparent);
+  }
+  .m-face.m-right {
+    transform: rotateY(90deg) translateZ(var(--cube-half));
+    background: color-mix(in srgb, var(--bg-surface) 90%, transparent);
+  }
+  .m-face.m-top {
+    transform: rotateX(90deg) translateZ(var(--cube-half));
+    background: color-mix(in srgb, var(--secondary) 15%, transparent);
+    box-shadow: inset 0 0 12px color-mix(in srgb, var(--secondary) 30%, transparent);
+  }
+
+  /* Staggered falling, bouncing, and dissolving animation */
+  @keyframes m-cube-assembly {
+    0% {
+      transform: translate3d(var(--x), var(--y), 300px) scale3d(0, 0, 0);
+      opacity: 0;
+    }
+    3% {
+      transform: translate3d(var(--x), var(--y), 300px) scale3d(1, 1, 1);
+      opacity: 1;
+    }
+    10% {
+      /* First impact */
+      transform: translate3d(var(--x), var(--y), var(--z)) scale3d(1, 1, 1);
+    }
+    13% {
+      /* Bounce up */
+      transform: translate3d(var(--x), var(--y), calc(var(--z) + 12px)) scale3d(1, 1, 0.95);
+    }
+    16% {
+      /* Settle down */
+      transform: translate3d(var(--x), var(--y), var(--z)) scale3d(1, 1, 1);
+    }
+    75% {
+      /* Hold position and style */
+      transform: translate3d(var(--x), var(--y), var(--z)) scale3d(1, 1, 1);
+      opacity: 1;
+    }
+    82%, 100% {
+      /* Fade out and shrink */
+      transform: translate3d(var(--x), var(--y), var(--z)) scale3d(0, 0, 0);
+      opacity: 0;
+    }
+  }
+
+  /* Shadow logic */
+  .m-shadow {
+    position: absolute;
+    width: var(--cube-size);
+    height: var(--cube-size);
+    background: radial-gradient(circle, color-mix(in srgb, var(--secondary) 25%, transparent) 0%, transparent 70%);
+    transform: translate3d(var(--x), var(--y), 0px) scale(0);
+    opacity: 0;
+    animation: m-shadow-sync 6s infinite cubic-bezier(0.25, 1, 0.5, 1);
+    animation-delay: var(--delay);
+  }
+
+  @keyframes m-shadow-sync {
+    0% {
+      transform: translate3d(var(--x), var(--y), 0px) scale(0);
+      opacity: 0;
+    }
+    10% {
+      /* Grow as cube approaches floor */
+      transform: translate3d(var(--x), var(--y), 0px) scale(1);
+      opacity: 0.5;
+    }
+    75% {
+      transform: translate3d(var(--x), var(--y), 0px) scale(1);
+      opacity: 0.5;
+    }
+    82%, 100% {
+      transform: translate3d(var(--x), var(--y), 0px) scale(0);
+      opacity: 0;
+    }
+  }
+
+  /* Copy styling */
+  .m-copy {
+    max-width: 28rem;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 10;
+  }
+
+  .m-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent);
+    background-color: color-mix(in srgb, var(--secondary) 5%, transparent);
+    color: var(--secondary);
+    font-size: 0.75rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    animation: m-pulse-glow 2s infinite ease-in-out;
+    margin-bottom: 1.5rem;
+  }
+
+  .m-pill-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: var(--secondary);
+  }
+
+  .m-title {
+    font-family: "Archivo", sans-serif;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--text-base);
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .m-title {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+  }
+
+  .m-message {
+    color: var(--secondary);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    .m-message {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+  }
+
+  /* Controls */
+  .m-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.75rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .m-divider {
+    width: 1px;
+    height: 1.5rem;
+    background-color: color-mix(in srgb, var(--secondary) 20%, transparent);
+  }
+
+  .m-lang-link {
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .m-lang-link:hover {
+    color: var(--text-base);
+  }
+
+  /* Theme button toggle styling */
+  .m-theme-toggle {
+    background: transparent;
+    border: 1px solid color-mix(in srgb, var(--secondary) 20%, transparent);
+    color: var(--secondary);
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, background-color 0.2s;
+    outline: none;
+    box-sizing: border-box;
+  }
+
+  .m-theme-toggle:hover {
+    border-color: color-mix(in srgb, var(--secondary) 50%, transparent);
+    background-color: color-mix(in srgb, var(--secondary) 5%, transparent);
+  }
+
+  .m-theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  /* Initial Visibility (light theme default) */
+  .sun-icon {
+    transform: rotate(90deg) scale(0);
+    opacity: 0;
+  }
+  .moon-icon {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+
+  /* Dark mode class triggers via :global */
+  :global(.dark) .sun-icon {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  :global(.dark) .moon-icon {
+    transform: rotate(-90deg) scale(0);
+    opacity: 0;
+  }
+</style>

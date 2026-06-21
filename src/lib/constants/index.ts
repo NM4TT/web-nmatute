@@ -7,3 +7,5 @@ export const NAV_LINKS: NavLinkType[] = [
     { name: "Blog", href: "https://blog.nmatute.com", external: true },
     { name: "Services", href: "https://nmatute.dev", external: true},
 ];
+
+export const MAINTENANCE = false;

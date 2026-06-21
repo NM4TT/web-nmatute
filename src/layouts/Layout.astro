@@ -6,6 +6,8 @@ import ThemeToggle from '#components/ui/ThemeToggle.svelte';
 import MobileMenu from '#components/layout/MobileMenu.svelte';
 import { ClientRouter } from 'astro:transitions';
 import { getLocalizedMenu, getUiTranslation } from '../lib/i18n';
+import Maintenance from '#components/layout/Maintenance.astro';
+import { MAINTENANCE } from '#lib/constants';
 
 interface Props {
 	title: string;
@@ -23,6 +25,8 @@ const currentPath = Astro.url.pathname;
 const toggleUrl = lang === 'en'
   ? `/es${currentPath.replace(/\/$/, '')}/` // Appends /es, ensures trailing slash
   : currentPath.replace(/^\/es/, '') || '/';
+
+const isMaintenance = MAINTENANCE;
 ---
 
 <!doctype html>
@@ -61,45 +65,55 @@ const toggleUrl = lang === 'en'
 		<ClientRouter />
 	</head>
 	<body>
-		<!-- Full-Width Sticky Glass Header (Hidden on Mobile) -->
-		<header class="glass-header w-full px-6 sm:px-8 py-3 sticky top-0 z-50 hidden md:block">
-			<div class="flex justify-between items-center max-w-7xl mx-auto w-full">
-				<div id="logo">
-					<a href={lang === 'es' ? "/es/" : "/"}>
-						<img src="/logo.svg" alt="Nicolas Matute Logo" class="h-auto w-16" width="64" height="64" />
-					</a>
-				</div>
-				<div id="navigation" class="flex items-center gap-8">
-					<DesktopMenu links={links} />
-					<ThemeToggle client:idle />
-					<a 
-						href={toggleUrl} 
-						class="p-2 rounded-lg border border-secondary/20 hover:border-secondary/50 transition-[border-color,background-color,transform] duration-200 text-secondary cursor-pointer relative overflow-hidden w-10 h-10 flex items-center justify-center active:scale-90 font-mono text-xs font-bold tracking-wider uppercase select-none"
-						aria-label="Toggle Language"
-					>
-						{lang === 'en' ? 'ES' : 'EN'}
-					</a>
-					<ContactButton text={t.contactMe} />
-				</div>
-			</div>
-		</header>
+		{isMaintenance ? (
+			<Maintenance 
+				lang={lang} 
+				title={t.maintenanceTitle} 
+				message={t.maintenanceMessage} 
+			/>
+		) : (
+			<>
+				<!-- Full-Width Sticky Glass Header (Hidden on Mobile) -->
+				<header class="glass-header w-full px-6 sm:px-8 py-3 sticky top-0 z-50 hidden md:block">
+					<div class="flex justify-between items-center max-w-7xl mx-auto w-full">
+						<div id="logo">
+							<a href={lang === 'es' ? "/es/" : "/"}>
+								<img src="/logo.svg" alt="Nicolas Matute Logo" class="h-auto w-16" width="64" height="64" />
+							</a>
+						</div>
+						<div id="navigation" class="flex items-center gap-8">
+							<DesktopMenu links={links} />
+							<ThemeToggle client:idle />
+							<a 
+								href={toggleUrl} 
+								class="p-2 rounded-lg border border-secondary/20 hover:border-secondary/50 transition-[border-color,background-color,transform] duration-200 text-secondary cursor-pointer relative overflow-hidden w-10 h-10 flex items-center justify-center active:scale-90 font-mono text-xs font-bold tracking-wider uppercase select-none"
+								aria-label="Toggle Language"
+							>
+								{lang === 'en' ? 'ES' : 'EN'}
+							</a>
+							<ContactButton text={t.contactMe} />
+						</div>
+					</div>
+				</header>
 
-		<!-- Main Layout Body -->
-		<main class="lg:max-w-7xl px-6 sm:px-6 lg:px-8 max-w-full mx-auto min-h-screen">
-			<!-- Mobile Floating Navigation -->
-			<div class="md:hidden">
-				<MobileMenu client:media="(max-width: 767px)" links={links} lang={lang} toggleUrl={toggleUrl} />
-			</div>
+				<!-- Main Layout Body -->
+				<main class="lg:max-w-7xl px-6 sm:px-6 lg:px-8 max-w-full mx-auto min-h-screen">
+					<!-- Mobile Floating Navigation -->
+					<div class="md:hidden">
+						<MobileMenu client:media="(max-width: 767px)" links={links} lang={lang} toggleUrl={toggleUrl} />
+					</div>
 
-			<div class="py-5">
-				<slot />
-			</div>
+					<div class="py-5">
+						<slot />
+					</div>
 
-			<footer class="flex flex-col items-center justify-center py-12 mt-20 border-t border-secondary/10">
-				<p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50">
-					&copy; {currentYear} Nicolas Matute. {t.rightsReserved}
-				</p>
-			</footer>
-		</main>
+					<footer class="flex flex-col items-center justify-center py-12 mt-20 border-t border-secondary/10">
+						<p class="font-mono text-[10px] uppercase tracking-[0.2em] opacity-50">
+							&copy; {currentYear} Nicolas Matute. {t.rightsReserved}
+						</p>
+					</footer>
+				</main>
+			</>
+		)}
 	</body>
 </html>
