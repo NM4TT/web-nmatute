@@ -59,13 +59,17 @@ projects:
       tools: [Java, Springboot, REST, SOAP, GraphQL, gRPC]
       codebase: "https://github.com/NM4TT/Springboot-Api-Samples"
     - name: Instant Form
-      tools: [Astro, Svelte, TailwindCSS, Playwright]
+      tools: [Astro, Svelte, TailwindCSS]
       codebase: "https://github.com/NM4TT/instant-form"
       live: "https://instant-form.nmatute-projects.com"
     - name: Instant Landing Page
-      tools: [Astro, Svelte, TailwindCSS, Playwright]
+      tools: [Astro, Svelte, TailwindCSS]
       codebase: "https://github.com/NM4TT/instant-landing-page"
       live: "https://instant-landing-page.nmatute-projects.com"
+    - name: Instant Blog
+      tools: [Astro, Svelte, TailwindCSS]
+      codebase: "https://github.com/NM4TT/instant-blog"
+      live: "https://instant-blog.nmatute-projects.com"
 
 tools-skills:
   items:

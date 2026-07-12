@@ -66,6 +66,10 @@ projects:
       tools: [Astro, Svelte, TailwindCSS, Playwright]
       codebase: "https://github.com/NM4TT/instant-landing-page"
       live: "https://instant-landing-page.nmatute-projects.com"
+    - name: Instant Blog
+      tools: [Astro, Svelte, TailwindCSS]
+      codebase: "https://github.com/NM4TT/instant-blog"
+      live: "https://instant-blog.nmatute-projects.com"
 
 tools-skills:
   items:
