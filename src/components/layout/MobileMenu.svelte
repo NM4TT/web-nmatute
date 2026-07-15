@@ -1,12 +1,9 @@
 <script lang="ts">
-  import { fade, fly } from 'svelte/transition';
-  import { cubicOut } from 'svelte/easing';
   import ThemeToggle from '#components/ui/ThemeToggle.svelte';
   import ContactButton from '#components/ui/ContactButton.svelte';
-  import { NAV_LINKS } from "#lib/constants";
   import type { NavLinkType } from "#lib/types";
 
-  let { links = NAV_LINKS, lang = 'en', toggleUrl = '' } = $props<{ links?: NavLinkType[]; lang?: 'en' | 'es'; toggleUrl?: string }>();
+  let { links = [], lang = 'en', toggleUrl = '' } = $props<{ links?: NavLinkType[]; lang?: 'en' | 'es'; toggleUrl?: string }>();
 
   let isOpen = $state(false);
   let x = $state(24);

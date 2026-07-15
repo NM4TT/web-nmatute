@@ -42,8 +42,23 @@ const isMaintenance = MAINTENANCE;
 		<link rel="preload" href="/fonts/Archivo/Archivo-Regular.woff" as="font" type="font/woff" crossorigin />
 		<link rel="preload" href="/fonts/Archivo/Archivo-Bold.woff" as="font" type="font/woff" crossorigin />
 
+		<!-- Dark Mode Initializer & Sibling Theme Sync -->
 		<script is:inline>
 			const applyTheme = () => {
+				if (typeof localStorage !== 'undefined') {
+					const urlParams = new URLSearchParams(window.location.search);
+					const urlTheme = urlParams.get('theme');
+					if (urlTheme === 'dark' || urlTheme === 'light') {
+						localStorage.setItem('theme', urlTheme);
+						
+						// Clean the URL parameter immediately to keep it clean
+						urlParams.delete('theme');
+						const cleanSearch = urlParams.toString();
+						const cleanUrl = window.location.pathname + (cleanSearch ? '?' + cleanSearch : '') + window.location.hash;
+						window.history.replaceState({}, '', cleanUrl);
+					}
+				}
+
 				const theme = (() => {
 					if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
 						return localStorage.getItem('theme');
@@ -61,11 +76,42 @@ const isMaintenance = MAINTENANCE;
 					document.documentElement.classList.add('dark');
 					document.documentElement.classList.remove('light');
 				}
-				window.localStorage.setItem('theme', theme);
+				if (typeof localStorage !== 'undefined') {
+					localStorage.setItem('theme', theme);
+				}
+			};
+
+			const setupThemeSync = () => {
+				// Intercept clicks on links pointing to sibling domains to append the current theme
+				document.body.addEventListener('click', (e) => {
+					const a = e.target.closest('a');
+					if (a && a.href) {
+						try {
+							const url = new URL(a.href);
+							const isSibling = url.hostname.endsWith('nmatute.com') || url.hostname.endsWith('nmatute.dev') || url.hostname === 'localhost';
+							const isExternal = url.origin !== window.location.origin;
+							
+							if (isSibling && isExternal) {
+								const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+								url.searchParams.set('theme', currentTheme);
+								a.href = url.toString();
+							}
+						} catch (err) {
+							// Ignore invalid URLs
+						}
+					}
+				});
 			};
 
 			applyTheme();
 			document.addEventListener('astro:after-swap', applyTheme);
+
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', setupThemeSync);
+			} else {
+				setupThemeSync();
+			}
+			document.addEventListener('astro:after-swap', setupThemeSync);
 		</script>
 		<ClientRouter />
 	</head>
