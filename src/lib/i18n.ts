@@ -1,10 +1,19 @@
 import { getEntry } from 'astro:content';
 import type { NavLinkType } from '#lib/types';
 
-export async function getLocalizedEntry(lang: 'en' | 'es', key: any) {
-    if (lang === 'es') {
-        const entry = await getEntry('data_es', key);
-        if (entry) return entry.data;
+export const SUPPORTED_LANGUAGES = [
+    { code: 'en', label: 'EN' },
+    { code: 'es', label: 'ES' }
+];
+
+export async function getLocalizedEntry(lang: string, key: any) {
+    if (lang !== 'en') {
+        try {
+            const entry = await getEntry(`data_${lang}` as any, key);
+            if (entry) return entry.data;
+        } catch (e) {
+            // fallback
+        }
     }
     const entry = await getEntry('data', key);
     return entry?.data;
@@ -55,19 +64,19 @@ const UI_TRANSLATIONS = {
     }
 };
 
-export function getUiTranslation(lang: 'en' | 'es') {
-    return UI_TRANSLATIONS[lang] || UI_TRANSLATIONS.en;
+export function getUiTranslation(lang: string) {
+    return (UI_TRANSLATIONS as any)[lang] || UI_TRANSLATIONS.en;
 }
 
-export function getLocalizedMenu(lang: 'en' | 'es'): NavLinkType[] {
+export function getLocalizedMenu(lang: string): NavLinkType[] {
     const t = getUiTranslation(lang);
-    const prefix = lang === 'es' ? '/es' : '';
+    const prefix = lang === 'en' ? '' : `/${lang}`;
 
     return [
         { name: t.menuResume, href: `${prefix}/` },
         { name: t.menuPortfolio, href: `${prefix}/portfolio/` },
         { name: t.menuBiography, href: `${prefix}/biography/` },
-        { name: t.menuBlog, href: "https://blog.nmatute.com", external: true },
+        { name: t.menuBlog, href: "https://blog.nmatute.com" },
         { name: t.menuServices, href: lang === 'es' ? "https://nmatute.dev/es/" : "https://nmatute.dev", external: true },
     ];
 }

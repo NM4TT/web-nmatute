@@ -1,6 +1,9 @@
 ---
+import { SUPPORTED_LANGUAGES } from '../../lib/i18n';
+import LangDropdown from '#components/ui/LangDropdown.svelte';
+
 interface Props {
-  lang?: 'en' | 'es';
+  lang?: string;
   title?: string;
   message?: string;
 }
@@ -16,11 +19,32 @@ const defaultMessage = lang === 'es'
 const displayTitle = title || defaultTitle;
 const displayMessage = message || defaultMessage;
 
-// Calculate toggle language URL
+// Calculate language URLs
 const currentPath = Astro.url.pathname;
-const toggleUrl = lang === 'en'
-  ? `/es${currentPath.replace(/\/$/, '')}/` // Appends /es, ensures trailing slash
-  : currentPath.replace(/^\/es/, '') || '/';
+const getLangUrl = (targetLang: string) => {
+  let clean = currentPath;
+  for (const l of SUPPORTED_LANGUAGES) {
+    if (l.code !== 'en') {
+      if (clean.startsWith(`/${l.code}/`)) {
+        clean = clean.substring(l.code.length + 1);
+        break;
+      } else if (clean === `/${l.code}`) {
+        clean = '/';
+        break;
+      }
+    }
+  }
+  if (targetLang === 'en') {
+    return clean;
+  }
+  return `/${targetLang}${clean === '/' ? '/' : clean}`;
+};
+
+const langOptions = SUPPORTED_LANGUAGES.map(l => ({
+  code: l.code,
+  label: l.label,
+  url: getLangUrl(l.code)
+}));
 ---
 
 <div class="m-container select-none">
@@ -121,12 +145,7 @@ const toggleUrl = lang === 'en'
       </svg>
     </button>
     <span class="m-divider"></span>
-    <a 
-      href={toggleUrl}
-      class="m-lang-link"
-    >
-      {lang === 'en' ? 'Español' : 'English'}
-    </a>
+    <LangDropdown currentLang={lang} options={langOptions} client:idle />
   </div>
 </div>
 

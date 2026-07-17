@@ -1,9 +1,23 @@
 <script lang="ts">
+  import { fade, fly } from 'svelte/transition';
+  import { cubicOut } from 'svelte/easing';
   import ThemeToggle from '#components/ui/ThemeToggle.svelte';
   import ContactButton from '#components/ui/ContactButton.svelte';
+  import LangDropdown from '#components/ui/LangDropdown.svelte';
+  import { LOGO_TEXT } from '#lib/constants';
   import type { NavLinkType } from "#lib/types";
 
-  let { links = [], lang = 'en', toggleUrl = '' } = $props<{ links?: NavLinkType[]; lang?: 'en' | 'es'; toggleUrl?: string }>();
+  interface LangOption {
+    code: string;
+    label: string;
+    url: string;
+  }
+
+  let { links = [], lang = 'en', langOptions = [] } = $props<{ 
+    links?: NavLinkType[]; 
+    lang?: string; 
+    langOptions?: LangOption[];
+  }>();
 
   let isOpen = $state(false);
   let x = $state(24);
@@ -20,6 +34,7 @@
       if (duration > 200) return;
     }
     isOpen = !isOpen;
+    startTimestamp = 0;
   };
 
   // Scroll locking effect
@@ -164,15 +179,9 @@
             <div class="scale-90 origin-left">
                 <ContactButton text={lang === 'es' ? 'Contáctame' : 'Contact Me'} />
             </div>
-            <div class="flex items-center gap-4">
-                {#if toggleUrl}
-                    <a 
-                        href={toggleUrl} 
-                        class="p-2 rounded-lg border border-secondary/20 hover:border-secondary/50 transition-[border-color,background-color,transform] duration-200 text-secondary cursor-pointer relative overflow-hidden w-10 h-10 flex items-center justify-center active:scale-90 font-mono text-xs font-bold tracking-wider uppercase select-none"
-                        onclick={() => isOpen = false}
-                    >
-                        {lang === 'en' ? 'ES' : 'EN'}
-                    </a>
+             <div class="flex items-center gap-4">
+                {#if langOptions && langOptions.length > 0}
+                    <LangDropdown currentLang={lang} options={langOptions} />
                 {/if}
                 <ThemeToggle />
             </div>
@@ -195,9 +204,13 @@
           {/each}
         </nav>
 
-        <div class="mt-auto pt-20 flex flex-col items-center gap-4">
-            <a href={lang === 'es' ? "/es/" : "/"} onclick={() => isOpen = false}>
-                <img src="/logo.svg" alt="Nicolas Matute Logo" class="h-auto w-16" width="64" height="64" />
+         <div class="mt-auto pt-20 flex flex-col items-center gap-4">
+            <a 
+                href={lang === 'es' ? "/es/" : "/"} 
+                onclick={() => isOpen = false}
+                class="font-display text-4xl font-black tracking-wider text-secondary hover:opacity-80 transition-opacity duration-200 select-none"
+            >
+                {LOGO_TEXT}
             </a>
             <p class="font-mono text-[10px] uppercase tracking-widest opacity-60">Nicolas Matute</p>
         </div>
