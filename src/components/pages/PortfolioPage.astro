@@ -3,6 +3,7 @@ import Layout from '#layouts/Layout.astro';
 import MobileSection from '#components/ui/MobileSection.svelte';
 import ProjectItem from '#components/portfolio/ProjectItem.svelte';
 import { getLocalizedEntry, getUiTranslation } from '../../lib/i18n';
+import { getEntry } from 'astro:content';
 
 interface Props {
     lang?: 'en' | 'es';
@@ -11,8 +12,8 @@ interface Props {
 const { lang = 'en' } = Astro.props;
 const t = getUiTranslation(lang);
 
-const projectsData = await getLocalizedEntry(lang, 'projects');
-const projects = projectsData?.items || [];
+const projectsData = await getEntry('portfolio', 'projects');
+const projects = projectsData?.data || [];
 const socials = await getLocalizedEntry(lang, 'socials') || [];
 ---
 

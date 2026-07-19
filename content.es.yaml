@@ -49,28 +49,6 @@ education:
       title: "Licenciatura en Desarrollo de Software"
       start: 1577876400 # 2020
 
-projects:
-  items:
-    - name: Sitio Web Personal
-      tools: [Astro, Svelte, TailwindCSS, Cloudflare]
-      codebase: "https://github.com/NM4TT/web-nmatute"
-      live: "https://nmatute.com"
-    - name: Ejemplos de API con Springboot
-      tools: [Java, Springboot, REST, SOAP, GraphQL, gRPC]
-      codebase: "https://github.com/NM4TT/Springboot-Api-Samples"
-    - name: Formulario Instantáneo
-      tools: [Astro, Svelte, TailwindCSS, Playwright]
-      codebase: "https://github.com/NM4TT/instant-form"
-      live: "https://instant-form.nmatute-projects.com"
-    - name: Página de Aterrizaje Instantánea
-      tools: [Astro, Svelte, TailwindCSS, Playwright]
-      codebase: "https://github.com/NM4TT/instant-landing-page"
-      live: "https://instant-landing-page.nmatute-projects.com"
-    - name: Instant Blog
-      tools: [Astro, Svelte, TailwindCSS]
-      codebase: "https://github.com/NM4TT/instant-blog"
-      live: "https://instant-blog.nmatute-projects.com"
-
 tools-skills:
   items:
     - keywords:

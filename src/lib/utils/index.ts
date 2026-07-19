@@ -84,3 +84,15 @@ export const formatItemDates  = (collection: ContentType[], lang: 'en' | 'es' = 
     })
     return formattedData;
 }
+
+export const formatEarnedDate = (timestamp: number, lang: 'en' | 'es' = 'en'): string => {
+    const monthNames = lang === 'es' ? [
+        "Ene", "Feb", "Mar", "Abr", "May", "Jun", 
+        "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+    ] : [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+    const date = new Date(timestamp * 1000);
+    return `${monthNames[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+}

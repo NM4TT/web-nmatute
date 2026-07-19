@@ -1,0 +1,88 @@
+projects:
+  - name: "Personal Website"
+    tools: [Astro, Svelte, TailwindCSS, Cloudflare]
+    codebase: "https://github.com/NM4TT/web-nmatute"
+    live: "https://nmatute.com"
+
+  - name: "Springboot API samples"
+    tools: [Java, Springboot, REST, SOAP, GraphQL, gRPC]
+    codebase: "https://github.com/NM4TT/Springboot-Api-Samples"
+
+  - name: "Instant Form"
+    tools: [Astro, Svelte, TailwindCSS]
+    codebase: "https://github.com/NM4TT/instant-form"
+    live: "https://instant-form.nmatute-projects.com"
+
+  - name: "Instant Landing Page"
+    tools: [Astro, Svelte, TailwindCSS]
+    codebase: "https://github.com/NM4TT/instant-landing-page"
+    live: "https://instant-landing-page.nmatute-projects.com"
+
+  - name: "Instant Blog"
+    tools: [Astro, Svelte, TailwindCSS]
+    codebase: "https://github.com/NM4TT/instant-blog"
+    live: "https://instant-blog.nmatute-projects.com"
+
+#certs:
+  #- id: "cka"
+  #  name: "Certified Kubernetes Administrator"
+  #  issuer: "Cloud Native Computing Foundation (CNCF)"
+  #  earned: 1718409600 # Jun 15 2024
+  #  credentialId: "CKA-240098123"
+  #  url: "https://www.cncf.io/training/certification/cka/"
+  #  image: "cka.png"
+  #  skills: ["Kubernetes", "CNCF", "Linux", "Cloud"]
+
+  #- id: "rhcsa"
+  #  name: "Red Hat Certified System Administrator"
+  #  issuer: "Red Hat"
+  #  earned: 1723723200 # Aug 15 2024
+  #  credentialId: "240-112-890"
+  #  url: "https://www.redhat.com/en/services/certification/rhcsa"
+  #  image: "rhcsa.png"
+  #  skills: ["Linux", "Red Hat", "Security"]
+
+  #- id: "az-305"
+  #  name: "Microsoft Certified: Azure Solutions Architect Expert"
+  #  issuer: "Microsoft"
+  #  earned: 1728993600 # Oct 15 2024
+  #  credentialId: "H982-4109"
+  #  url: "https://learn.microsoft.com/en-us/credentials/certifications/azure-solutions-architect/"
+  #  image: "az305.png"
+  #  skills: ["Azure", "Cloud", "Security", "Infrastructure as Code"]
+
+  #- id: "cks"
+  #  name: "Certified Kubernetes Security Specialist"
+  #  issuer: "Cloud Native Computing Foundation (CNCF)"
+  #  earned: 1731628800 # Nov 15 2024
+  #  credentialId: "CKS-240056182"
+  #  url: "https://www.cncf.io/training/certification/cks/"
+  #  image: "cks.png"
+  #  skills: ["Kubernetes", "CNCF", "Security", "Linux"]
+
+  #- id: "rhce"
+  #  name: "Red Hat Certified Engineer"
+  #  issuer: "Red Hat"
+  #  earned: 1747310400 # May 15 2025
+  #  credentialId: "240-881-002"
+  #  url: "https://www.redhat.com/en/services/certification/rhce"
+  #  image: "rhce.png"
+  #  skills: ["Linux", "Red Hat", "Infrastructure as Code"]
+
+  #- id: "gcp-pca"
+  #  name: "Google Cloud Certified Professional Cloud Architect"
+  #  issuer: "Google Cloud"
+  #  earned: 1742040000 # Mar 15 2025
+  #  credentialId: "GCP-PCA-901824"
+  #  url: "https://cloud.google.com/learn/certification/cloud-architect"
+  #  image: "gcp-pca.png"
+  #  skills: ["Google Cloud Platform", "Cloud", "Security", "Infrastructure as Code"]
+
+  #- id: "aws-sap"
+  #  name: "AWS Certified Solutions Architect – Professional"
+  #  issuer: "Amazon Web Services"
+  #  earned: 1736938800 # Jan 15 2025
+  #  credentialId: "AWS03948102"
+  #  url: "https://aws.amazon.com/certification/certified-solutions-architect-professional/"
+  #  image: "aws-sap.png"
+  #  skills: ["AWS", "Cloud", "Security", "Infrastructure as Code"]

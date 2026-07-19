@@ -49,28 +49,6 @@ education:
       title: "Bachelor's Degree in Software Development"
       start: 1577876400 # 2020
 
-projects:
-  items:
-    - name: Personal Website
-      tools: [Astro, Svelte, TailwindCSS, Cloudflare]
-      codebase: "https://github.com/NM4TT/web-nmatute"
-      live: "https://nmatute.com"
-    - name: Springboot API samples
-      tools: [Java, Springboot, REST, SOAP, GraphQL, gRPC]
-      codebase: "https://github.com/NM4TT/Springboot-Api-Samples"
-    - name: Instant Form
-      tools: [Astro, Svelte, TailwindCSS]
-      codebase: "https://github.com/NM4TT/instant-form"
-      live: "https://instant-form.nmatute-projects.com"
-    - name: Instant Landing Page
-      tools: [Astro, Svelte, TailwindCSS]
-      codebase: "https://github.com/NM4TT/instant-landing-page"
-      live: "https://instant-landing-page.nmatute-projects.com"
-    - name: Instant Blog
-      tools: [Astro, Svelte, TailwindCSS]
-      codebase: "https://github.com/NM4TT/instant-blog"
-      live: "https://instant-blog.nmatute-projects.com"
-
 tools-skills:
   items:
     - keywords:

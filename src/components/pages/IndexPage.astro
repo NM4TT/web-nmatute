@@ -6,11 +6,14 @@ import SocialMedia from '#components/ui/SocialMedia.svelte';
 import Keywords from '#components/cv/Keywords.svelte';
 import EducationItem from '#components/cv/EducationItem.svelte';
 import WorkExperienceItem from '#components/cv/WorkExperienceItem.svelte';
+import Certifications from '#components/cv/Certifications.svelte';
 
 import { getLocalizedEntry, getUiTranslation } from '../../lib/i18n';
 import { formatItemDates } from '#lib/utils';
 import { Image } from 'astro:assets';
 import MAIN_PIC from '#assets/images/main_pic.jpg';
+import { getEntry } from 'astro:content';
+import type { ImageMetadata } from 'astro';
 
 interface Props {
     lang?: 'en' | 'es';
@@ -30,6 +33,23 @@ const about = await getLocalizedEntry(lang, 'about');
 const skills = (await getSectionItems('tools-skills')).flatMap((item: any) => item.keywords || []);
 const languages = (await getSectionItems('languages')).flatMap((item: any) => item.keywords || []);
 const socials = await getLocalizedEntry(lang, 'socials') || [];
+
+// Load and resolve certifications from unified portfolio collection
+const certsData = await getEntry('portfolio', 'certs');
+const certsItems = certsData?.data || [];
+const certImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/images/certs/*.{jpeg,jpg,png,gif,webp,svg,PNG,JPG,JPEG}');
+
+const certifications = await Promise.all(
+    certsItems.map(async (cert: any) => {
+        const imgPath = `/src/assets/images/certs/${cert.image}`;
+        const imageLoader = certImages[imgPath];
+        const resolvedImage = imageLoader ? (await imageLoader()).default : null;
+        return {
+            ...cert,
+            resolvedImage
+        };
+    })
+);
 ---
 
 <Layout title={t.resumeTitle} lang={lang}>
@@ -101,6 +121,24 @@ const socials = await getLocalizedEntry(lang, 'socials') || [];
                 ))}
             </div>
         </section>
+
+        {certifications.length > 0 && (
+            <section class="cv-section mt-32 flex flex-col max-w-4xl mx-auto px-4">
+                <h2 class="font-display text-4xl font-bold mb-12 flex items-center gap-4">
+                    <span class="h-0.5 w-12 bg-secondary/30"></span>
+                    {t.certifications}
+                </h2>
+                <div class="content">
+                    <Certifications 
+                        certifications={certifications} 
+                        lang={lang} 
+                        verifyText={t.verifyCredential} 
+                        allLabel={t.allCerts}
+                        client:load 
+                    />
+                </div>
+            </section>
+        )}
 
         <section class="cv-section mt-32 flex flex-col max-w-4xl mx-auto px-4">
             <h2 class="font-display text-4xl font-bold mb-12 flex items-center gap-4">

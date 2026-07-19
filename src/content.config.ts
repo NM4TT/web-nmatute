@@ -12,7 +12,13 @@ const dataEsCollection = defineCollection({
     schema: () => z.any() 
 });
 
+const portfolioCollection = defineCollection({
+    loader: file("./portfolio.yaml"),
+    schema: () => z.any()
+});
+
 export const collections = {
     'data': dataCollection,
     'data_es': dataEsCollection,
+    'portfolio': portfolioCollection,
 };

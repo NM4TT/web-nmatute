@@ -29,6 +29,18 @@ export type ProjectItemType = {
     live?: string;
 };
 
+export type CertificationItemType = {
+    id: string;
+    name: string;
+    issuer: string;
+    earned: number;
+    credentialId?: string;
+    url?: string;
+    image: string;
+    skills: string[];
+    resolvedImage?: any;
+};
+
 export type SocialMediaType = {
     name: string;
     icon: string;
