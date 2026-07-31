@@ -57,9 +57,13 @@
 }
 
 /* Buttons & Links */
-.btn-primary {
+.btn-primary, .btn-secondary {
   @apply font-display text-xs font-bold uppercase tracking-widest py-3 px-8 rounded-lg cursor-pointer
-         border-2 inline-block transition-all duration-150 ease-out shadow-md active:scale-95;
+         border-2 inline-flex items-center justify-center gap-2 whitespace-nowrap leading-none
+         transition-all duration-150 ease-out shadow-md active:scale-95;
+}
+
+.btn-primary {
   background-color: var(--secondary);
   border-color: var(--secondary);
   color: #ffffff; /* Solid white for Light Mode */
@@ -72,6 +76,18 @@
 .btn-primary:hover {
   background-color: transparent;
   color: var(--secondary) !important;
+  @apply shadow-lg scale-105;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary);
+  color: #ffffff !important;
   @apply shadow-lg scale-105;
 }
 

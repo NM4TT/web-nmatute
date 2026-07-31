@@ -41,6 +41,7 @@ const UI_TRANSLATIONS = {
         menuBlog: "Blog",
         menuServices: "Services",
         contactMe: "Contact Me",
+        downloadCv: "Download CV",
         maintenanceTitle: "Under Maintenance",
         maintenanceMessage: "This page is under maintenance right now, please come back later."
     },
@@ -65,6 +66,7 @@ const UI_TRANSLATIONS = {
         menuBlog: "Blog",
         menuServices: "Servicios",
         contactMe: "Contáctame",
+        downloadCv: "Descargar CV",
         maintenanceTitle: "En Mantenimiento",
         maintenanceMessage: "Esta página se encuentra en mantenimiento en este momento, por favor regrese más tarde."
     }

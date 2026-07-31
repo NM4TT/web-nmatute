@@ -15,32 +15,42 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build:pdf": "tsx scripts/generate-cv-pdf.ts",
+    "build": "pnpm build:pdf && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/svelte": "^9.0.1",
-    "@astrojs/tailwind": "^6.0.2",
-    "@tailwindcss/vite": "^4.2.4",
-    "astro": "^7.1.0",
-    "sharp": "^0.34.5",
-    "svelte": "^5.55.5",
-    "tailwindcss": "^4.2.4",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.1.6",
+    "sharp": "^0.35.3",
+    "svelte": "^5.56.8",
+    "tailwindcss": "^4.3.3",
     "unplugin-icons": "^23.0.1"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.2.3",
-    "@types/js-yaml": "^4.0.9",
-    "@types/node": "^25.6.0",
-    "wrangler": "^3.90.0"
+    "@types/node": "^25.9.5",
+    "js-yaml": "^5.2.2",
+    "puppeteer": "^25.4.0",
+    "tsx": "^4.23.1"
   },
   "packageManager": "pnpm@11.1.2+sha512.415a1cc25974731e75455c1468371be74c5aa5fb7621b50d4056d222451609f11412f23fd602e6169f1e060466641f798597e1be961a10688836a67b16569499",
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",
+      "puppeteer",
       "sharp",
       "workerd"
-    ]
+    ],
+    "overrides": {
+      "undici": "^6.27.0",
+      "ws": "^8.21.0",
+      "esbuild": "^0.25.0",
+      "sharp": "^0.35.0",
+      "miniflare>undici": "^6.27.0",
+      "miniflare>ws": "^8.21.0"
+    }
   }
 }

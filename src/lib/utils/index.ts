@@ -96,3 +96,17 @@ export const formatEarnedDate = (timestamp: number, lang: 'en' | 'es' = 'en'): s
     const date = new Date(timestamp * 1000);
     return `${monthNames[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
 }
+
+export const formatNumericDate = (val: number | string | undefined, lang: string = 'en'): string => {
+    if (!val || val === 'Currently' || val === 'Present' || val === 'Presente') {
+        return lang === 'es' ? 'Presente' : 'Present';
+    }
+    const num = Number(val);
+    if (isNaN(num)) return String(val);
+
+    const date = new Date(num * 1000);
+    const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+    const year = date.getUTCFullYear();
+    return `${month}/${year}`;
+}
+

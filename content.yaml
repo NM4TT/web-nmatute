@@ -58,6 +58,7 @@ tools-skills:
         - JSON
         - Argo Workflows
         - Argo CD
+        - Kargo
         - Javascript
         - Typescript
         - SQL 

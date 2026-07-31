@@ -1,4 +1,23 @@
 allowBuilds:
   esbuild: true
+  puppeteer: true
   sharp: true
   workerd: true
+minimumReleaseAgeExclude:
+  - esbuild@0.24.3
+  - undici@6.23.0
+  - undici@6.24.0
+  - svelte@5.55.7
+  - ws@8.20.1
+  - devalue@5.8.1
+  - undici@6.27.0
+  - js-yaml@4.1.2
+  - ws@8.21.0
+  - js-yaml@4.3.0
+  - svgo@4.0.2
+  - sharp@0.35.0
+  - postcss@8.5.18
+overrides:
+  undici: "^6.27.0"
+  ws: "^8.21.0"
+  sharp: "^0.35.3"
