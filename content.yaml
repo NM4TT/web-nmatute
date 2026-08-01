@@ -1,47 +1,52 @@
 professional-exp:
   items:
     - name: PanamaSTEM Education Inc
-      role: Coding Instructor / Content Creator
+      role: Programming Instructor / Content Creator
       start: 1577876400 #Jan 01 2020
       end: 1609498800 #Jan 01 2021
       tasks:
-        - Developed educational content for robotics and programming platforms.
-        - Managed lead generation and appointment scheduling for service sales.
-        - Provided technical support and troubleshooting.
+        - Designed and delivered technical curricula in C, Python, and applied robotics using LEGO Mindstorms.
+        - Executed cold email prospecting campaigns to acquire leads and schedule sales meetings.
+        - Provided end-to-end technical support and troubleshooting for organizational infrastructure.
+
     - name: Colegio Real de Panama
       role: Computer Science Teacher
       start: 1643713200 #Febr 01 2022
       end: 1667300400 #Nov 01 2022
       tasks:
-        - Administered and maintained computer laboratory equipment.
-        - Developed didactic strategies to facilitate student understanding of CS.
-        - Implemented technical support workflows for staff and students.
+        - Managed computer lab infrastructure (30 Windows workstations) and interactive Arduino hardware kits.
+        - Taught computer science fundamentals and programming logic for elementary education levels.
+        - Handled technical support ticket resolution for users and equipment across the educational environment.
+
     - name: STT Group / Indra
       role: Software Developer
       start: 1667300400 #Nov 01 2022
       end: 1709290800 #March 01 2024
       tasks:
-        - Maintained enterprise Java Web Services (SOAP and REST).
-        - Orchestrated the migration of on-premise environments to Oracle Cloud Infrastructure.
-        - Maintained and optimized Blue Prism automated processes (RPA).
+        - Maintained and modernized enterprise SOAP and REST web services using Java (versions 6, 7, and 8), Spring Boot, Jakarta EE, and Oracle databases.
+        - Refactored legacy applications to ensure seamless execution on newly provisioned Oracle Cloud Infrastructure (OCI) environments.
+        - Optimized and maintained Blue Prism RPA bots for automated mass payment processing, report generation, and desktop application integration.
+
     - name: Daugherty Business Solutions
-      role: Software Engineering Consultant
+      role: Software Developering Consultant
       start: 1709290800 #March 01 2024
       end: 1735729200 #Jan 01 2025
       tasks:
-        - Delivered software improvements, bug fixes, and DevOps automation.
-        - Ensured seamless integration and delivery of client software solutions.
-        - Architected and documented technical specifications for complex systems.
+        - Developed polyglot software solutions utilizing Go, Java, TypeScript, JavaScript, Python, and Bash.
+        - Implemented CI/CD pipelines using Jenkins, ArgoCD, and Kargo deployed on Kubernetes clusters.
+        - Managed data persistence across relational and non-relational database systems (Oracle, PostgreSQL, MongoDB).
+        - Authored technical architecture specifications for both monolithic and microservice-based systems.
+
     - name: CGI
-      role: Software Engineering Consultant
+      role: Software Developering Consultant
       start: 1735729200 #Jan 01 2025
       tasks:
-        - Consistently deliver high-quality features and resolve bugs within existing software systems for client engagements.
-        - Actively contribute to agile ceremonies, including sprint planning, daily stand-ups, retrospectives, demos with stakeholders, and technical team discussions.
-        - Take ownership of the full software development lifecycle — from design and implementation to deployment — leveraging modern CI/CD practices in cloud-based environments.
+        - Engineered and maintained software components for distributed systems and microservices using Go, Java, TypeScript, and Python.
+        - Deployed and orchestrated cloud applications on Kubernetes clusters using continuous delivery tools such as ArgoCD and Jenkins.
+        - Participated across the full software development lifecycle within Agile frameworks, delivering features in cloud environments.
 
 about:
-  text: I am a resilient person who learns quickly and enjoys technology. Over the past few years, I have had the opportunity to develop software solutions for multiple industries. I specialize in web development, software architecture, and DevOps.
+  text: Software Developer with 4 years of experience delivering Full-Stack solutions, software architecture, and DevOps practices within the telecommunications and energy sectors. Specialized in microservices design, CI/CD pipeline integration, and cloud deployment orchestration using Kubernetes.
 
 education:
   items:

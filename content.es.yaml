@@ -5,43 +5,48 @@ professional-exp:
       start: 1577876400 #Jan 01 2020
       end: 1609498800 #Jan 01 2021
       tasks:
-        - Desarrollé contenido educativo para plataformas de robótica y programación.
-        - Gestioné la generación de prospectos y la programación de citas para la venta de servicios.
-        - Proporcioné soporte técnico y resolución de problemas.
+        - Diseñé y dicté planes de estudio técnicos en C, Python y robótica aplicada con LEGO Mindstorms.
+        - Ejecuté campañas de prospección vía correo electrónico para la captación de clientes y agendamiento de reuniones comerciales.
+        - Suministré soporte técnico integral y resolución de incidencias tecnológicas para la infraestructura de la organización.
+
     - name: Colegio Real de Panama
       role: Profesor de Ciencias de la Computación
       start: 1643713200 #Febr 01 2022
       end: 1667300400 #Nov 01 2022
       tasks:
-        - Administré y mantuve el equipo del laboratorio de computación.
-        - Desarrollé estrategias didácticas para facilitar la comprensión de las ciencias de la computación por parte de los estudiantes.
-        - Implementé flujos de trabajo de soporte técnico para el personal y los estudiantes.
+        - Administré la infraestructura del laboratorio de computación (30 estaciones Windows) y kits de hardware interactivo Arduino.
+        - Impartí fundamentos de ciencias de la computación y lógica de programación adaptados a nivel primario.
+        - Gestioné la atención y resolución de incidencias de soporte técnico para usuarios y equipos del entorno educativo.
+
     - name: STT Group / Indra
       role: Desarrollador de Software
       start: 1667300400 #Nov 01 2022
       end: 1709290800 #March 01 2024
       tasks:
-        - Mantuve servicios web Java empresariales (SOAP y REST).
-        - Orquesté la migración de entornos locales a Oracle Cloud Infrastructure.
-        - Mantuve y optimicé procesos automatizados de Blue Prism (RPA).
+        - Mantuve y evolucioné servicios web empresariales SOAP y REST utilizando Java (versiones 6, 7 y 8), Spring Boot, Jakarta EE y bases de datos Oracle.
+        - Adapté y refactoricé aplicaciones legacy para asegurar su correcta ejecución en entornos aprovisionados en Oracle Cloud Infrastructure (OCI).
+        - Optimicé y mantuve bots de RPA en Blue Prism para la automatización de procesamiento masivo de pagos, generación de reportes e interacción con aplicaciones de escritorio internas.
+
     - name: Daugherty Business Solutions
       role: Consultor de Ingeniería de Software
       start: 1709290800 #March 01 2024
       end: 1735729200 #Jan 01 2025
       tasks:
-        - Entregué mejoras de software, corrección de errores y automatización de DevOps.
-        - Garanticé la integración y entrega sin problemas de soluciones de software para clientes.
-        - Diseñé y documenté especificaciones técnicas para sistemas complejos.
+        - Desarrollé e integré soluciones de software multilenguaje utilizando Go, Java, TypeScript, JavaScript, Python y Bash.
+        - Implementé pipelines de integración y despliegue continuo (CI/CD) mediante Jenkins, ArgoCD y Kargo sobre clusters de Kubernetes.
+        - Administré la persistencia de datos en motores relacionales y no relacionales (Oracle, PostgreSQL, MongoDB).
+        - Diseñé y documenté especificaciones técnicas para arquitecturas monolíticas y de microservicios.
+
     - name: CGI
       role: Consultor de Ingeniería de Software
       start: 1735729200 #Jan 01 2025
       tasks:
-        - Entrego consistentemente características de alta calidad y resuelvo errores en los sistemas de software existentes para los compromisos de los clientes.
-        - Contribuyo activamente a las ceremonias ágiles, incluyendo planificación de sprints, reuniones diarias, retrospectivas, demostraciones con partes interesadas y discusiones del equipo técnico.
-        - Asumo la responsabilidad de todo el ciclo de vida del desarrollo de software — desde el diseño y la implementación hasta el despliegue — aprovechando prácticas modernas de CI/CD en entornos basados en la nube.
+        - Desarrollé y mantuve componentes de software en sistemas distribuidos y microservicios con Go, Java, TypeScript y Python.
+        - Desplegué y orquesté aplicaciones en clusters de Kubernetes utilizando herramientas de entrega continua como ArgoCD y Jenkins.
+        - Participé activamente en el ciclo de vida completo de desarrollo bajo metodologías ágiles, asegurando entregas continuas en entornos de nube.
 
 about:
-  text: Soy una persona resiliente que aprende rápidamente y disfruta de la tecnología. En los últimos años, he tenido la oportunidad de desarrollar soluciones de software para múltiples industrias. Me especializo en desarrollo web, arquitectura de software y DevOps.
+  text: Software Developer con 4 años de experiencia en el desarrollo de soluciones Full-Stack, arquitectura de software y prácticas DevOps para las industrias de telecomunicaciones y energía. Especializado en el diseño de microservicios, integración de pipelines CI/CD y despliegue en entornos de nube y orquestadores como Kubernetes.
 
 education:
   items:

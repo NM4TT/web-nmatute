@@ -59,7 +59,7 @@
 /* Buttons & Links */
 .btn-primary, .btn-secondary {
   @apply font-display text-xs font-bold uppercase tracking-widest py-3 px-8 rounded-lg cursor-pointer
-         border-2 inline-flex items-center justify-center gap-2 whitespace-nowrap leading-none
+         border-2 inline-flex items-center justify-center gap-2 whitespace-nowrap
          transition-all duration-150 ease-out shadow-md active:scale-95;
 }
 
