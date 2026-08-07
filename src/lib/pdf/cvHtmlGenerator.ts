@@ -159,7 +159,6 @@ export function generateCvHtml(data: CvData, lang: string = 'en', mailto?: strin
     /* Section Headings & Dividers */
     .section-block {
       margin-bottom: 10pt;
-      page-break-inside: avoid;
     }
     .section-title {
       font-size: 11.5pt;
