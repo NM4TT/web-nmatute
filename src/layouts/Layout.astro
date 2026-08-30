@@ -60,6 +60,11 @@ const isMaintenance = MAINTENANCE;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 
+		<!-- LLM / AI Discovery -->
+		<link rel="alternate" type="text/plain" href={lang === 'es' ? "/es/llms.txt" : "/llms.txt"} title="LLMs.txt" />
+		<link rel="alternate" type="text/markdown" href={lang === 'es' ? "/es/llms-full.txt" : "/llms-full.txt"} title="LLMs Full Text" />
+		<link rel="alternate" type="text/markdown" href={lang === 'es' ? "/es/llms.md" : "/llms.md"} title="LLMs.md" />
+
 		<!-- Preload critical fonts -->
 		<link rel="preload" href="/fonts/Archivo/Archivo-Regular.woff" as="font" type="font/woff" crossorigin />
 		<link rel="preload" href="/fonts/Archivo/Archivo-Bold.woff" as="font" type="font/woff" crossorigin />
