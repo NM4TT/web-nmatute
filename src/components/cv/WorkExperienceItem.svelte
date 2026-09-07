@@ -26,13 +26,7 @@
                     {data.end || 'Present'}
                 </span>
             </div>
-            <span class="font-sans text-[11px] uppercase font-black tracking-wider px-3 py-1 rounded-md bg-secondary shadow-sm flex items-center gap-1.5" style="color: var(--bg-base);">
-                {#if (data.end?.toLowerCase() || '') === 'present'}
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style="background-color: var(--bg-base);"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2" style="background-color: var(--bg-base);"></span>
-                    </span>
-                {/if}
+            <span class="font-sans text-[11px] uppercase font-black tracking-wider px-3 py-1 rounded-md bg-secondary shadow-sm flex items-center" style="color: var(--bg-base);">
                 {data.difference}
             </span>
         </div>

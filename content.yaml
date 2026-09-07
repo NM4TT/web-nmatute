@@ -28,7 +28,7 @@ professional-exp:
         - Optimized and maintained Blue Prism RPA bots for automated mass payment processing, report generation, and desktop application integration.
 
     - name: Daugherty Business Solutions
-      role: Software Developering Consultant
+      role: Software Engineering Consultant
       start: 1709290800 #March 01 2024
       end: 1735729200 #Jan 01 2025
       tasks:
@@ -38,7 +38,7 @@ professional-exp:
         - Authored technical architecture specifications for both monolithic and microservice-based systems.
 
     - name: CGI
-      role: Software Developering Consultant
+      role: Software Engineering Consultant
       start: 1735729200 #Jan 01 2025
       tasks:
         - Engineered and maintained software components for distributed systems and microservices using Go, Java, TypeScript, and Python.

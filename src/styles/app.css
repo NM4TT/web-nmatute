@@ -91,6 +91,10 @@
   @apply shadow-lg scale-105;
 }
 
+.dark .btn-secondary:hover {
+  color: #000000 !important;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
