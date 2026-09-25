@@ -1,6 +1,6 @@
 projects:
   - name: "Personal Website"
-    tools: [Astro, Svelte, TailwindCSS, Cloudflare]
+    tools: [Astro, Svelte, TailwindCSS]
     codebase: "https://github.com/NM4TT/web-nmatute"
     live: "https://nmatute.com"
 
@@ -22,6 +22,11 @@ projects:
     tools: [Astro, Svelte, TailwindCSS]
     codebase: "https://github.com/NM4TT/instant-blog"
     live: "https://instant-blog.nmatute-projects.com"
+
+  - name: "Doc Scanner"
+    tools: [React, TailwindCSS]
+    codebase: "https://github.com/NM4TT/doc-scanner"
+    live: "https://doc-scanner.nmatute-projects.com"
 
 #certs:
   #- id: "cka"
